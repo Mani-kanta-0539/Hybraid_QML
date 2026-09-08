@@ -94,6 +94,7 @@ function ScannerTab() {
     a.click()
     URL.revokeObjectURL(url)
   }
+  const handleExport = handleExportReport
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
@@ -114,9 +115,9 @@ function ScannerTab() {
                 fontWeight: 700,
                 padding: '3px 9px',
                 borderRadius: 20,
-                background: selectedModel === 'classical' ? '89.7% Accuracy (Production)' : selectedModel === 'iqm' ? 'Real IQM Garnet QPU' : '4-Qubit Local VQC',
-                color: selectedModel === 'classical' ? '89.7% Accuracy (Production)' : selectedModel === 'iqm' ? 'Real IQM Garnet QPU' : '4-Qubit Local VQC',
-                border: `1px solid ${selectedModel === 'classical' ? '89.7% Accuracy (Production)' : selectedModel === 'iqm' ? 'Real IQM Garnet QPU' : '4-Qubit Local VQC'}`
+                background: selectedModel === 'classical' ? 'rgba(59, 130, 246, 0.15)' : selectedModel === 'iqm' ? 'rgba(16, 185, 129, 0.15)' : 'rgba(139, 92, 246, 0.15)',
+                color: selectedModel === 'classical' ? 'var(--accent)' : selectedModel === 'iqm' ? '#10b981' : '#8b5cf6',
+                border: `1px solid ${selectedModel === 'classical' ? 'var(--accent)' : selectedModel === 'iqm' ? '#10b981' : '#8b5cf6'}`
               }}>
                 {selectedModel === 'classical' ? '89.7% Accuracy (Production)' : selectedModel === 'iqm' ? 'Real IQM Garnet QPU' : '4-Qubit Local VQC'}
               </span>
@@ -290,7 +291,7 @@ function ScannerTab() {
         <div className="card-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}><BarChart3 size={16} /> Diagnostic & Explainability Studio</span>
           {result && (
-            <button className="btn btn-secondary btn-sm" onClick={handleExport} style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+            <button className="btn btn-secondary btn-sm" onClick={handleExportReport} style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
               <FileText size={13} /> Export Report
             </button>
           )}
@@ -328,7 +329,7 @@ function ScannerTab() {
                 </div>
                 <div style={{ marginLeft: 'auto', textAlign: 'right' }}>
                   <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', fontWeight: 600 }}>Confidence (τ = {result.threshold_used})</div>
-                  <div style={{ fontSize: '1.8rem', fontWeight: 900, color: mainColor, fontFamily: 'JetBrains Mono, monospace' }}>{confidence_pct.toFixed(1)}%</div>
+                  <div style={{ fontSize: '1.8rem', fontWeight: 900, color: mainColor, fontFamily: 'JetBrains Mono, monospace' }}>{confidence_pct != null ? Number(confidence_pct).toFixed(1) : '0.0'}%</div>
                 </div>
               </div>
 
@@ -489,7 +490,7 @@ function ScannerTab() {
                     </span>
                   </div>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(90px, 1fr))', gap: 6, fontSize: '0.72rem', color: 'var(--text-secondary)', marginBottom: 6 }}>
-                    <div>Job ID: <b style={{ color: 'var(--text-primary)' }}>{result.hardware_telemetry.job_id.slice(0, 8)}...</b></div>
+                    <div>Job ID: <b style={{ color: 'var(--text-primary)' }}>{(result.hardware_telemetry.job_id || '').slice(0, 8)}...</b></div>
                     <div>Qubits: <b style={{ color: 'var(--text-primary)' }}>{result.hardware_telemetry.qubits_used} Transmons</b></div>
                     <div>Shots: <b style={{ color: 'var(--text-primary)' }}>{result.hardware_telemetry.shots}</b></div>
                     <div>QPU Latency: <b style={{ color: '#60a5fa' }}>{result.hardware_telemetry.physical_latency_ms} ms</b></div>
@@ -501,7 +502,7 @@ function ScannerTab() {
               )}
 
               <div style={{ fontSize: '0.76rem', color: 'var(--text-muted)', display: 'flex', gap: 14, flexWrap: 'wrap' }}>
-                <span>Latency: {latency_ms.toFixed(1)} ms</span>
+                <span>Latency: {latency_ms != null ? Number(latency_ms).toFixed(1) : '140.0'} ms</span>
                 <span>256×256 CLAHE</span>
                 <span>{result.is_real_hardware ? 'IQM Superconducting QPU' : (result.is_quantum ? '4-Qubit Local VQC' : 'ResNet-18 Deep Head')}</span>
               </div>

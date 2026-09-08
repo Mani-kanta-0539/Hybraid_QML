@@ -8,6 +8,7 @@ import { HeartDiseasePage } from './pages/HeartDiseasePage'
 import { ResearchBenchmarkingPage } from './pages/ResearchBenchmarkingPage'
 import { DatasetIngestionPage } from './pages/DatasetIngestionPage'
 import { AlzheimersPage } from './pages/AlzheimersPage'
+import { ErrorBoundary } from './components/ErrorBoundary'
 
 export default function App() {
   return (
@@ -16,14 +17,16 @@ export default function App() {
         <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: 'var(--bg-primary)', color: 'var(--text-primary)' }}>
           <GlobalNav />
           <main style={{ flex: 1 }}>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/breast-cancer/*" element={<BreastCancerPage />} />
-              <Route path="/heart-disease/*" element={<HeartDiseasePage />} />
-              <Route path="/alzheimers/*" element={<AlzheimersPage />} />
-              <Route path="/benchmarks/*" element={<ResearchBenchmarkingPage />} />
-              <Route path="/ingestion/*" element={<DatasetIngestionPage />} />
-            </Routes>
+            <ErrorBoundary>
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/breast-cancer/*" element={<BreastCancerPage />} />
+                <Route path="/heart-disease/*" element={<HeartDiseasePage />} />
+                <Route path="/alzheimers/*" element={<AlzheimersPage />} />
+                <Route path="/benchmarks/*" element={<ResearchBenchmarkingPage />} />
+                <Route path="/ingestion/*" element={<DatasetIngestionPage />} />
+              </Routes>
+            </ErrorBoundary>
           </main>
           <footer className="footer">
             <div style={{ maxWidth: 1400, margin: '0 auto', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>

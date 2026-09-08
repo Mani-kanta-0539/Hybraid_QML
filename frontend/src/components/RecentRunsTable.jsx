@@ -167,35 +167,36 @@ export function RecentRunsTable({ disease, title = 'Recent Diagnostic Runs (SQLi
 
   return (
     <div style={{
-      background: '#0d1626',
-      border: '1px solid #1a3356',
-      borderRadius: 14,
-      padding: 18,
-      boxShadow: '0 4px 24px rgba(0,0,0,0.4)',
-      marginTop: 20
+      background: 'var(--bg-card)',
+      border: '1px solid var(--border)',
+      borderRadius: 'var(--radius-xl)',
+      padding: 24,
+      boxShadow: 'var(--shadow-md)',
+      marginTop: 24
     }}>
       {/* Table Header Bar */}
       <div style={{
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        marginBottom: 14,
-        borderBottom: '1px solid #1a3356',
-        paddingBottom: 12
+        marginBottom: 16,
+        borderBottom: '1px solid var(--border)',
+        paddingBottom: 14
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <Database size={16} color="#60a5fa" />
-          <span style={{ fontSize: '0.88rem', fontWeight: 800, color: '#eef4ff' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <Database size={18} color="var(--accent)" />
+          <span style={{ fontSize: '0.94rem', fontWeight: 800, color: 'var(--text-primary)' }}>
             {title}
           </span>
           <span style={{
-            fontSize: '0.66rem',
-            padding: '2px 8px',
-            borderRadius: 100,
-            background: 'rgba(37, 99, 235, 0.15)',
-            color: '#93c5fd',
-            border: '1px solid rgba(37, 99, 235, 0.3)',
-            fontFamily: 'JetBrains Mono, monospace'
+            fontSize: '0.70rem',
+            padding: '3px 10px',
+            borderRadius: 'var(--radius-pill)',
+            background: 'var(--accent-soft)',
+            color: 'var(--accent)',
+            border: '1px solid var(--border)',
+            fontFamily: 'JetBrains Mono, monospace',
+            fontWeight: 700
           }}>
             SQLite Persistent ({runs.length})
           </span>
@@ -205,17 +206,18 @@ export function RecentRunsTable({ disease, title = 'Recent Diagnostic Runs (SQLi
           onClick={fetchRuns}
           disabled={loading}
           style={{
-            background: '#101e33',
-            border: '1px solid #1a3356',
-            color: '#7da8cc',
-            borderRadius: 8,
-            padding: '4px 10px',
-            fontSize: '0.72rem',
+            background: 'var(--bg-secondary)',
+            border: '1px solid var(--border)',
+            color: 'var(--text-secondary)',
+            borderRadius: 'var(--radius-pill)',
+            padding: '6px 14px',
+            fontSize: '0.76rem',
             fontWeight: 700,
             cursor: loading ? 'not-allowed' : 'pointer',
             display: 'flex',
             alignItems: 'center',
-            gap: 6
+            gap: 6,
+            transition: 'var(--transition)'
           }}
         >
           <RefreshCw size={12} style={{ animation: loading ? 'spin 0.8s linear infinite' : 'none' }} />
@@ -225,14 +227,14 @@ export function RecentRunsTable({ disease, title = 'Recent Diagnostic Runs (SQLi
 
       {/* Table Body */}
       {runs.length === 0 ? (
-        <div style={{ textAlign: 'center', padding: '24px 12px', color: '#7da8cc', fontSize: '0.80rem' }}>
+        <div style={{ textAlign: 'center', padding: '32px 12px', color: 'var(--text-muted)', fontSize: '0.84rem' }}>
           {loading ? 'Querying diagnostics.db...' : 'No diagnostic runs logged yet. Execute a prediction to record it into SQLite.'}
         </div>
       ) : (
         <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.76rem', color: '#eef4ff' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.80rem', color: 'var(--text-primary)' }}>
             <thead>
-              <tr style={{ borderBottom: '1px solid #1a3356', color: '#7da8cc', textAlign: 'left', fontSize: '0.70rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              <tr style={{ borderBottom: '1px solid var(--border)', color: 'var(--text-muted)', textAlign: 'left', fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                 <th style={{ padding: '8px 10px' }}>Run ID & Time</th>
                 <th style={{ padding: '8px 10px' }}>Modality</th>
                 <th style={{ padding: '8px 10px' }}>Model / Hardware</th>
@@ -250,108 +252,108 @@ export function RecentRunsTable({ disease, title = 'Recent Diagnostic Runs (SQLi
                     key={r.id}
                     onClick={() => setSelectedRun(isSelected ? null : r)}
                     style={{
-                      borderBottom: '1px solid #101e33',
-                      background: isSelected ? 'rgba(37, 99, 235, 0.1)' : 'transparent',
-                      cursor: 'pointer',
-                      transition: 'background 0.15s'
-                    }}
-                    onMouseEnter={(e) => { if (!isSelected) e.currentTarget.style.background = 'rgba(255,255,255,0.03)' }}
-                    onMouseLeave={(e) => { if (!isSelected) e.currentTarget.style.background = 'transparent' }}
-                  >
-                    <td style={{ padding: '10px 10px' }}>
-                      <div style={{ fontFamily: 'JetBrains Mono, monospace', fontWeight: 800, color: '#93c5fd', fontSize: '0.74rem' }}>
-                        {r.id.slice(0, 8)}...
-                      </div>
-                      <div style={{ fontSize: '0.67rem', color: '#7da8cc', display: 'flex', alignItems: 'center', gap: 4, marginTop: 2 }}>
-                        <Clock size={10} /> {formatTimestamp(r.timestamp)}
-                      </div>
-                    </td>
-                    <td style={{ padding: '10px 10px' }}>
-                      <span style={{ textTransform: 'capitalize', color: '#cbd5e1', fontWeight: 600 }}>
-                        {r.modality || r.disease}
-                      </span>
-                    </td>
-                    <td style={{ padding: '10px 10px' }}>
-                      {getModelBadge(r.model_used || r.model_type, r.hardware_backend)}
-                    </td>
-                    <td style={{ padding: '10px 10px' }}>
-                      {getRiskBadge(r.stage_or_risk || r.risk_level, r.prediction || r.diagnosis)}
-                    </td>
-                    <td style={{ padding: '10px 10px', fontFamily: 'JetBrains Mono, monospace', fontWeight: 700 }}>
-                      {r.confidence_pct ? `${r.confidence_pct.toFixed(1)}%` : '-'}
-                    </td>
-                    <td style={{ padding: '10px 10px', fontFamily: 'JetBrains Mono, monospace', color: '#94a3b8' }}>
-                      {r.latency_ms ? `${r.latency_ms.toFixed(0)} ms` : '-'}
-                    </td>
-                    <td style={{ padding: '10px 10px', textAlign: 'right' }}>
-                      <button
-                        onClick={(e) => handleDelete(e, r.id)}
-                        disabled={deletingId === r.id}
-                        title="Delete record from SQLite"
-                        style={{
-                          background: 'transparent',
-                          border: 'none',
-                          color: '#f87171',
-                          opacity: 0.65,
-                          cursor: 'pointer',
-                          padding: 4
-                        }}
-                        onMouseEnter={(e) => e.currentTarget.style.opacity = '1'}
-                        onMouseLeave={(e) => e.currentTarget.style.opacity = '0.65'}
-                      >
-                        <Trash2 size={13} />
-                      </button>
-                    </td>
-                  </tr>
-                )
-              })}
-            </tbody>
-          </table>
-        </div>
-      )}
-
-      {/* Expanded Run Inspector Modal / Panel */}
-      {selectedRun && (() => {
-        const qTel = selectedRun.hardware_telemetry || selectedRun.quantum_telemetry
-        const isIQM = (selectedRun.hardware_backend && selectedRun.hardware_backend.includes('IQM')) || selectedRun.is_real_hardware || (selectedRun.model_used && selectedRun.model_used.includes('IQM'))
-        return (
-          <div style={{
-            marginTop: 14,
-            background: '#070d18',
-            border: '1px solid #1f4070',
-            borderRadius: 10,
-            padding: 14
-          }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10, borderBottom: '1px solid #1a3356', paddingBottom: 8 }}>
-              <div style={{ fontSize: '0.80rem', fontWeight: 800, color: '#93c5fd', display: 'flex', alignItems: 'center', gap: 6 }}>
-                <FileText size={14} /> Diagnostic Run Details: <span style={{ fontFamily: 'JetBrains Mono, monospace' }}>{selectedRun.id}</span>
+              borderBottom: '1px solid var(--border)',
+              background: isSelected ? 'var(--accent-soft)' : 'transparent',
+              cursor: 'pointer',
+              transition: 'var(--transition)'
+            }}
+            onMouseEnter={(e) => { if (!isSelected) e.currentTarget.style.background = 'var(--accent-soft)' }}
+            onMouseLeave={(e) => { if (!isSelected) e.currentTarget.style.background = 'transparent' }}
+          >
+            <td style={{ padding: '12px 10px' }}>
+              <div style={{ fontFamily: 'JetBrains Mono, monospace', fontWeight: 800, color: 'var(--accent)', fontSize: '0.76rem' }}>
+                {r.id.slice(0, 8)}...
               </div>
+              <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: 4, marginTop: 2 }}>
+                <Clock size={10} /> {formatTimestamp(r.timestamp)}
+              </div>
+            </td>
+            <td style={{ padding: '12px 10px' }}>
+              <span style={{ textTransform: 'capitalize', color: 'var(--text-primary)', fontWeight: 700 }}>
+                {r.modality || r.disease}
+              </span>
+            </td>
+            <td style={{ padding: '12px 10px' }}>
+              {getModelBadge(r.model_used || r.model_type, r.hardware_backend)}
+            </td>
+            <td style={{ padding: '12px 10px' }}>
+              {getRiskBadge(r.stage_or_risk || r.risk_level, r.prediction || r.diagnosis)}
+            </td>
+            <td style={{ padding: '12px 10px', fontFamily: 'JetBrains Mono, monospace', fontWeight: 700 }}>
+              {r.confidence_pct ? `${r.confidence_pct.toFixed(1)}%` : '-'}
+            </td>
+            <td style={{ padding: '12px 10px', fontFamily: 'JetBrains Mono, monospace', color: 'var(--text-muted)' }}>
+              {r.latency_ms ? `${r.latency_ms.toFixed(0)} ms` : '-'}
+            </td>
+            <td style={{ padding: '12px 10px', textAlign: 'right' }}>
               <button
-                onClick={() => setSelectedRun(null)}
-                style={{ background: 'transparent', border: 'none', color: '#7da8cc', cursor: 'pointer', fontSize: '0.75rem', fontWeight: 700 }}
+                onClick={(e) => handleDelete(e, r.id)}
+                disabled={deletingId === r.id}
+                title="Delete record from SQLite"
+                style={{
+                  background: 'transparent',
+                  border: 'none',
+                  color: '#f87171',
+                  opacity: 0.65,
+                  cursor: 'pointer',
+                  padding: 4
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.opacity = '1'}
+                onMouseLeave={(e) => e.currentTarget.style.opacity = '0.65'}
               >
-                ✕ Close
+                <Trash2 size={14} />
               </button>
-            </div>
+            </td>
+          </tr>
+        )
+      })}
+    </tbody>
+  </table>
+</div>
+)}
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 10, marginBottom: 12 }}>
-              <div style={{ background: '#0d1626', padding: '8px 12px', borderRadius: 8, border: '1px solid #1a3356' }}>
-                <div style={{ fontSize: '0.66rem', color: '#7da8cc' }}>Primary Diagnosis</div>
-                <div style={{ fontSize: '0.92rem', fontWeight: 800, color: '#eef4ff' }}>{selectedRun.prediction || selectedRun.diagnosis}</div>
-              </div>
-              <div style={{ background: '#0d1626', padding: '8px 12px', borderRadius: 8, border: '1px solid #1a3356' }}>
-                <div style={{ fontSize: '0.66rem', color: '#7da8cc' }}>Confidence / Risk</div>
-                <div style={{ fontSize: '0.92rem', fontWeight: 800, color: selectedRun.risk_level === 'HIGH' || (selectedRun.stage_or_risk && selectedRun.stage_or_risk.includes('HIGH')) ? '#f87171' : '#34d399' }}>
-                  {selectedRun.confidence_pct ? `${selectedRun.confidence_pct.toFixed(1)}%` : '-'} · {selectedRun.stage_or_risk || selectedRun.risk_level}
-                </div>
-              </div>
-              <div style={{ background: '#0d1626', padding: '8px 12px', borderRadius: 8, border: '1px solid #1a3356' }}>
-                <div style={{ fontSize: '0.66rem', color: '#7da8cc' }}>Quantum Execution</div>
-                <div style={{ fontSize: '0.82rem', fontWeight: 700, color: '#60a5fa' }}>
-                  {isIQM ? '🌐 Real IQM Garnet 20-Qubit QPU' : (selectedRun.model_type === 'vqc' ? '⚛️ 4-Qubit VQC' : '⚡ 4-Qubit QSVC')}
-                </div>
-              </div>
-            </div>
+{/* Expanded Run Inspector Modal / Panel */}
+{selectedRun && (() => {
+const qTel = selectedRun.hardware_telemetry || selectedRun.quantum_telemetry
+const isIQM = (selectedRun.hardware_backend && selectedRun.hardware_backend.includes('IQM')) || selectedRun.is_real_hardware || (selectedRun.model_used && selectedRun.model_used.includes('IQM'))
+return (
+  <div style={{
+    marginTop: 18,
+    background: 'var(--bg-secondary)',
+    border: '1px solid var(--border)',
+    borderRadius: 'var(--radius-lg)',
+    padding: 20
+  }}>
+    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14, borderBottom: '1px solid var(--border)', paddingBottom: 10 }}>
+      <div style={{ fontSize: '0.84rem', fontWeight: 800, color: 'var(--accent)', display: 'flex', alignItems: 'center', gap: 8 }}>
+        <FileText size={16} /> Diagnostic Run Details: <span style={{ fontFamily: 'JetBrains Mono, monospace' }}>{selectedRun.id}</span>
+      </div>
+      <button
+        onClick={() => setSelectedRun(null)}
+        style={{ background: 'transparent', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: '0.78rem', fontWeight: 700 }}
+      >
+        ✕ Close
+      </button>
+    </div>
+
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 12, marginBottom: 14 }}>
+      <div style={{ background: 'var(--bg-card)', padding: '12px 16px', borderRadius: 'var(--radius-md)', border: '1px solid var(--border)' }}>
+        <div style={{ fontSize: '0.70rem', color: 'var(--text-muted)', fontWeight: 700 }}>Primary Diagnosis</div>
+        <div style={{ fontSize: '0.96rem', fontWeight: 800, color: 'var(--text-primary)', marginTop: 2 }}>{selectedRun.prediction || selectedRun.diagnosis}</div>
+      </div>
+      <div style={{ background: 'var(--bg-card)', padding: '12px 16px', borderRadius: 'var(--radius-md)', border: '1px solid var(--border)' }}>
+        <div style={{ fontSize: '0.70rem', color: 'var(--text-muted)', fontWeight: 700 }}>Confidence / Risk</div>
+        <div style={{ fontSize: '0.96rem', fontWeight: 800, color: selectedRun.risk_level === 'HIGH' || (selectedRun.stage_or_risk && selectedRun.stage_or_risk.includes('HIGH')) ? '#f87171' : '#10b981', marginTop: 2 }}>
+          {selectedRun.confidence_pct ? `${selectedRun.confidence_pct.toFixed(1)}%` : '-'} · {selectedRun.stage_or_risk || selectedRun.risk_level}
+        </div>
+      </div>
+      <div style={{ background: 'var(--bg-card)', padding: '12px 16px', borderRadius: 'var(--radius-md)', border: '1px solid var(--border)' }}>
+        <div style={{ fontSize: '0.70rem', color: 'var(--text-muted)', fontWeight: 700 }}>Quantum Execution</div>
+        <div style={{ fontSize: '0.86rem', fontWeight: 700, color: 'var(--accent)', marginTop: 2 }}>
+          {isIQM ? '🌐 Real IQM Garnet 20-Qubit QPU' : (selectedRun.model_type === 'vqc' ? '⚛️ 4-Qubit VQC' : '⚡ 4-Qubit QSVC')}
+        </div>
+      </div>
+    </div>
 
             {/* Hardware Telemetry if present */}
             {isIQM && qTel && (

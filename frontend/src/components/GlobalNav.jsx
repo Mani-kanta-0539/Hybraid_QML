@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+﻿import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Cpu, Scan, Heart, Home, BarChart3, Database, Brain, History } from 'lucide-react'
+import { Cpu, Scan, Heart, Home, BarChart3, Database, Brain, History, Sun, Moon } from 'lucide-react'
+import { useTheme } from '../context/ThemeContext'
 import { DiagnosticHistoryDrawer } from './DiagnosticHistoryDrawer'
 
 export function GlobalNav() {
   const location = useLocation()
   const path = location.pathname
+  const { theme, toggleTheme } = useTheme()
   const [isHistoryOpen, setIsHistoryOpen] = useState(false)
 
   return (
@@ -13,25 +15,24 @@ export function GlobalNav() {
       <nav className="global-nav">
         <div className="global-nav-inner">
           {/* Brand */}
-          <Link to="/" className="nav-brand" style={{ textDecoration: 'none' }}>
+          <Link to="/" className="nav-brand">
             <div className="nav-logo">
-              <Cpu size={20} color="white" />
+              <Cpu size={22} color="white" />
             </div>
             <div className="nav-brand-text">
               <h1>Quantum Healthcare AI</h1>
-              <span>Hybrid Quantum-Classical Diagnostics</span>
+              <span>Hybrid Clinical Diagnostics</span>
             </div>
           </Link>
 
-          {/* Nav Links */}
+          {/* Navigation Links */}
           <div className="nav-links">
             <Link
               to="/"
               className={`nav-link ${path === '/' ? 'active' : ''}`}
-              style={{ textDecoration: 'none' }}
             >
               <div className="nav-icon blue">
-                <Home size={15} />
+                <Home size={16} />
               </div>
               Home
             </Link>
@@ -39,10 +40,9 @@ export function GlobalNav() {
             <Link
               to="/breast-cancer"
               className={`nav-link ${path.startsWith('/breast-cancer') ? 'active' : ''}`}
-              style={{ textDecoration: 'none' }}
             >
               <div className="nav-icon rose">
-                <Scan size={15} />
+                <Scan size={16} />
               </div>
               Breast Scanner
             </Link>
@@ -50,10 +50,9 @@ export function GlobalNav() {
             <Link
               to="/heart-disease"
               className={`nav-link ${path.startsWith('/heart-disease') ? 'active' : ''}`}
-              style={{ textDecoration: 'none' }}
             >
               <div className="nav-icon emerald">
-                <Heart size={15} />
+                <Heart size={16} />
               </div>
               Heart QML
             </Link>
@@ -61,10 +60,9 @@ export function GlobalNav() {
             <Link
               to="/alzheimers"
               className={`nav-link ${path.startsWith('/alzheimers') ? 'active' : ''}`}
-              style={{ textDecoration: 'none' }}
             >
-              <div className="nav-icon amber" style={{ background: 'rgba(245, 158, 11, 0.2)', color: '#fbbf24' }}>
-                <Brain size={15} />
+              <div className="nav-icon amber">
+                <Brain size={16} />
               </div>
               Alzheimer's QML
             </Link>
@@ -72,10 +70,9 @@ export function GlobalNav() {
             <Link
               to="/benchmarks"
               className={`nav-link ${path.startsWith('/benchmarks') ? 'active' : ''}`}
-              style={{ textDecoration: 'none' }}
             >
-              <div className="nav-icon purple" style={{ background: 'rgba(139, 92, 246, 0.2)', color: '#c084fc' }}>
-                <BarChart3 size={15} />
+              <div className="nav-icon purple">
+                <BarChart3 size={16} />
               </div>
               Benchmarking
             </Link>
@@ -83,62 +80,82 @@ export function GlobalNav() {
             <Link
               to="/ingestion"
               className={`nav-link ${path.startsWith('/ingestion') ? 'active' : ''}`}
-              style={{ textDecoration: 'none' }}
             >
-              <div className="nav-icon cyan" style={{ background: 'rgba(6, 182, 212, 0.2)', color: '#22d3ee' }}>
-                <Database size={15} />
+              <div className="nav-icon cyan">
+                <Database size={16} />
               </div>
               Data Ingestion
             </Link>
           </div>
 
-          {/* Right Actions: History Drawer & Status */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          {/* Right Action Cluster */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+            {/* Theme Toggle (Light / Dark) */}
+            <button
+              onClick={toggleTheme}
+              className="theme-toggle-btn"
+              title={theme === 'light' ? 'Switch to Dark Mode (Obsidian Cyan)' : 'Switch to Light Mode (Mediva Healthcare)'}
+              aria-label="Toggle visual theme"
+            >
+              {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
+            </button>
+
+            {/* Run History (SQLite) Pill Button */}
             <button
               onClick={() => setIsHistoryOpen(true)}
               style={{
-                display: 'flex',
+                display: 'inline-flex',
                 alignItems: 'center',
-                gap: 7,
-                padding: '6px 14px',
-                background: 'rgba(56, 189, 248, 0.12)',
-                border: '1px solid rgba(56, 189, 248, 0.35)',
-                borderRadius: 10,
-                fontSize: '0.78rem',
-                fontWeight: 600,
-                color: '#38bdf8',
+                gap: 8,
+                padding: '0 18px',
+                height: 42,
+                background: 'var(--accent-soft)',
+                border: '1px solid var(--border)',
+                borderRadius: 'var(--radius-pill)',
+                fontSize: '0.82rem',
+                fontWeight: 700,
+                color: 'var(--accent)',
                 cursor: 'pointer',
-                transition: 'all 0.15s ease',
+                transition: 'var(--transition)',
+                boxShadow: 'var(--shadow-sm)'
               }}
-              onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(56, 189, 248, 0.22)'}
-              onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(56, 189, 248, 0.12)'}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'var(--accent-soft-hover)'
+                e.currentTarget.style.transform = 'translateY(-1px)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'var(--accent-soft)'
+                e.currentTarget.style.transform = 'none'
+              }}
             >
-              <History size={14} />
+              <History size={15} />
               <span>Run History (SQLite)</span>
             </button>
 
+            {/* Live Telemetry Pill */}
             <div style={{
               display: 'flex',
               alignItems: 'center',
               gap: 8,
-              padding: '6px 14px',
-              background: 'rgba(16,185,129,0.1)',
-              border: '1px solid rgba(16,185,129,0.25)',
-              borderRadius: 10,
-              fontSize: '0.75rem',
-              fontWeight: 600,
-              color: '#34d399',
+              padding: '0 14px',
+              height: 42,
+              background: 'var(--normal-bg)',
+              border: '1px solid var(--normal-border)',
+              borderRadius: 'var(--radius-pill)',
+              fontSize: '0.78rem',
+              fontWeight: 700,
+              color: 'var(--normal)',
               flexShrink: 0
             }}>
               <span style={{
-                width: 7,
-                height: 7,
+                width: 8,
+                height: 8,
                 borderRadius: '50%',
-                background: '#34d399',
-                animation: 'pulse 2s infinite',
+                background: 'var(--normal)',
+                boxShadow: '0 0 10px var(--normal)',
                 display: 'block'
               }} />
-              AI Systems Online
+              IQM Online
             </div>
           </div>
         </div>

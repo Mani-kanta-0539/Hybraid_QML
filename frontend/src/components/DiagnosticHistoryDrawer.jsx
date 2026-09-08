@@ -155,20 +155,20 @@ export function DiagnosticHistoryDrawer({ isOpen, onClose }) {
         width: '100%',
         maxWidth: 780,
         height: '100%',
-        backgroundColor: '#0d1321',
-        borderLeft: '1px solid rgba(255, 255, 255, 0.12)',
+        backgroundColor: 'var(--bg-primary)',
+        borderLeft: '1px solid var(--border)',
         display: 'flex',
         flexDirection: 'column',
-        boxShadow: '-8px 0 32px rgba(0, 0, 0, 0.5)',
+        boxShadow: 'var(--shadow-floating)',
       }}>
         {/* Header */}
         <div style={{
           padding: '20px 24px',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+          borderBottom: '1px solid var(--border)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          background: 'rgba(15, 23, 42, 0.6)',
+          background: 'var(--bg-card)',
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <div style={{
@@ -183,21 +183,22 @@ export function DiagnosticHistoryDrawer({ isOpen, onClose }) {
               <History size={20} color="white" />
             </div>
             <div>
-              <h2 style={{ margin: 0, fontSize: 18, fontWeight: 700, color: '#f8fafc' }}>
+              <h2 style={{ margin: 0, fontSize: 18, fontWeight: 800, color: 'var(--text-primary)' }}>
                 Diagnostic Run History
               </h2>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 3 }}>
-                <span style={{ fontSize: 12, color: '#94a3b8' }}>
+                <span style={{ fontSize: 12, color: 'var(--text-muted)' }}>
                   Persistent Storage via SQLite (<code>data/diagnostics.db</code>)
                 </span>
                 {stats && (
                   <span style={{
                     fontSize: 11,
-                    background: 'rgba(56, 189, 248, 0.15)',
-                    color: '#38bdf8',
-                    padding: '1px 8px',
-                    borderRadius: 999,
-                    fontWeight: 600,
+                    background: 'var(--accent-soft)',
+                    color: 'var(--accent)',
+                    padding: '2px 10px',
+                    borderRadius: 'var(--radius-pill)',
+                    fontWeight: 700,
+                    border: '1px solid var(--border)'
                   }}>
                     {stats.total_diagnostic_runs} Total Runs
                   </span>
@@ -211,17 +212,18 @@ export function DiagnosticHistoryDrawer({ isOpen, onClose }) {
               onClick={handleExport}
               title="Export all records as JSON"
               style={{
-                background: 'rgba(255, 255, 255, 0.06)',
-                border: '1px solid rgba(255, 255, 255, 0.12)',
-                color: '#cbd5e1',
-                padding: '7px 12px',
-                borderRadius: 8,
+                background: 'var(--bg-secondary)',
+                border: '1px solid var(--border)',
+                color: 'var(--text-primary)',
+                padding: '7px 14px',
+                borderRadius: 'var(--radius-pill)',
                 fontSize: 12,
-                fontWeight: 600,
+                fontWeight: 700,
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
                 gap: 6,
+                transition: 'var(--transition)'
               }}
             >
               <Download size={14} /> Export
@@ -230,12 +232,13 @@ export function DiagnosticHistoryDrawer({ isOpen, onClose }) {
               onClick={fetchHistory}
               title="Refresh"
               style={{
-                background: 'rgba(255, 255, 255, 0.06)',
-                border: '1px solid rgba(255, 255, 255, 0.12)',
-                color: '#cbd5e1',
-                padding: '7px 10px',
-                borderRadius: 8,
+                background: 'var(--bg-secondary)',
+                border: '1px solid var(--border)',
+                color: 'var(--text-primary)',
+                padding: '7px 12px',
+                borderRadius: 'var(--radius-pill)',
                 cursor: 'pointer',
+                transition: 'var(--transition)'
               }}
             >
               <RefreshCw size={14} className={loading ? 'spin' : ''} />
@@ -245,7 +248,7 @@ export function DiagnosticHistoryDrawer({ isOpen, onClose }) {
               style={{
                 background: 'transparent',
                 border: 'none',
-                color: '#94a3b8',
+                color: 'var(--text-muted)',
                 cursor: 'pointer',
                 padding: 6,
               }}
@@ -257,13 +260,14 @@ export function DiagnosticHistoryDrawer({ isOpen, onClose }) {
 
         {/* Filters & Search */}
         <div style={{
-          padding: '12px 24px',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
+          padding: '14px 24px',
+          borderBottom: '1px solid var(--border)',
           display: 'flex',
           gap: 12,
           flexWrap: 'wrap',
           alignItems: 'center',
           justifyContent: 'space-between',
+          background: 'var(--bg-secondary)'
         }}>
           {/* Disease Tabs */}
           <div style={{ display: 'flex', gap: 6 }}>
@@ -277,14 +281,15 @@ export function DiagnosticHistoryDrawer({ isOpen, onClose }) {
                 key={tab.id}
                 onClick={() => setSelectedDisease(tab.id)}
                 style={{
-                  background: selectedDisease === tab.id ? 'rgba(56, 189, 248, 0.18)' : 'rgba(255, 255, 255, 0.04)',
-                  border: selectedDisease === tab.id ? '1px solid rgba(56, 189, 248, 0.4)' : '1px solid transparent',
-                  color: selectedDisease === tab.id ? '#38bdf8' : '#94a3b8',
-                  padding: '5px 12px',
-                  borderRadius: 6,
+                  background: selectedDisease === tab.id ? 'var(--accent)' : 'var(--bg-card)',
+                  border: selectedDisease === tab.id ? '1px solid var(--accent)' : '1px solid var(--border)',
+                  color: selectedDisease === tab.id ? '#FFFFFF' : 'var(--text-secondary)',
+                  padding: '6px 14px',
+                  borderRadius: 'var(--radius-pill)',
                   fontSize: 12,
-                  fontWeight: 600,
+                  fontWeight: 700,
                   cursor: 'pointer',
+                  transition: 'var(--transition)'
                 }}
               >
                 {tab.label}
@@ -293,8 +298,8 @@ export function DiagnosticHistoryDrawer({ isOpen, onClose }) {
           </div>
 
           {/* Search box */}
-          <div style={{ position: 'relative', minWidth: 200 }}>
-            <Search size={13} style={{ position: 'absolute', left: 10, top: 9, color: '#64748b' }} />
+          <div style={{ position: 'relative', minWidth: 220 }}>
+            <Search size={14} style={{ position: 'absolute', left: 12, top: 10, color: 'var(--text-muted)' }} />
             <input
               type="text"
               placeholder="Search patient, model..."
@@ -302,57 +307,75 @@ export function DiagnosticHistoryDrawer({ isOpen, onClose }) {
               onChange={(e) => setSearchQuery(e.target.value)}
               style={{
                 width: '100%',
-                background: 'rgba(15, 23, 42, 0.7)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
-                borderRadius: 8,
-                padding: '6px 12px 6px 30px',
-                color: '#f8fafc',
+                background: 'var(--bg-card)',
+                border: '1px solid var(--border)',
+                borderRadius: 'var(--radius-pill)',
+                padding: '7px 14px 7px 34px',
+                color: 'var(--text-primary)',
                 fontSize: 12,
+                fontFamily: 'inherit',
                 outline: 'none',
               }}
             />
           </div>
         </div>
 
-        {/* Content Body: List and Detail Modal */}
-        <div style={{ flex: 1, overflowY: 'auto', padding: '16px 24px' }}>
-          {loading && history.length === 0 ? (
-            <div style={{ textAlign: 'center', padding: '60px 20px', color: '#64748b' }}>
-              <RefreshCw size={24} className="spin" style={{ marginBottom: 12 }} />
-              <div>Loading diagnostic history from SQLite...</div>
+        {/* List Content */}
+        <div style={{
+          flex: 1,
+          overflowY: 'auto',
+          padding: '16px 24px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 10,
+        }}>
+          {loading ? (
+            <div style={{ textAlign: 'center', padding: 40, color: 'var(--text-muted)' }}>
+              <RefreshCw size={24} className="spin" style={{ margin: '0 auto 12px' }} />
+              <div>Loading diagnostic records from SQLite...</div>
             </div>
           ) : filteredHistory.length === 0 ? (
-            <div style={{ textAlign: 'center', padding: '60px 20px', color: '#64748b' }}>
-              <Database size={32} style={{ marginBottom: 12, opacity: 0.5 }} />
-              <div style={{ fontSize: 14, fontWeight: 600, color: '#94a3b8' }}>No diagnostic runs recorded yet</div>
+            <div style={{ textAlign: 'center', padding: 40, color: 'var(--text-muted)' }}>
+              <Database size={32} style={{ margin: '0 auto 12px', opacity: 0.5 }} />
+              <div style={{ fontWeight: 600 }}>No matching diagnostic runs found</div>
               <div style={{ fontSize: 12, marginTop: 4 }}>
-                Execute a prediction on any disease page to automatically record the run here.
+                Run an inference in Breast Cancer, Heart Disease, or Alzheimer's to persist a run.
               </div>
             </div>
           ) : (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               {filteredHistory.map((item) => {
                 const predStyle = getPredictionColor(item.prediction)
-                const isIQM = item.hardware_backend?.includes('IQM')
-                return (
-                  <div
-                    key={item.id}
-                    onClick={() => setActiveItem(item)}
-                    style={{
-                      background: 'rgba(17, 24, 39, 0.75)',
-                      border: '1px solid rgba(255, 255, 255, 0.07)',
-                      borderRadius: 12,
-                      padding: '14px 18px',
-                      cursor: 'pointer',
-                      transition: 'all 0.15s ease',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      gap: 16,
-                    }}
-                    onMouseEnter={(e) => e.currentTarget.style.borderColor = 'rgba(56, 189, 248, 0.4)'}
-                    onMouseLeave={(e) => e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.07)'}
-                  >
+              const isIQM = (item.hardware_backend && item.hardware_backend.includes('IQM')) || item.is_real_hardware || (item.model_used && item.model_used.includes('IQM'))
+
+              return (
+                <div
+                  key={item.id}
+                  onClick={() => setActiveItem(item)}
+                  style={{
+                    background: 'var(--bg-card)',
+                    border: '1px solid var(--border)',
+                    borderRadius: 'var(--radius-lg)',
+                    padding: '16px 20px',
+                    cursor: 'pointer',
+                    transition: 'var(--transition)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    gap: 16,
+                    boxShadow: 'var(--shadow-sm)'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = 'var(--accent)'
+                    e.currentTarget.style.transform = 'translateY(-1px)'
+                    e.currentTarget.style.boxShadow = 'var(--shadow-md)'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = 'var(--border)'
+                    e.currentTarget.style.transform = 'none'
+                    e.currentTarget.style.boxShadow = 'var(--shadow-sm)'
+                  }}
+                >
                     <div style={{ display: 'flex', alignItems: 'center', gap: 14, minWidth: 0 }}>
                       <div style={{
                         width: 34,
@@ -445,14 +468,14 @@ export function DiagnosticHistoryDrawer({ isOpen, onClose }) {
 
         {/* Footer info & clear button */}
         <div style={{
-          padding: '12px 24px',
-          borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+          padding: '14px 24px',
+          borderTop: '1px solid var(--border)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          background: 'rgba(15, 23, 42, 0.4)',
+          background: 'var(--bg-card)',
         }}>
-          <span style={{ fontSize: 12, color: '#64748b' }}>
+          <span style={{ fontSize: 12, color: 'var(--text-muted)' }}>
             Showing {filteredHistory.length} of {history.length} records
           </span>
           {history.length > 0 && (
@@ -462,11 +485,11 @@ export function DiagnosticHistoryDrawer({ isOpen, onClose }) {
                 background: 'rgba(239, 68, 68, 0.1)',
                 border: '1px solid rgba(239, 68, 68, 0.25)',
                 color: '#f87171',
-                padding: '5px 12px',
-                borderRadius: 6,
+                padding: '6px 14px',
+                borderRadius: 'var(--radius-pill)',
                 fontSize: 12,
                 cursor: 'pointer',
-                fontWeight: 600,
+                fontWeight: 700,
               }}
             >
               Clear {selectedDisease === 'all' ? 'All' : selectedDisease} History
@@ -485,7 +508,8 @@ export function DiagnosticHistoryDrawer({ isOpen, onClose }) {
             left: 0,
             right: 0,
             bottom: 0,
-            background: 'rgba(0, 0, 0, 0.65)',
+            background: 'rgba(0, 0, 0, 0.60)',
+            backdropFilter: 'blur(8px)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -499,73 +523,74 @@ export function DiagnosticHistoryDrawer({ isOpen, onClose }) {
               width: '100%',
               maxWidth: 620,
               maxHeight: '85vh',
-              background: '#111827',
-              border: '1px solid rgba(255, 255, 255, 0.15)',
-              borderRadius: 16,
+              background: 'var(--bg-card)',
+              border: '1px solid var(--border)',
+              borderRadius: 'var(--radius-xl)',
               overflow: 'hidden',
               display: 'flex',
               flexDirection: 'column',
-              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.7)',
+              boxShadow: 'var(--shadow-floating)',
             }}
           >
             <div style={{
-              padding: '16px 20px',
-              borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+              padding: '18px 24px',
+              borderBottom: '1px solid var(--border)',
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
-              background: 'rgba(255, 255, 255, 0.03)',
+              background: 'var(--bg-secondary)',
             }}>
               <div>
-                <h3 style={{ margin: 0, fontSize: 16, fontWeight: 700, color: '#f8fafc' }}>
+                <h3 style={{ margin: 0, fontSize: 16, fontWeight: 800, color: 'var(--text-primary)' }}>
                   Run #{activeItem.id} Details ({activeItem.patient_id})
                 </h3>
-                <span style={{ fontSize: 12, color: '#94a3b8' }}>
+                <span style={{ fontSize: 12, color: 'var(--text-muted)' }}>
                   {new Date(activeItem.timestamp).toLocaleString()}
                 </span>
               </div>
               <button
                 onClick={() => setActiveItem(null)}
-                style={{ background: 'transparent', border: 'none', color: '#94a3b8', cursor: 'pointer' }}
+                style={{ background: 'transparent', border: 'none', color: 'var(--text-muted)', cursor: 'pointer' }}
               >
                 <X size={18} />
               </button>
             </div>
 
-            <div style={{ padding: 20, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: 16 }}>
+            <div style={{ padding: 24, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: 16 }}>
               {/* Summary Cards */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
-                <div style={{ background: 'rgba(255, 255, 255, 0.03)', padding: 12, borderRadius: 8, border: '1px solid rgba(255, 255, 255, 0.06)' }}>
-                  <div style={{ fontSize: 11, color: '#94a3b8' }}>Diagnosis & Result</div>
-                  <div style={{ fontSize: 16, fontWeight: 700, color: '#38bdf8', marginTop: 4 }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
+                <div style={{ background: 'var(--bg-secondary)', padding: 14, borderRadius: 'var(--radius-md)', border: '1px solid var(--border)' }}>
+                  <div style={{ fontSize: 11, color: 'var(--text-muted)', fontWeight: 700 }}>Diagnosis & Result</div>
+                  <div style={{ fontSize: 16, fontWeight: 800, color: 'var(--accent)', marginTop: 4 }}>
                     {activeItem.prediction}
                   </div>
-                  <div style={{ fontSize: 12, color: '#64748b', marginTop: 2 }}>{activeItem.stage_or_risk}</div>
+                  <div style={{ fontSize: 12, color: 'var(--text-secondary)', marginTop: 2 }}>{activeItem.stage_or_risk}</div>
                 </div>
 
-                <div style={{ background: 'rgba(255, 255, 255, 0.03)', padding: 12, borderRadius: 8, border: '1px solid rgba(255, 255, 255, 0.06)' }}>
-                  <div style={{ fontSize: 11, color: '#94a3b8' }}>Hardware & Model</div>
-                  <div style={{ fontSize: 13, fontWeight: 600, color: '#f8fafc', marginTop: 4 }}>
+                <div style={{ background: 'var(--bg-secondary)', padding: 14, borderRadius: 'var(--radius-md)', border: '1px solid var(--border)' }}>
+                  <div style={{ fontSize: 11, color: 'var(--text-muted)', fontWeight: 700 }}>Hardware & Model</div>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--text-primary)', marginTop: 4 }}>
                     {activeItem.model_used}
                   </div>
-                  <div style={{ fontSize: 11, color: '#22d3ee', marginTop: 2 }}>{activeItem.hardware_backend}</div>
+                  <div style={{ fontSize: 11, color: 'var(--accent)', marginTop: 2 }}>{activeItem.hardware_backend}</div>
                 </div>
               </div>
 
               {/* Probabilities */}
               {activeItem.probabilities && (
                 <div>
-                  <div style={{ fontSize: 12, fontWeight: 600, color: '#cbd5e1', marginBottom: 6 }}>
+                  <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--text-primary)', marginBottom: 6 }}>
                     Calibrated Probabilities
                   </div>
                   <pre style={{
-                    background: '#090d16',
-                    padding: 10,
-                    borderRadius: 8,
+                    background: 'var(--bg-secondary)',
+                    padding: 12,
+                    borderRadius: 'var(--radius-md)',
                     fontSize: 11,
-                    color: '#38bdf8',
+                    color: 'var(--accent)',
                     overflowX: 'auto',
-                    border: '1px solid rgba(255, 255, 255, 0.06)',
+                    border: '1px solid var(--border)',
+                    fontFamily: 'JetBrains Mono, monospace'
                   }}>
                     {JSON.stringify(activeItem.probabilities, null, 2)}
                   </pre>

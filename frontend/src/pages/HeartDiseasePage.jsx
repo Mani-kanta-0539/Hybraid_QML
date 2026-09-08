@@ -17,17 +17,17 @@ import { RecentRunsTable } from '../components/RecentRunsTable'
 
 const API = 'http://127.0.0.1:8000'
 
-/* ── Dark Theme Tokens ────────────────────────────────────────── */
+/* ── Dynamic Design System Tokens ────────────────────────────── */
 const T = {
-  bg:        '#060b14',
-  card:      '#0d1626',
-  card2:     '#101e33',
-  border:    '#1a3356',
-  borderLt:  '#1f4070',
-  text:      '#eef4ff',
-  textSec:   '#7da8cc',
-  textMuted: '#3d5a78',
-  accent:    '#2563eb',
+  bg:        'var(--bg-primary)',
+  card:      'var(--bg-card)',
+  card2:     'var(--bg-secondary)',
+  border:    'var(--border)',
+  borderLt:  'var(--border-light)',
+  text:      'var(--text-primary)',
+  textSec:   'var(--text-secondary)',
+  textMuted: 'var(--text-muted)',
+  accent:    'var(--accent)',
 }
 
 /* ── PCA / Scaler constants ───────────────────────────────────── */
@@ -56,9 +56,9 @@ function computeQuantumAngles(input) {
   })
 }
 
-/* ── Shared dark-theme card wrapper ──────────────────────────── */
+/* ── Shared squircle card wrapper ────────────────────────────── */
 const DCard = ({ children, style = {} }) => (
-  <div style={{ background: T.card, border: `1px solid ${T.border}`, borderRadius: 16, boxShadow: '0 4px 32px rgba(0,0,0,0.5)', ...style }}>
+  <div style={{ background: T.card, border: `1px solid ${T.border}`, borderRadius: 'var(--radius-xl)', padding: 24, boxShadow: 'var(--shadow-md)', ...style }}>
     {children}
   </div>
 )

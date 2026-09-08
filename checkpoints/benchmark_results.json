@@ -1,0 +1,31 @@
+{
+  "config": {
+    "n_qubits": 0,
+    "n_layers": 0,
+    "classes": [
+      "Normal",
+      "Benign",
+      "Malignant"
+    ],
+    "unfreeze_layer4": true,
+    "version": "classical",
+    "best_balanced_acc": 86.59,
+    "best_epoch": 24,
+    "test_balanced_acc": 88.74,
+    "test_per_class": {
+      "Normal": 85.0,
+      "Benign": 90.91,
+      "Malignant": 90.32
+    }
+  },
+  "metrics": {
+    "accuracy_pct": 89.7436,
+    "balanced_acc_pct": 88.7439,
+    "per_class_recall_pct": {
+      "Normal": 85.0,
+      "Benign": 90.91,
+      "Malignant": 90.32
+    },
+    "best_val_balanced_acc": 86.59
+  }
+}

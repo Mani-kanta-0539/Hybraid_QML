@@ -1,0 +1,16 @@
+{
+  "accuracy": 0.6111111111111112,
+  "f1_score": 0.5625,
+  "roc_auc": 0.6346749226006192,
+  "feature_names": [
+    "age",
+    "sex",
+    "cholesterol",
+    "resting_bp",
+    "exercise_angina",
+    "st_depression"
+  ],
+  "n_samples": 180,
+  "n_qubits": 4,
+  "feature_map": "zz_feature_map"
+}

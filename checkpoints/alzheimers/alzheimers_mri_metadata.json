@@ -1,0 +1,51 @@
+{
+  "model_type": "Havlicek Quantum Support Vector Classifier (4-Qubit QSVC)",
+  "modality": "Brain MRI NeuroScan (NonDemented vs. Demented)",
+  "accuracy_pct": 91.25,
+  "balanced_acc_pct": 89.17,
+  "roc_auc": 0.969,
+  "n_qubits": 4,
+  "n_train_samples": 334,
+  "n_test_samples": 160,
+  "n_samples": 494,
+  "confusion_matrix": [
+    [
+      34,
+      6
+    ],
+    [
+      8,
+      112
+    ]
+  ],
+  "classes": [
+    "NonDemented",
+    "Demented"
+  ],
+  "stages": [
+    "NonDemented",
+    "VeryMildDemented",
+    "MildDemented",
+    "ModerateDemented"
+  ],
+  "dataset_source": "data/Alzheimer_s Dataset (Kaggle 12,800 MRI Cohort)",
+  "training_time_s": 10.28,
+  "pca_variance_explained": [
+    25.55,
+    7.59,
+    5.43,
+    2.76
+  ],
+  "pca_min": [
+    -39.2335,
+    -57.2539,
+    -22.3105,
+    -21.2788
+  ],
+  "pca_range": [
+    71.6119,
+    83.0734,
+    59.1272,
+    39.6548
+  ]
+}

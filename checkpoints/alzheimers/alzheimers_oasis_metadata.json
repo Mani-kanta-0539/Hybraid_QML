@@ -1,0 +1,47 @@
+{
+  "model_type": "Havlicek Quantum Support Vector Classifier (4-Qubit QSVC)",
+  "modality": "OASIS Clinical Cohort (Cognitive & Brain Volumetrics)",
+  "accuracy_pct": 80.0,
+  "balanced_acc_pct": 57.5,
+  "roc_auc": 0.84,
+  "n_qubits": 4,
+  "n_samples": 100,
+  "total_cohort_records": 436,
+  "features": [
+    "Age",
+    "Educ",
+    "SES",
+    "MMSE",
+    "eTIV",
+    "nWBV"
+  ],
+  "confusion_matrix": [
+    [
+      19,
+      1
+    ],
+    [
+      4,
+      1
+    ]
+  ],
+  "training_time_s": 2.08,
+  "pca_variance_explained": [
+    41.59,
+    24.7,
+    16.37,
+    10.89
+  ],
+  "pca_min": [
+    -5.2552,
+    -2.5646,
+    -2.5455,
+    -3.9062
+  ],
+  "pca_range": [
+    7.3394,
+    6.5459,
+    5.6148,
+    6.2235
+  ]
+}

@@ -85,7 +85,7 @@ export function ResearchBenchmarkingPage() {
       {/* Grid: Architectural Paradox & Parameter Footprint */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', gap: 20, marginBottom: 24 }}>
         {/* Card 1: Parameter Reduction */}
-        <div className="card" style={{ padding: 22, background: 'linear-gradient(135deg, rgba(13, 22, 38, 0.95), rgba(20, 30, 55, 0.95))' }}>
+        <div className="card" style={{ padding: 22, background: 'var(--bg-card)' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
             <span style={{ fontSize: '0.82rem', fontWeight: 800, textTransform: 'uppercase', color: '#c084fc', letterSpacing: '0.05em' }}>
               Parameter Footprint Efficiency
@@ -115,7 +115,7 @@ export function ResearchBenchmarkingPage() {
         </div>
 
         {/* Card 2: Sample Efficiency in Low-Data Regimes */}
-        <div className="card" style={{ padding: 22, background: 'linear-gradient(135deg, rgba(13, 22, 38, 0.95), rgba(15, 35, 45, 0.95))' }}>
+        <div className="card" style={{ padding: 22, background: 'var(--bg-card)' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
             <span style={{ fontSize: '0.82rem', fontWeight: 800, textTransform: 'uppercase', color: '#34d399', letterSpacing: '0.05em' }}>
               Low-Data Generalization (15% Sample)
@@ -171,7 +171,7 @@ export function ResearchBenchmarkingPage() {
             </thead>
             <tbody>
               {models.map((m, idx) => (
-                <tr key={idx} style={{ borderBottom: '1px solid rgba(30, 58, 95, 0.5)', background: idx % 2 === 0 ? 'rgba(7, 12, 24, 0.5)' : 'transparent' }}>
+                <tr key={idx} style={{ borderBottom: '1px solid var(--border)', background: idx % 2 === 0 ? 'var(--bg-secondary)' : 'transparent' }}>
                   <td style={{ padding: '12px', fontWeight: 700, color: 'var(--text-primary)' }}>
                     {m.id === 'classical_resnet' && ''}
                     {m.id === 'hybrid_vqc' && ''}
@@ -180,7 +180,7 @@ export function ResearchBenchmarkingPage() {
                     {m.id === 'quantum_qsvc' && 'Havlíček QSVC: '}
                     {m.name}
                   </td>
-                  <td style={{ padding: '12px', color: '#94a3b8' }}>{m.modality}</td>
+                  <td style={{ padding: '12px', color: 'var(--text-secondary)' }}>{m.modality}</td>
                   <td style={{ padding: '12px' }}>
                     <span style={{
                       fontSize: '0.72rem',
@@ -208,7 +208,7 @@ export function ResearchBenchmarkingPage() {
                   <td style={{ padding: '12px', fontFamily: 'JetBrains Mono, monospace', color: '#a5b4fc' }}>
                     {m.specificity_pct.toFixed(1)}%
                   </td>
-                  <td style={{ padding: '12px', fontFamily: 'JetBrains Mono, monospace', color: '#94a3b8' }}>
+                  <td style={{ padding: '12px', fontFamily: 'JetBrains Mono, monospace', color: 'var(--text-secondary)' }}>
                     {m.latency_ms.toFixed(1)} ms
                   </td>
                 </tr>
@@ -307,7 +307,7 @@ export function ResearchBenchmarkingPage() {
                 <div style={{ background: 'rgba(239, 68, 68, 0.15)', padding: 6, borderRadius: 4 }}>3</div>
                 <div style={{ background: 'rgba(16, 185, 129, 0.35)', padding: 6, borderRadius: 4, fontWeight: 800 }}>28</div>
               </div>
-              <div style={{ fontSize: '0.68rem', color: '#94a3b8', textAlign: 'center', marginTop: 8 }}>
+              <div style={{ fontSize: '0.68rem', color: 'var(--text-secondary)', textAlign: 'center', marginTop: 8 }}>
                 Malignant Recall: <b>90.3%</b> | Normal: <b>85.0%</b>
               </div>
             </div>
@@ -338,7 +338,7 @@ export function ResearchBenchmarkingPage() {
                 <div style={{ background: 'rgba(239, 68, 68, 0.15)', padding: 6, borderRadius: 4 }}>4</div>
                 <div style={{ background: 'rgba(139, 92, 246, 0.35)', padding: 6, borderRadius: 4, fontWeight: 800 }}>26</div>
               </div>
-              <div style={{ fontSize: '0.68rem', color: '#94a3b8', textAlign: 'center', marginTop: 8 }}>
+              <div style={{ fontSize: '0.68rem', color: 'var(--text-secondary)', textAlign: 'center', marginTop: 8 }}>
                 Malignant Recall: <b>83.9%</b> | 24 Parameters
               </div>
             </div>
@@ -383,7 +383,7 @@ export function ResearchBenchmarkingPage() {
                   padding: '4px 10px',
                   borderRadius: 6,
                   background: activeMatrix === 'classical' ? 'var(--accent)' : 'var(--bg-secondary)',
-                  color: activeMatrix === 'quantum' ? '#ffffff' : 'var(--text-secondary)',
+                  color: activeMatrix === 'classical' ? '#ffffff' : 'var(--text-secondary)',
                   border: '1px solid var(--border)',
                   cursor: 'pointer',
                   fontWeight: 600
@@ -422,8 +422,8 @@ export function ResearchBenchmarkingPage() {
                           borderRadius: 4,
                           fontFamily: 'JetBrains Mono, monospace',
                           fontSize: '0.68rem',
-                          color: val > 0.6 ? '#ffffff' : '#cbd5e1',
-                          border: '1px solid rgba(30, 58, 95, 0.4)'
+                          color: val > 0.6 ? '#ffffff' : 'var(--text-primary)',
+                          border: '1px solid var(--border)'
                         }}
                       >
                         {val.toFixed(2)}
@@ -435,23 +435,23 @@ export function ResearchBenchmarkingPage() {
             </div>
           </div>
 
-          <div style={{ marginTop: 10, fontSize: '0.74rem', color: '#94a3b8' }}>
+          <div style={{ marginTop: 10, fontSize: '0.74rem', color: 'var(--text-secondary)' }}>
             <b>Separation Advantage:</b> {kernelData.note}
           </div>
         </div>
       )}
 
       {/* Future Sights & Advanced Innovations Panel */}
-      <div className="card" style={{ padding: 26, background: 'linear-gradient(135deg, rgba(8, 14, 28, 0.95), rgba(18, 26, 48, 0.95))' }}>
+      <div className="card" style={{ padding: 26, background: 'var(--bg-card)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
           <div style={{ width: 32, height: 32, borderRadius: 8, background: 'rgba(139, 92, 246, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#c084fc' }}>
             <Sparkles size={18} />
           </div>
           <div>
-            <h2 style={{ fontSize: '1.05rem', fontWeight: 800, color: activeMatrix === 'quantum' ? '#ffffff' : 'var(--text-secondary)', margin: 0 }}>
+            <h2 style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--text-primary)', margin: 0 }}>
               Future Sights & Next-Generation Architectural Roadmap
             </h2>
-            <div style={{ fontSize: '0.74rem', color: '#94a3b8' }}>Scalable research extensions to extend the platform beyond SIH26139</div>
+            <div style={{ fontSize: '0.74rem', color: 'var(--text-secondary)' }}>Scalable research extensions to extend the platform beyond SIH26139</div>
           </div>
         </div>
 
@@ -460,9 +460,9 @@ export function ResearchBenchmarkingPage() {
           <div style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)', borderRadius: 10, padding: 16 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
               <div style={{ width: 26, height: 26, borderRadius: 6, background: 'rgba(59, 130, 246, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#60a5fa', fontSize: '0.75rem', fontWeight: 800 }}>1</div>
-              <div style={{ fontWeight: 700, color: activeMatrix === 'quantum' ? '#ffffff' : 'var(--text-secondary)', fontSize: '0.84rem' }}>Multi-Modal Cross-Attention Fusion</div>
+              <div style={{ fontWeight: 700, color: 'var(--text-primary)', fontSize: '0.84rem' }}>Multi-Modal Cross-Attention Fusion</div>
             </div>
-            <p style={{ fontSize: '0.76rem', color: '#94a3b8', lineHeight: 1.55 }}>
+            <p style={{ fontSize: '0.76rem', color: 'var(--text-secondary)', lineHeight: 1.55 }}>
               Embeds 4 acoustic visual features into Qubits 0–1 and 4 WDBC biopsy cellular features into Qubits 2–3. Cross-modal CZ/CNOT entangling gates learn non-linear correlations between macroscopic lesion borders and microscopic nuclear concavity.
             </p>
           </div>
@@ -471,9 +471,9 @@ export function ResearchBenchmarkingPage() {
           <div style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)', borderRadius: 10, padding: 16 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
               <div style={{ width: 26, height: 26, borderRadius: 6, background: 'rgba(16, 185, 129, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#34d399', fontSize: '0.75rem', fontWeight: 800 }}>2</div>
-              <div style={{ fontWeight: 700, color: activeMatrix === 'quantum' ? '#ffffff' : 'var(--text-secondary)', fontSize: '0.84rem' }}>Genomic High-Dimensional Scaling</div>
+              <div style={{ fontWeight: 700, color: 'var(--text-primary)', fontSize: '0.84rem' }}>Genomic High-Dimensional Scaling</div>
             </div>
-            <p style={{ fontSize: '0.76rem', color: '#94a3b8', lineHeight: 1.55 }}>
+            <p style={{ fontSize: '0.76rem', color: 'var(--text-secondary)', lineHeight: 1.55 }}>
               Directly addresses the problem statement's genomics scope by ingesting METABRIC/TCGA-BRCA RNA-Seq expression profiles. PCA selects top biomarkers (BRCA1, BRCA2, ESR1, ERBB2) mapped into 16-dimensional quantum state space.
             </p>
           </div>
@@ -482,9 +482,9 @@ export function ResearchBenchmarkingPage() {
           <div style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)', borderRadius: 10, padding: 16 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
               <div style={{ width: 26, height: 26, borderRadius: 6, background: 'rgba(139, 92, 246, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#c084fc', fontSize: '0.75rem', fontWeight: 800 }}>3</div>
-              <div style={{ fontWeight: 700, color: activeMatrix === 'quantum' ? '#ffffff' : 'var(--text-secondary)', fontSize: '0.84rem' }}>Federated Quantum Learning (FQML)</div>
+              <div style={{ fontWeight: 700, color: 'var(--text-primary)', fontSize: '0.84rem' }}>Federated Quantum Learning (FQML)</div>
             </div>
-            <p style={{ fontSize: '0.76rem', color: '#94a3b8', lineHeight: 1.55 }}>
+            <p style={{ fontSize: '0.76rem', color: 'var(--text-secondary)', lineHeight: 1.55 }}>
               Enables multiple hospital centers to train local hybrid models on private patient records without transferring raw scans. Only parameterized quantum rotation angles (θ) are federated to a central QPU server, adhering to strict HIPAA/GDPR standards.
             </p>
           </div>

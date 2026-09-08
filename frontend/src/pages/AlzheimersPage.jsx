@@ -232,7 +232,7 @@ export function AlzheimersPage() {
     <div style={{ maxWidth: 1350, margin: '0 auto', padding: '32px 24px' }}>
       {/* Top Header Banner */}
       <div style={{
-        background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, rgba(17, 24, 39, 0.6) 100%)',
+        background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, var(--bg-card) 100%)',
         border: '1px solid rgba(245, 158, 11, 0.25)',
         borderRadius: 20,
         padding: '28px 32px',
@@ -694,8 +694,8 @@ export function AlzheimersPage() {
 
                 {/* Recommendation */}
                 <div style={{
-                  background: 'rgba(15, 23, 42, 0.6)',
-                  border: '1px solid rgba(255, 255, 255, 0.06)',
+                  background: 'var(--bg-secondary)',
+                  border: '1px solid var(--border)',
                   borderRadius: 10,
                   padding: 14,
                   fontSize: 13,
@@ -717,8 +717,8 @@ export function AlzheimersPage() {
                       <div
                         key={q.qubit}
                         style={{
-                          background: 'rgba(30, 41, 59, 0.7)',
-                          border: '1px solid rgba(255, 255, 255, 0.06)',
+                          background: 'var(--bg-secondary)',
+                          border: '1px solid var(--border)',
                           borderRadius: 8,
                           padding: '8px 12px',
                         }}
@@ -1104,8 +1104,8 @@ export function AlzheimersPage() {
 
                 {/* Recommendation */}
                 <div style={{
-                  background: 'rgba(15, 23, 42, 0.6)',
-                  border: '1px solid rgba(255, 255, 255, 0.06)',
+                  background: 'var(--bg-secondary)',
+                  border: '1px solid var(--border)',
                   borderRadius: 10,
                   padding: 14,
                   fontSize: 13,
@@ -1127,8 +1127,8 @@ export function AlzheimersPage() {
                       <div
                         key={q.qubit}
                         style={{
-                          background: 'rgba(30, 41, 59, 0.7)',
-                          border: '1px solid rgba(255, 255, 255, 0.06)',
+                          background: 'var(--bg-secondary)',
+                          border: '1px solid var(--border)',
                           borderRadius: 8,
                           padding: '10px 12px',
                         }}
@@ -1231,20 +1231,20 @@ export function AlzheimersPage() {
                   </div>
 
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12, marginBottom: 18 }}>
-                    <div style={{ background: 'rgba(30, 41, 59, 0.7)', borderRadius: 10, padding: 12 }}>
-                      <div style={{ fontSize: 11, color: '#94a3b8' }}>Accuracy</div>
+                    <div style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)', borderRadius: 10, padding: 12 }}>
+                      <div style={{ fontSize: 11, color: 'var(--text-secondary)' }}>Accuracy</div>
                       <div style={{ fontSize: 22, fontWeight: 800, color: '#4ade80' }}>
                         {metrics.mri_model?.accuracy_pct}%
                       </div>
                     </div>
-                    <div style={{ background: 'rgba(30, 41, 59, 0.7)', borderRadius: 10, padding: 12 }}>
-                      <div style={{ fontSize: 11, color: '#94a3b8' }}>Balanced Acc</div>
+                    <div style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)', borderRadius: 10, padding: 12 }}>
+                      <div style={{ fontSize: 11, color: 'var(--text-secondary)' }}>Balanced Acc</div>
                       <div style={{ fontSize: 22, fontWeight: 800, color: '#38bdf8' }}>
                         {metrics.mri_model?.balanced_acc_pct}%
                       </div>
                     </div>
-                    <div style={{ background: 'rgba(30, 41, 59, 0.7)', borderRadius: 10, padding: 12 }}>
-                      <div style={{ fontSize: 11, color: '#94a3b8' }}>ROC-AUC</div>
+                    <div style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)', borderRadius: 10, padding: 12 }}>
+                      <div style={{ fontSize: 11, color: 'var(--text-secondary)' }}>ROC-AUC</div>
                       <div style={{ fontSize: 22, fontWeight: 800, color: '#fbbf24' }}>
                         {metrics.mri_model?.roc_auc}
                       </div>
@@ -1278,20 +1278,20 @@ export function AlzheimersPage() {
                   </div>
 
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12, marginBottom: 18 }}>
-                    <div style={{ background: 'rgba(30, 41, 59, 0.7)', borderRadius: 10, padding: 12 }}>
-                      <div style={{ fontSize: 11, color: '#94a3b8' }}>Accuracy</div>
+                    <div style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)', borderRadius: 10, padding: 12 }}>
+                      <div style={{ fontSize: 11, color: 'var(--text-secondary)' }}>Accuracy</div>
                       <div style={{ fontSize: 22, fontWeight: 800, color: '#4ade80' }}>
                         {metrics.oasis_model?.accuracy_pct}%
                       </div>
                     </div>
-                    <div style={{ background: 'rgba(30, 41, 59, 0.7)', borderRadius: 10, padding: 12 }}>
-                      <div style={{ fontSize: 11, color: '#94a3b8' }}>Balanced Acc</div>
+                    <div style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)', borderRadius: 10, padding: 12 }}>
+                      <div style={{ fontSize: 11, color: 'var(--text-secondary)' }}>Balanced Acc</div>
                       <div style={{ fontSize: 22, fontWeight: 800, color: '#38bdf8' }}>
                         {metrics.oasis_model?.balanced_acc_pct}%
                       </div>
                     </div>
-                    <div style={{ background: 'rgba(30, 41, 59, 0.7)', borderRadius: 10, padding: 12 }}>
-                      <div style={{ fontSize: 11, color: '#94a3b8' }}>ROC-AUC</div>
+                    <div style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)', borderRadius: 10, padding: 12 }}>
+                      <div style={{ fontSize: 11, color: 'var(--text-secondary)' }}>ROC-AUC</div>
                       <div style={{ fontSize: 22, fontWeight: 800, color: '#38bdf8' }}>
                         {metrics.oasis_model?.roc_auc}
                       </div>
@@ -1337,7 +1337,7 @@ export function AlzheimersPage() {
 
             {oasisData && (
               <div style={{ display: 'flex', gap: 12 }}>
-                <span style={{ fontSize: 12, color: 'var(--text-secondary)', background: 'rgba(30, 41, 59, 0.8)', padding: '6px 12px', borderRadius: 8 }}>
+                <span style={{ fontSize: 12, color: 'var(--text-secondary)', background: 'var(--bg-secondary)', border: '1px solid var(--border)', padding: '6px 12px', borderRadius: 8 }}>
                   Total Cohort: <strong>{oasisData.total_cohort_records}</strong> patients
                 </span>
                 <span style={{ fontSize: 12, color: '#f87171', background: 'rgba(239, 68, 68, 0.1)', padding: '6px 12px', borderRadius: 8 }}>
@@ -1473,16 +1473,16 @@ qc.draw(output="mpl")`}
               Mathematical Formulation: Second-Order Non-Linear Feature Map
             </h4>
             <div style={{
-              background: 'rgba(15, 23, 42, 0.8)',
-              border: '1px solid rgba(245, 158, 11, 0.2)',
+              background: 'var(--bg-secondary)',
+              border: '1px solid var(--border)',
               borderRadius: 10,
               padding: 14,
               marginBottom: 16,
               fontFamily: 'monospace',
-              color: '#fbbf24',
+              color: '#d97706',
               fontSize: 13,
             }}>
-              U_Φ(x) = exp( i ∑_j x_j Z_j + i ∑_{j < k} 2(π - x_j)(π - x_k) Z_j Z_k )
+              U_Φ(x) = exp( i ∑_j x_j Z_j + i ∑_{`j < k`} 2(π - x_j)(π - x_k) Z_j Z_k )
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 14 }}>
               <div style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)', padding: 14, borderRadius: 10 }}>

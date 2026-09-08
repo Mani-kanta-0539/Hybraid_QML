@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
   Scan,
@@ -63,40 +63,74 @@ export function HomePage() {
     <div className="home-page-container">
       {/* ── HERO SQUIRCLE CONTAINER (CarePlus & Mediva Reference) ── */}
       <section className="hero-squircle-container animate-fade-in-up">
-        {/* Pill Badge */}
-        <div style={{ textAlign: 'center' }}>
-          <div className="hero-pill-badge">
-            <Activity size={14} color="var(--accent)" />
-            <span>HealthQure AI · Smart India Hackathon (SIH26139)</span>
-          </div>
+        {/* Colorful Animated Ambient Background Elements */}
+        <div className="hero-ambient-container" aria-hidden="true">
+          <div className="hero-ambient-orb orb-teal" />
+          <div className="hero-ambient-orb orb-indigo" />
+          <div className="hero-ambient-orb orb-emerald" />
+          <div className="hero-ambient-orb orb-coral" />
+          <svg className="hero-quantum-wave" viewBox="0 0 1200 180" fill="none" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#06b6d4" stopOpacity="0.8" />
+                <stop offset="35%" stopColor="#10b981" stopOpacity="0.9" />
+                <stop offset="70%" stopColor="#8b5cf6" stopOpacity="0.8" />
+                <stop offset="100%" stopColor="#ec4899" stopOpacity="0.7" />
+              </linearGradient>
+            </defs>
+            <path
+              d="M0,90 C150,150 300,30 450,90 C600,150 750,20 900,80 C1050,140 1150,50 1200,80"
+              stroke="url(#waveGradient)"
+              strokeWidth="3.5"
+              strokeLinecap="round"
+              className="wave-line-gradient"
+            />
+            <path
+              d="M0,110 C180,60 320,160 500,100 C680,40 820,130 1000,90 C1100,70 1160,110 1200,95"
+              stroke="url(#waveGradient)"
+              strokeWidth="1.8"
+              strokeOpacity="0.4"
+              strokeDasharray="8 8"
+            />
+          </svg>
         </div>
 
-        {/* Two-Tone Headline */}
-        <h1 className="hero-title-two-tone" style={{ textAlign: 'center' }}>
-          Better Diagnostics, <br />
-          <span className="highlight-word">Brighter Healthcare</span>
-        </h1>
-
-        {/* Subtitle */}
-        <p className="hero-description" style={{ textAlign: 'center' }}>
-          HealthQure is a clinical-grade quantum-classical diagnostic platform. Leveraging 20-qubit transmon Hilbert spaces,
-          deep convolutional extractors, and Neyman-Pearson risk-asymmetric decision boundaries to diagnose
-          oncology, cardiology, and dementia with verified precision.
-        </p>
-
-        {/* 3 Trust Badges */}
-        <div className="hero-trust-badges">
-          <div className="trust-badge-item">
-            <Shield size={16} className="badge-icon" />
-            <span>Trusted Clinical Standards</span>
+        <div style={{ position: 'relative', zIndex: 2 }}>
+          {/* Pill Badge */}
+          <div style={{ textAlign: 'center' }}>
+            <div className="hero-pill-badge">
+              <Activity size={14} color="var(--accent)" />
+              <span>HealthQure AI · Smart India Hackathon (SIH26139)</span>
+            </div>
           </div>
-          <div className="trust-badge-item">
-            <Zap size={16} className="badge-icon" />
-            <span>20-Qubit IQM Garnet QPU</span>
-          </div>
-          <div className="trust-badge-item">
-            <Brain size={16} className="badge-icon" />
-            <span>Grad-CAM Explainable XAI</span>
+
+          {/* Two-Tone Headline */}
+          <h1 className="hero-title-two-tone" style={{ textAlign: 'center' }}>
+            Better Diagnostics, <br />
+            <span className="highlight-word">Brighter Healthcare</span>
+          </h1>
+
+          {/* Subtitle */}
+          <p className="hero-description" style={{ textAlign: 'center' }}>
+            HealthQure is a clinical-grade quantum-classical diagnostic platform. Leveraging 20-qubit transmon Hilbert spaces,
+            deep convolutional extractors, and Neyman-Pearson risk-asymmetric decision boundaries to diagnose
+            oncology, cardiology, and dementia with verified precision.
+          </p>
+
+          {/* 3 Trust Badges */}
+          <div className="hero-trust-badges">
+            <div className="trust-badge-item">
+              <Shield size={16} className="badge-icon" />
+              <span>Trusted Clinical Standards</span>
+            </div>
+            <div className="trust-badge-item">
+              <Zap size={16} className="badge-icon" />
+              <span>20-Qubit IQM Garnet QPU</span>
+            </div>
+            <div className="trust-badge-item">
+              <Brain size={16} className="badge-icon" />
+              <span>Grad-CAM Explainable XAI</span>
+            </div>
           </div>
         </div>
       </section>

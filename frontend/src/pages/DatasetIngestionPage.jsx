@@ -289,7 +289,7 @@ export function DatasetIngestionPage() {
                   const imp = profileResult.automated_imputation_applied[col] || {}
                   const stat = profileResult.feature_statistics[col] || {}
                   return (
-                    <tr key={idx} style={{ borderBottom: '1px solid rgba(30, 58, 95, 0.5)', background: idx % 2 === 0 ? 'rgba(7, 12, 24, 0.5)' : 'transparent' }}>
+                    <tr key={idx} style={{ borderBottom: '1px solid var(--border)', background: idx % 2 === 0 ? 'var(--bg-secondary)' : 'transparent' }}>
                       <td style={{ padding: '8px 10px', fontWeight: 700, color: 'var(--text-primary)' }}>{col}</td>
                       <td style={{ padding: '8px 10px', color: '#94a3b8' }}>{miss.dtype || 'float'}</td>
                       <td style={{ padding: '8px 10px' }}>

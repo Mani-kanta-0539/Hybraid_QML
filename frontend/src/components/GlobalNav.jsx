@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react'
+import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Activity, Scan, Heart, Home, BarChart3, Database, Brain, History, Sun, Moon, ShieldCheck } from 'lucide-react'
 import { useTheme } from '../context/ThemeContext'
@@ -20,24 +20,9 @@ export function GlobalNav() {
               <Activity size={22} color="white" strokeWidth={2.5} />
             </div>
             <div className="nav-brand-text">
-              <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                <h1 style={{ fontSize: '1.20rem', fontWeight: 800, letterSpacing: '-0.025em', color: 'var(--text-primary)' }}>
-                  Health<span style={{ color: 'var(--accent)' }}>Qure</span>
-                </h1>
-                <span style={{
-                  fontSize: '0.62rem',
-                  fontWeight: 800,
-                  textTransform: 'uppercase',
-                  padding: '2px 6px',
-                  borderRadius: 'var(--radius-pill)',
-                  background: 'var(--accent-soft)',
-                  color: 'var(--accent)',
-                  border: '1px solid var(--border)'
-                }}>
-                  QPU AI
-                </span>
-              </div>
-              <span>Clinical Diagnostic Suite</span>
+              <h1 style={{ fontSize: '1.25rem', fontWeight: 800, letterSpacing: '-0.025em', color: 'var(--text-primary)', margin: 0, lineHeight: 1 }}>
+                Health<span style={{ color: 'var(--accent)' }}>Qure</span>
+              </h1>
             </div>
           </Link>
 

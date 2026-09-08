@@ -1,4 +1,4 @@
-﻿import React from 'react'
+import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ThemeProvider } from './context/ThemeContext'
 import { GlobalNav } from './components/GlobalNav'
@@ -27,8 +27,10 @@ export default function App() {
           </main>
           <footer className="footer">
             <div style={{ maxWidth: 1400, margin: '0 auto', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
-              <span style={{ fontWeight: 700, color: 'var(--accent)' }}>⚛️ Quantum Healthcare AI Portal</span>
-              <span>Hybrid Quantum-Classical Diagnostic Platform · Breast Cancer · Coronary Heart Disease · Alzheimer's Disease · IQM Garnet 20-Qubit</span>
+              <span style={{ fontWeight: 800, color: 'var(--accent)', display: 'flex', alignItems: 'center', gap: 6 }}>
+                <span style={{ fontSize: '1.05rem' }}>⚛️</span> HealthQure
+              </span>
+              <span>HealthQure Clinical Diagnostic Platform · Oncology · Cardiology · Neurology · IQM Garnet 20-Qubit QPU</span>
             </div>
           </footer>
         </div>

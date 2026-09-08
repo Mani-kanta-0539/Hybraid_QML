@@ -1,8 +1,9 @@
-﻿# ⚛️ Hybrid Quantum-Classical Multi-Disease Diagnostic Platform
+# ⚛️ HealthQure — Hybrid Quantum-Classical Multi-Disease Diagnostic Platform
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![FastAPI](https://img.shields.io/badge/Backend-FastAPI-009688.svg)](https://fastapi.tiangolo.com)
 [![React](https://img.shields.io/badge/Frontend-React%2018%20%2B%20Vite-61DAFB.svg)](https://reactjs.org/)
+[![Platform](https://img.shields.io/badge/Platform-HealthQure-10758F.svg)](https://github.com/Mani-kanta-0539/Hybraid_QML)
 [![PennyLane](https://img.shields.io/badge/QML-PennyLane%20v0.38-yellowgreen.svg)](https://pennylane.ai/)
 [![Qiskit](https://img.shields.io/badge/Quantum-Qiskit%20v1.0+-6929C4.svg)](https://qiskit.org/)
 [![Hardware](https://img.shields.io/badge/QPU-IQM%20Garnet%2020--Qubit-orange.svg)](https://www.meetiqm.com/)

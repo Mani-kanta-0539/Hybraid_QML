@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+﻿import React, { useState, useEffect } from 'react'
 import {
   Brain,
   Scan,
@@ -258,7 +258,7 @@ export function AlzheimersPage() {
           </div>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
-              <h1 style={{ fontSize: 24, fontWeight: 800, color: '#f8fafc', margin: 0 }}>
+              <h1 style={{ fontSize: 24, fontWeight: 800, color: 'var(--text-primary)', margin: 0 }}>
                 Alzheimer's Disease & Dementia QML Studio
               </h1>
               <span style={{
@@ -271,7 +271,7 @@ export function AlzheimersPage() {
                 padding: '2px 10px',
                 letterSpacing: 0.5,
               }}>
-                4-QUBIT HAVLÍČEK QSVC
+                4-QUBIT HAVLÃÄŒEK QSVC
               </span>
             </div>
             <p style={{ margin: 0, color: '#94a3b8', fontSize: 14 }}>
@@ -313,11 +313,11 @@ export function AlzheimersPage() {
         overflowX: 'auto',
       }}>
         {[
-          { id: 'mri', label: '🧠 Brain MRI Scanner', desc: 'Scan Upload & Neurodegeneration Saliency' },
-          { id: 'clinical', label: '📋 OASIS Cognitive Form', desc: 'EHR & Volumetric Biomarkers' },
-          { id: 'benchmarks', label: '📊 Model Performance', desc: 'Accuracy & ROC-AUC Validation' },
-          { id: 'dataset', label: '🗃️ OASIS Clinical Cohort', desc: '436 Patient Longitudinal Explorer' },
-          { id: 'circuit', label: '⚛️ Quantum Architecture', desc: '4-Qubit Havlíček Topology' },
+          { id: 'mri', label: 'ðŸ§  Brain MRI Scanner', desc: 'Scan Upload & Neurodegeneration Saliency' },
+          { id: 'clinical', label: 'ðŸ“‹ OASIS Cognitive Form', desc: 'EHR & Volumetric Biomarkers' },
+          { id: 'benchmarks', label: 'ðŸ“Š Model Performance', desc: 'Accuracy & ROC-AUC Validation' },
+          { id: 'dataset', label: 'ðŸ—ƒï¸ OASIS Clinical Cohort', desc: '436 Patient Longitudinal Explorer' },
+          { id: 'circuit', label: 'âš›ï¸ Quantum Architecture', desc: '4-Qubit HavlÃ­Äek Topology' },
         ].map((tab) => (
           <button
             key={tab.id}
@@ -351,8 +351,8 @@ export function AlzheimersPage() {
         <div style={{ display: 'grid', gridTemplateColumns: 'minmax(320px, 420px) 1fr', gap: 24 }}>
           {/* Left: Upload and Presets */}
           <div style={{
-            background: 'var(--bg-card, #111827)',
-            border: '1px solid rgba(255, 255, 255, 0.08)',
+            background: 'var(--bg-card)',
+            border: '1px solid var(--border)',
             borderRadius: 16,
             padding: 24,
             display: 'flex',
@@ -360,7 +360,7 @@ export function AlzheimersPage() {
             gap: 20,
           }}>
             <div>
-              <h3 style={{ fontSize: 17, fontWeight: 700, margin: '0 0 6px 0', color: '#f1f5f9' }}>
+              <h3 style={{ fontSize: 17, fontWeight: 700, margin: '0 0 6px 0', color: 'var(--text-primary)' }}>
                 Upload Brain MRI Scan
               </h3>
               <p style={{ margin: 0, fontSize: 13, color: '#94a3b8' }}>
@@ -369,7 +369,7 @@ export function AlzheimersPage() {
             </div>
 
             {/* Model Architecture Selector */}
-            <div style={{ background: '#0a0e1a', border: '1px solid rgba(245, 158, 11, 0.25)', borderRadius: 12, padding: 12 }}>
+            <div style={{ background: 'var(--bg-secondary)', border: '1px solid rgba(245, 158, 11, 0.25)', borderRadius: 12, padding: 12 }}>
               <label style={{ fontSize: 12, fontWeight: 700, color: '#fbbf24', display: 'flex', alignItems: 'center', gap: 6, marginBottom: 6 }}>
                 <Cpu size={14} /> Quantum Architecture & Execution Engine:
               </label>
@@ -381,24 +381,24 @@ export function AlzheimersPage() {
                   padding: '9px 10px',
                   borderRadius: 8,
                   border: `1px solid ${mriModelType === 'iqm' ? '#3b82f6' : 'rgba(245, 158, 11, 0.35)'}`,
-                  background: '#131b2e',
-                  color: '#f8fafc',
+                  background: 'var(--bg-card)',
+                  color: 'var(--text-primary)',
                   fontSize: 12,
                   fontWeight: 600,
                   cursor: 'pointer',
                   outline: 'none',
                 }}
               >
-                <option value="qsvc">⚡ Havlíček QSVC (4-Qubit Simulator · 91.25% Acc — Production)</option>
-                <option value="vqc">⚛️ 4-Qubit Variational Quantum Classifier (VQC Simulator)</option>
-                <option value="iqm">🌐 Real Quantum Hardware: IQM Garnet 20-Qubit QPU (Transmon PRX/CZ + M3 QEM)</option>
+                <option value="qsvc">âš¡ HavlÃ­Äek QSVC (4-Qubit Simulator Â· 91.25% Acc â€” Production)</option>
+                <option value="vqc">âš›ï¸ 4-Qubit Variational Quantum Classifier (VQC Simulator)</option>
+                <option value="iqm">ðŸŒ Real Quantum Hardware: IQM Garnet 20-Qubit QPU (Transmon PRX/CZ + M3 QEM)</option>
               </select>
               <div style={{ fontSize: 11, color: '#94a3b8', marginTop: 4, lineHeight: 1.4 }}>
                 {mriModelType === 'iqm'
-                  ? '🌐 Transpiles 4-qubit circuit to native PRX & CZ pulses on IQM Garnet QPU (Espoo, Finland) with M3 readout mitigation.'
+                  ? 'ðŸŒ Transpiles 4-qubit circuit to native PRX & CZ pulses on IQM Garnet QPU (Espoo, Finland) with M3 readout mitigation.'
                   : mriModelType === 'vqc'
-                  ? '⚛️ 4-qubit Strongly Entangled Variational Quantum Circuit with parametrized rotations and ring entanglement.'
-                  : '⚡ 4-qubit second-order ZZ phase feature map with quantum kernel SVM decision boundaries.'}
+                  ? 'âš›ï¸ 4-qubit Strongly Entangled Variational Quantum Circuit with parametrized rotations and ring entanglement.'
+                  : 'âš¡ 4-qubit second-order ZZ phase feature map with quantum kernel SVM decision boundaries.'}
               </div>
             </div>
 
@@ -423,7 +423,7 @@ export function AlzheimersPage() {
                     textAlign: 'left',
                   }}
                 >
-                  🟢 Non-Demented
+                  ðŸŸ¢ Non-Demented
                 </button>
                 <button
                   type="button"
@@ -440,7 +440,7 @@ export function AlzheimersPage() {
                     textAlign: 'left',
                   }}
                 >
-                  🟡 Early MCI
+                  ðŸŸ¡ Early MCI
                 </button>
                 <button
                   type="button"
@@ -457,7 +457,7 @@ export function AlzheimersPage() {
                     textAlign: 'left',
                   }}
                 >
-                  🟠 Mild Dementia
+                  ðŸŸ  Mild Dementia
                 </button>
                 <button
                   type="button"
@@ -474,7 +474,7 @@ export function AlzheimersPage() {
                     textAlign: 'left',
                   }}
                 >
-                  🔴 Moderate Atrophy
+                  ðŸ”´ Moderate Atrophy
                 </button>
               </div>
             </div>
@@ -562,13 +562,13 @@ export function AlzheimersPage() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
             {/* Visualizer Row */}
             <div style={{
-              background: 'var(--bg-card, #111827)',
-              border: '1px solid rgba(255, 255, 255, 0.08)',
+              background: 'var(--bg-card)',
+              border: '1px solid var(--border)',
               borderRadius: 16,
               padding: 24,
             }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
-                <h3 style={{ fontSize: 16, fontWeight: 700, margin: 0, color: '#f1f5f9' }}>
+                <h3 style={{ fontSize: 16, fontWeight: 700, margin: 0, color: 'var(--text-primary)' }}>
                   Brain MRI & Atrophy Saliency Viewer
                 </h3>
                 {mriResult && (
@@ -586,7 +586,7 @@ export function AlzheimersPage() {
                   </div>
                   <div style={{
                     aspectRatio: '1/1',
-                    background: '#090d16',
+                    background: 'var(--bg-secondary)',
                     borderRadius: 12,
                     border: '1px solid rgba(255, 255, 255, 0.1)',
                     overflow: 'hidden',
@@ -616,7 +616,7 @@ export function AlzheimersPage() {
                   </div>
                   <div style={{
                     aspectRatio: '1/1',
-                    background: '#090d16',
+                    background: 'var(--bg-secondary)',
                     borderRadius: 12,
                     border: '1px solid rgba(245, 158, 11, 0.25)',
                     overflow: 'hidden',
@@ -644,7 +644,7 @@ export function AlzheimersPage() {
             {/* Diagnostic Result Card */}
             {mriResult && (
               <div style={{
-                background: 'var(--bg-card, #111827)',
+                background: 'var(--bg-card)',
                 border: mriResult.prediction === 1
                   ? '1px solid rgba(239, 68, 68, 0.35)'
                   : '1px solid rgba(34, 197, 94, 0.35)',
@@ -669,7 +669,7 @@ export function AlzheimersPage() {
                       {mriResult.prediction === 1 ? <AlertTriangle size={15} /> : <CheckCircle2 size={15} />}
                       {mriResult.prediction_label === 'Demented' ? 'DEMENTIA PATTERN DETECTED' : 'NORMAL BRAIN MORPHOLOGY'}
                     </div>
-                    <h2 style={{ fontSize: 20, fontWeight: 800, margin: 0, color: '#f8fafc' }}>
+                    <h2 style={{ fontSize: 20, fontWeight: 800, margin: 0, color: 'var(--text-primary)' }}>
                       {mriResult.diagnosis_stage}
                     </h2>
                     <div style={{ fontSize: 13, color: '#94a3b8', marginTop: 4 }}>
@@ -697,7 +697,7 @@ export function AlzheimersPage() {
                   marginBottom: 18,
                   lineHeight: 1.5,
                 }}>
-                  <strong style={{ color: '#f1f5f9' }}>Clinical Protocol: </strong>
+                  <strong style={{ color: 'var(--text-primary)' }}>Clinical Protocol: </strong>
                   {mriResult.recommendation}
                 </div>
 
@@ -718,7 +718,7 @@ export function AlzheimersPage() {
                         }}
                       >
                         <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, color: '#94a3b8' }}>
-                          <span>Qubit |{q.qubit}⟩</span>
+                          <span>Qubit |{q.qubit}âŸ©</span>
                           <span style={{ color: '#38bdf8', fontWeight: 600 }}>{q.angle_rad} rad</span>
                         </div>
                         <div style={{ fontSize: 12, fontWeight: 600, color: '#e2e8f0', marginTop: 2 }}>
@@ -747,13 +747,13 @@ export function AlzheimersPage() {
                       </span>
                     </div>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))', gap: 6, fontSize: 11, color: '#94a3b8', marginBottom: 6 }}>
-                      <div>Job ID: <b style={{ color: '#f1f5f9' }}>{(mriResult.hardware_telemetry.job_id || '').slice(0, 8)}...</b></div>
-                      <div>Qubits: <b style={{ color: '#f1f5f9' }}>{mriResult.hardware_telemetry.qubits_used} Transmons</b></div>
-                      <div>Shots: <b style={{ color: '#f1f5f9' }}>{mriResult.hardware_telemetry.shots}</b></div>
+                      <div>Job ID: <b style={{ color: 'var(--text-primary)' }}>{(mriResult.hardware_telemetry.job_id || '').slice(0, 8)}...</b></div>
+                      <div>Qubits: <b style={{ color: 'var(--text-primary)' }}>{mriResult.hardware_telemetry.qubits_used} Transmons</b></div>
+                      <div>Shots: <b style={{ color: 'var(--text-primary)' }}>{mriResult.hardware_telemetry.shots}</b></div>
                       <div>QPU Latency: <b style={{ color: '#60a5fa' }}>{mriResult.hardware_telemetry.physical_latency_ms} ms</b></div>
                     </div>
                     <div style={{ fontSize: 11, color: '#94a3b8', fontStyle: 'italic', borderTop: '1px dashed rgba(59, 130, 246, 0.2)', paddingTop: 4 }}>
-                      📡 {mriResult.hardware_telemetry.status_note}
+                      ðŸ“¡ {mriResult.hardware_telemetry.status_note}
                     </div>
                   </div>
                 )}
@@ -779,13 +779,13 @@ export function AlzheimersPage() {
         <div style={{ display: 'grid', gridTemplateColumns: 'minmax(340px, 440px) 1fr', gap: 24 }}>
           {/* Left: Input Form */}
           <div style={{
-            background: 'var(--bg-card, #111827)',
-            border: '1px solid rgba(255, 255, 255, 0.08)',
+            background: 'var(--bg-card)',
+            border: '1px solid var(--border)',
             borderRadius: 16,
             padding: 24,
           }}>
             <div style={{ marginBottom: 18 }}>
-              <h3 style={{ fontSize: 17, fontWeight: 700, margin: '0 0 6px 0', color: '#f1f5f9' }}>
+              <h3 style={{ fontSize: 17, fontWeight: 700, margin: '0 0 6px 0', color: 'var(--text-primary)' }}>
                 OASIS Clinical Biomarkers
               </h3>
               <p style={{ margin: 0, fontSize: 13, color: '#94a3b8' }}>
@@ -794,7 +794,7 @@ export function AlzheimersPage() {
             </div>
 
             {/* Model Architecture Selector */}
-            <div style={{ background: '#0a0e1a', border: '1px solid rgba(245, 158, 11, 0.25)', borderRadius: 12, padding: 12, marginBottom: 16 }}>
+            <div style={{ background: 'var(--bg-secondary)', border: '1px solid rgba(245, 158, 11, 0.25)', borderRadius: 12, padding: 12, marginBottom: 16 }}>
               <label style={{ fontSize: 12, fontWeight: 700, color: '#fbbf24', display: 'flex', alignItems: 'center', gap: 6, marginBottom: 6 }}>
                 <Cpu size={14} /> Quantum Architecture & Execution Engine:
               </label>
@@ -806,21 +806,21 @@ export function AlzheimersPage() {
                   padding: '9px 10px',
                   borderRadius: 8,
                   border: `1px solid ${clinicalModelType === 'iqm' ? '#3b82f6' : 'rgba(245, 158, 11, 0.35)'}`,
-                  background: '#131b2e',
-                  color: '#f8fafc',
+                  background: 'var(--bg-card)',
+                  color: 'var(--text-primary)',
                   fontSize: 12,
                   fontWeight: 600,
                   cursor: 'pointer',
                   outline: 'none',
                 }}
               >
-                <option value="qsvc">⚡ Havlíček QSVC (4-Qubit Simulator · 86.8% Acc — Production)</option>
-                <option value="iqm">🌐 Real Quantum Hardware: IQM Garnet 20-Qubit QPU (Transmon PRX/CZ + M3 QEM)</option>
+                <option value="qsvc">âš¡ HavlÃ­Äek QSVC (4-Qubit Simulator Â· 86.8% Acc â€” Production)</option>
+                <option value="iqm">ðŸŒ Real Quantum Hardware: IQM Garnet 20-Qubit QPU (Transmon PRX/CZ + M3 QEM)</option>
               </select>
               <div style={{ fontSize: 11, color: '#94a3b8', marginTop: 4, lineHeight: 1.4 }}>
                 {clinicalModelType === 'iqm'
-                  ? '🌐 Transpiles 4-qubit circuit to native PRX & CZ pulses on IQM Garnet QPU (Espoo, Finland) with M3 readout mitigation.'
-                  : '⚡ 4-qubit second-order ZZ phase feature map encoding 6 OASIS clinical biomarkers into a 16D Hilbert space.'}
+                  ? 'ðŸŒ Transpiles 4-qubit circuit to native PRX & CZ pulses on IQM Garnet QPU (Espoo, Finland) with M3 readout mitigation.'
+                  : 'âš¡ 4-qubit second-order ZZ phase feature map encoding 6 OASIS clinical biomarkers into a 16D Hilbert space.'}
               </div>
             </div>
 
@@ -844,7 +844,7 @@ export function AlzheimersPage() {
                     cursor: 'pointer',
                   }}
                 >
-                  🟢 Healthy 72y
+                  ðŸŸ¢ Healthy 72y
                 </button>
                 <button
                   type="button"
@@ -860,7 +860,7 @@ export function AlzheimersPage() {
                     cursor: 'pointer',
                   }}
                 >
-                  🟡 Early MCI 77y
+                  ðŸŸ¡ Early MCI 77y
                 </button>
                 <button
                   type="button"
@@ -876,7 +876,7 @@ export function AlzheimersPage() {
                     cursor: 'pointer',
                   }}
                 >
-                  🔴 Dementia 83y
+                  ðŸ”´ Dementia 83y
                 </button>
               </div>
             </div>
@@ -939,7 +939,7 @@ export function AlzheimersPage() {
               <div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, marginBottom: 4 }}>
                   <span style={{ color: '#cbd5e1' }}>Est. Total Intracranial Vol. (eTIV)</span>
-                  <span style={{ color: '#cbd5e1', fontWeight: 700 }}>{clinicalForm.etiv} mm³</span>
+                  <span style={{ color: '#cbd5e1', fontWeight: 700 }}>{clinicalForm.etiv} mmÂ³</span>
                 </div>
                 <input
                   type="range"
@@ -968,7 +968,7 @@ export function AlzheimersPage() {
                       width: '100%',
                       background: 'rgba(30, 41, 59, 0.8)',
                       border: '1px solid rgba(255, 255, 255, 0.1)',
-                      color: '#f8fafc',
+                      color: 'var(--text-primary)',
                       borderRadius: 8,
                       padding: '8px 10px',
                       fontSize: 13,
@@ -989,7 +989,7 @@ export function AlzheimersPage() {
                       width: '100%',
                       background: 'rgba(30, 41, 59, 0.8)',
                       border: '1px solid rgba(255, 255, 255, 0.1)',
-                      color: '#f8fafc',
+                      color: 'var(--text-primary)',
                       borderRadius: 8,
                       padding: '8px 10px',
                       fontSize: 13,
@@ -1035,7 +1035,7 @@ export function AlzheimersPage() {
           <div>
             {clinicalResult ? (
               <div style={{
-                background: 'var(--bg-card, #111827)',
+                background: 'var(--bg-card)',
                 border: clinicalResult.prediction === 1
                   ? '1px solid rgba(239, 68, 68, 0.4)'
                   : '1px solid rgba(34, 197, 94, 0.4)',
@@ -1059,7 +1059,7 @@ export function AlzheimersPage() {
                     }}>
                       {clinicalResult.risk_level} RISK TIER
                     </div>
-                    <h2 style={{ fontSize: 24, fontWeight: 900, margin: 0, color: '#f8fafc' }}>
+                    <h2 style={{ fontSize: 24, fontWeight: 900, margin: 0, color: 'var(--text-primary)' }}>
                       {clinicalResult.cdr_estimate}
                     </h2>
                     <div style={{ fontSize: 13, color: '#94a3b8', marginTop: 4 }}>
@@ -1107,14 +1107,14 @@ export function AlzheimersPage() {
                   marginBottom: 20,
                   lineHeight: 1.5,
                 }}>
-                  <strong style={{ color: '#f1f5f9' }}>Diagnostic Recommendation: </strong>
+                  <strong style={{ color: 'var(--text-primary)' }}>Diagnostic Recommendation: </strong>
                   {clinicalResult.recommendation}
                 </div>
 
                 {/* Quantum Rotations */}
                 <div>
                   <div style={{ fontSize: 12, fontWeight: 600, color: '#cbd5e1', marginBottom: 10, display: 'flex', alignItems: 'center', gap: 6 }}>
-                    <Cpu size={14} color="#38bdf8" /> 4-Qubit Havlíček Quantum Embedding:
+                    <Cpu size={14} color="#38bdf8" /> 4-Qubit HavlÃ­Äek Quantum Embedding:
                   </div>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))', gap: 10 }}>
                     {clinicalResult.quantum_circuit?.qubit_rotations?.map((q) => (
@@ -1128,7 +1128,7 @@ export function AlzheimersPage() {
                         }}
                       >
                         <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, color: '#94a3b8' }}>
-                          <span>Qubit |{q.qubit}⟩</span>
+                          <span>Qubit |{q.qubit}âŸ©</span>
                           <span style={{ color: '#38bdf8', fontWeight: 600 }}>{q.angle_rad} rad</span>
                         </div>
                         <div style={{ fontSize: 12, fontWeight: 600, color: '#e2e8f0', marginTop: 4 }}>
@@ -1157,21 +1157,21 @@ export function AlzheimersPage() {
                       </span>
                     </div>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))', gap: 6, fontSize: 11, color: '#94a3b8', marginBottom: 6 }}>
-                      <div>Job ID: <b style={{ color: '#f1f5f9' }}>{(clinicalResult.hardware_telemetry.job_id || '').slice(0, 8)}...</b></div>
-                      <div>Qubits: <b style={{ color: '#f1f5f9' }}>{clinicalResult.hardware_telemetry.qubits_used} Transmons</b></div>
-                      <div>Shots: <b style={{ color: '#f1f5f9' }}>{clinicalResult.hardware_telemetry.shots}</b></div>
+                      <div>Job ID: <b style={{ color: 'var(--text-primary)' }}>{(clinicalResult.hardware_telemetry.job_id || '').slice(0, 8)}...</b></div>
+                      <div>Qubits: <b style={{ color: 'var(--text-primary)' }}>{clinicalResult.hardware_telemetry.qubits_used} Transmons</b></div>
+                      <div>Shots: <b style={{ color: 'var(--text-primary)' }}>{clinicalResult.hardware_telemetry.shots}</b></div>
                       <div>QPU Latency: <b style={{ color: '#60a5fa' }}>{clinicalResult.hardware_telemetry.physical_latency_ms} ms</b></div>
                     </div>
                     <div style={{ fontSize: 11, color: '#94a3b8', fontStyle: 'italic', borderTop: '1px dashed rgba(59, 130, 246, 0.2)', paddingTop: 4 }}>
-                      📡 {clinicalResult.hardware_telemetry.status_note}
+                      ðŸ“¡ {clinicalResult.hardware_telemetry.status_note}
                     </div>
                   </div>
                 )}
               </div>
             ) : (
               <div style={{
-                background: 'var(--bg-card, #111827)',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
+                background: 'var(--bg-card)',
+                border: '1px solid var(--border)',
                 borderRadius: 16,
                 padding: 40,
                 textAlign: 'center',
@@ -1207,7 +1207,7 @@ export function AlzheimersPage() {
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
                 {/* MRI Model Card */}
                 <div style={{
-                  background: 'var(--bg-card, #111827)',
+                  background: 'var(--bg-card)',
                   border: '1px solid rgba(245, 158, 11, 0.25)',
                   borderRadius: 16,
                   padding: 24,
@@ -1215,7 +1215,7 @@ export function AlzheimersPage() {
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                       <Brain size={20} color="#fbbf24" />
-                      <h3 style={{ fontSize: 16, fontWeight: 700, margin: 0, color: '#f8fafc' }}>
+                      <h3 style={{ fontSize: 16, fontWeight: 700, margin: 0, color: 'var(--text-primary)' }}>
                         Brain MRI NeuroScan QSVC
                       </h3>
                     </div>
@@ -1254,7 +1254,7 @@ export function AlzheimersPage() {
 
                 {/* OASIS Clinical Model Card */}
                 <div style={{
-                  background: 'var(--bg-card, #111827)',
+                  background: 'var(--bg-card)',
                   border: '1px solid rgba(56, 189, 248, 0.25)',
                   borderRadius: 16,
                   padding: 24,
@@ -1262,7 +1262,7 @@ export function AlzheimersPage() {
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                       <Database size={20} color="#38bdf8" />
-                      <h3 style={{ fontSize: 16, fontWeight: 700, margin: 0, color: '#f8fafc' }}>
+                      <h3 style={{ fontSize: 16, fontWeight: 700, margin: 0, color: 'var(--text-primary)' }}>
                         OASIS Clinical Cohort QSVC
                       </h3>
                     </div>
@@ -1314,14 +1314,14 @@ export function AlzheimersPage() {
       {/* ========================================================================= */}
       {activeTab === 'dataset' && (
         <div style={{
-          background: 'var(--bg-card, #111827)',
-          border: '1px solid rgba(255, 255, 255, 0.08)',
+          background: 'var(--bg-card)',
+          border: '1px solid var(--border)',
           borderRadius: 16,
           padding: 24,
         }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20, flexWrap: 'wrap', gap: 12 }}>
             <div>
-              <h3 style={{ fontSize: 17, fontWeight: 700, margin: '0 0 4px 0', color: '#f8fafc' }}>
+              <h3 style={{ fontSize: 17, fontWeight: 700, margin: '0 0 4px 0', color: 'var(--text-primary)' }}>
                 OASIS Cross-Sectional Clinical Cohort
               </h3>
               <p style={{ margin: 0, fontSize: 13, color: '#94a3b8' }}>
@@ -1412,10 +1412,10 @@ export function AlzheimersPage() {
       {activeTab === 'circuit' && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           <QiskitCircuitViewer
-            title="Alzheimer's Disease Havlíček ZZ-Feature Map — 4-Qubit Quantum Kernel"
+            title="Alzheimer's Disease HavlÃ­Äek ZZ-Feature Map â€” 4-Qubit Quantum Kernel"
             subtitle="Code-accurate Qiskit diagram mapping cranial volume (eTIV), brain parenchymal fraction (nWBV), and MMSE into 16-D Hilbert space"
             imageSrc="/circuits/alzheimers_qsvc_circuit.png"
-            qiskitCode={`# Qiskit 4-Qubit Havlíček Quantum Kernel for Alzheimer's Diagnostic Mapping
+            qiskitCode={`# Qiskit 4-Qubit HavlÃ­Äek Quantum Kernel for Alzheimer's Diagnostic Mapping
 from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
 from qiskit.circuit import ParameterVector, Parameter
 
@@ -1424,14 +1424,14 @@ cr = ClassicalRegister(4, name="cdr_state")
 qc = QuantumCircuit(qr, cr)
 
 # 4 Neuro-Biomarker Features: [Ventricular, Hippocampal, Cortical, Parenchymal/MMSE]
-theta = ParameterVector("θ", 4)
+theta = ParameterVector("Î¸", 4)
 
 # 1. Hadamard Superposition
 for i in range(4):
     qc.h(qr[i])
 qc.barrier(label="Neuro-Biomarker Phase")
 
-# 2. 1st-Order Phase Encoding: Rz(2θ_i)
+# 2. 1st-Order Phase Encoding: Rz(2Î¸_i)
 for i in range(4):
     qc.rz(2 * theta[i], qr[i])
 qc.barrier(label="Cranial-Cognitive ZZ Coupling")
@@ -1440,15 +1440,15 @@ qc.barrier(label="Cranial-Cognitive ZZ Coupling")
 pairs = [(0, 1), (1, 2), (2, 3), (0, 2)]
 for i, j in pairs:
     qc.cx(qr[i], qr[j])
-    qc.rz(Parameter(f"2(π-θ_{i})(π-θ_{j})"), qr[j])
+    qc.rz(Parameter(f"2(Ï€-Î¸_{i})(Ï€-Î¸_{j})"), qr[j])
     qc.cx(qr[i], qr[j])
 
-qc.barrier(label="State Fidelity ⟨Φ(x)|Φ(x')⟩")
+qc.barrier(label="State Fidelity âŸ¨Î¦(x)|Î¦(x')âŸ©")
 qc.measure(qr, cr)
 
 # Render publication-quality Qiskit MPL diagram
 qc.draw(output="mpl")`}
-            badges={['Qiskit 2.x Verified', 'OASIS & MRI Compatible', 'Havlíček ZZ-Kernel']}
+            badges={['Qiskit 2.x Verified', 'OASIS & MRI Compatible', 'HavlÃ­Äek ZZ-Kernel']}
             qubitDetails={[
               { qubit: 0, label: 'q_brain[0]: Ventricular Dilatation', desc: 'Encodes lateral ventricular enlargement ratio' },
               { qubit: 1, label: 'q_brain[1]: Hippocampal Atrophy', desc: 'Encodes medial temporal lobe tissue shrinkage' },
@@ -1458,12 +1458,12 @@ qc.draw(output="mpl")`}
           />
 
           <div style={{
-            background: 'var(--bg-card, #111827)',
-            border: '1px solid rgba(255, 255, 255, 0.08)',
+            background: 'var(--bg-card)',
+            border: '1px solid var(--border)',
             borderRadius: 16,
             padding: 24,
           }}>
-            <h4 style={{ fontSize: 15, fontWeight: 700, color: '#f8fafc', margin: '0 0 10px 0' }}>
+            <h4 style={{ fontSize: 15, fontWeight: 700, color: 'var(--text-primary)', margin: '0 0 10px 0' }}>
               Mathematical Formulation: Second-Order Non-Linear Feature Map
             </h4>
             <div style={{
@@ -1476,19 +1476,19 @@ qc.draw(output="mpl")`}
               color: '#fbbf24',
               fontSize: 13,
             }}>
-              U_Φ(x) = exp( i ∑_j x_j Z_j + i ∑_(j &lt; k) (π - x_j)(π - x_k) Z_j Z_k )
+              U_Î¦(x) = exp( i âˆ‘_j x_j Z_j + i âˆ‘_(j &lt; k) (Ï€ - x_j)(Ï€ - x_k) Z_j Z_k )
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 14 }}>
               <div style={{ background: 'rgba(30, 41, 59, 0.6)', padding: 14, borderRadius: 10 }}>
                 <h5 style={{ color: '#38bdf8', margin: '0 0 4px 0', fontSize: 13 }}>1. Hadamard Initialization</h5>
                 <p style={{ margin: 0, fontSize: 12, color: '#94a3b8', lineHeight: 1.5 }}>
-                  Generates an equiprobable superposition across all 16 basis states: |0⟩^⊗4 → 1/4 ∑ |k⟩.
+                  Generates an equiprobable superposition across all 16 basis states: |0âŸ©^âŠ—4 â†’ 1/4 âˆ‘ |kâŸ©.
                 </p>
               </div>
               <div style={{ background: 'rgba(30, 41, 59, 0.6)', padding: 14, borderRadius: 10 }}>
                 <h5 style={{ color: '#a855f7', margin: '0 0 4px 0', fontSize: 13 }}>2. Non-linear Phase Encoding</h5>
                 <p style={{ margin: 0, fontSize: 12, color: '#94a3b8', lineHeight: 1.5 }}>
-                  Applies single-qubit R_z(2θ_j) phase rotations encoding hippocampal atrophy and MMSE scores.
+                  Applies single-qubit R_z(2Î¸_j) phase rotations encoding hippocampal atrophy and MMSE scores.
                 </p>
               </div>
               <div style={{ background: 'rgba(30, 41, 59, 0.6)', padding: 14, borderRadius: 10 }}>
@@ -1504,3 +1504,4 @@ qc.draw(output="mpl")`}
     </div>
   )
 }
+

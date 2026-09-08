@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef, useEffect } from 'react'
+﻿import React, { useState, useCallback, useRef, useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import axios from 'axios'
 import { Scan, Cpu, BarChart3, BookOpen, Activity, ArrowLeft } from 'lucide-react'
@@ -10,7 +10,7 @@ import { RecentRunsTable } from '../components/RecentRunsTable'
 
 const API = 'http://127.0.0.1:8000'
 const CLASS_COLORS = { Normal: '#10b981', Benign: '#f59e0b', Malignant: '#ef4444' }
-const CLASS_ICONS  = { Normal: '🟢', Benign: '🟡', Malignant: '🔴' }
+const CLASS_ICONS  = { Normal: 'ðŸŸ¢', Benign: 'ðŸŸ¡', Malignant: 'ðŸ”´' }
 const CLASS_DESC   = {
   Normal:    'No structural abnormalities identified. Sonographic features are consistent with normal breast parenchyma.',
   Benign:    'Non-malignant lesion detected. Features consistent with fibroadenoma or cyst. Clinical follow-up recommended.',
@@ -18,7 +18,7 @@ const CLASS_DESC   = {
 }
 const RISK_COLORS = { LOW: '#10b981', MODERATE: '#f59e0b', HIGH: '#ef4444' }
 
-// ─── Scanner Tab ────────────────────────────────────────────────────────────
+// â”€â”€â”€ Scanner Tab â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function ScannerTab() {
   const [result, setResult]   = useState(null)
   const [loading, setLoading] = useState(false)
@@ -100,14 +100,14 @@ function ScannerTab() {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))', gap: 24 }}>
       {/* Upload & Controls Card */}
       <div className="card">
-        <div className="card-header">📷 Diagnostic Ingestion & Parameter Controls</div>
+        <div className="card-header">ðŸ“· Diagnostic Ingestion & Parameter Controls</div>
         
         {/* Model Selection Dropdown */}
         <div style={{ padding: '18px 22px 0' }}>
-          <div style={{ background: 'var(--bg-card2, #070c18)', border: '1px solid var(--border-color, #1e3a5f)', borderRadius: 10, padding: 14 }}>
+          <div style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)', borderRadius: 10, padding: 14 }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
               <span style={{ fontSize: '0.84rem', fontWeight: 700, color: 'var(--text-primary)' }}>
-                🧬 Diagnostic Engine Model:
+                ðŸ§¬ Diagnostic Engine Model:
               </span>
               <span style={{
                 fontSize: '0.72rem',
@@ -126,7 +126,7 @@ function ScannerTab() {
                   : '#c084fc',
                 border: `1px solid ${selectedModel === 'classical' ? 'rgba(16, 185, 129, 0.4)' : selectedModel === 'iqm' ? 'rgba(59, 130, 246, 0.4)' : 'rgba(139, 92, 246, 0.4)'}`
               }}>
-                {selectedModel === 'classical' ? '🏆 89.7% Accuracy (Production)' : selectedModel === 'iqm' ? '🌐 Real IQM Superconducting QPU' : '⚛️ 4-Qubit Local VQC (QML)'}
+                {selectedModel === 'classical' ? 'ðŸ† 89.7% Accuracy (Production)' : selectedModel === 'iqm' ? 'ðŸŒ Real IQM Superconducting QPU' : 'âš›ï¸ 4-Qubit Local VQC (QML)'}
               </span>
             </div>
 
@@ -137,28 +137,28 @@ function ScannerTab() {
                 width: '100%',
                 padding: '10px 12px',
                 borderRadius: 8,
-                border: '1px solid #1e3a5f',
-                background: '#0d1626',
-                color: '#f1f5f9',
+                border: '1px solid var(--border)',
+                background: 'var(--bg-card)',
+                color: 'var(--text-primary)',
                 fontSize: '0.88rem',
                 fontWeight: 600,
                 cursor: 'pointer',
                 outline: 'none',
               }}
             >
-              <option value="classical">🏆 Classical ResNet-18 (89.7% Balanced Accuracy — Production)</option>
-              <option value="vqc">⚛️ Hybrid Quantum Neural Network (4-Qubit Local VQC — Experimental)</option>
-              <option value="iqm">🌐 Real Quantum Hardware: IQM Superconducting QPU (Resonance Cloud)</option>
+              <option value="classical">ðŸ† Classical ResNet-18 (89.7% Balanced Accuracy â€” Production)</option>
+              <option value="vqc">âš›ï¸ Hybrid Quantum Neural Network (4-Qubit Local VQC â€” Experimental)</option>
+              <option value="iqm">ðŸŒ Real Quantum Hardware: IQM Superconducting QPU (Resonance Cloud)</option>
             </select>
           </div>
         </div>
 
         {/* Interactive Clinical Decision Threshold Tuning Slider (SIH Deliverable 4) */}
         <div style={{ padding: '14px 22px 0' }}>
-          <div style={{ background: '#081120', border: '1px solid #1e3a5f', borderRadius: 10, padding: 14 }}>
+          <div style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)', borderRadius: 10, padding: 14 }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
               <span style={{ fontSize: '0.82rem', fontWeight: 700, color: '#60a5fa', display: 'flex', alignItems: 'center', gap: 6 }}>
-                ⚖️ Clinical Decision Operating Threshold (τ):
+                âš–ï¸ Clinical Decision Operating Threshold (Ï„):
               </span>
               <span style={{
                 fontFamily: 'JetBrains Mono, monospace',
@@ -166,7 +166,7 @@ function ScannerTab() {
                 fontSize: '0.86rem',
                 color: threshold <= 0.4 ? '#34d399' : threshold >= 0.6 ? '#f59e0b' : '#60a5fa'
               }}>
-                τ = {threshold.toFixed(2)}
+                Ï„ = {threshold.toFixed(2)}
               </span>
             </div>
 
@@ -195,7 +195,7 @@ function ScannerTab() {
                   fontWeight: 600
                 }}
               >
-                🛡️ High Sensitivity (0.35)
+                ðŸ›¡ï¸ High Sensitivity (0.35)
               </button>
               <button
                 type="button"
@@ -211,7 +211,7 @@ function ScannerTab() {
                   fontWeight: 600
                 }}
               >
-                ⚖️ Balanced (0.50)
+                âš–ï¸ Balanced (0.50)
               </button>
               <button
                 type="button"
@@ -227,22 +227,22 @@ function ScannerTab() {
                   fontWeight: 600
                 }}
               >
-                🎯 High Specificity (0.65)
+                ðŸŽ¯ High Specificity (0.65)
               </button>
             </div>
 
             <div style={{ fontSize: '0.72rem', color: '#94a3b8', marginTop: 6, lineHeight: 1.4 }}>
               {threshold <= 0.40
-                ? '💡 High Sensitivity: Guarantees Malignant recall >95% to prevent catastrophic false-negative cancer misses.'
+                ? 'ðŸ’¡ High Sensitivity: Guarantees Malignant recall >95% to prevent catastrophic false-negative cancer misses.'
                 : threshold >= 0.60
-                ? '💡 High Specificity: Conservative biopsy recommendation mode reducing unnecessary invasive tissue sampling.'
-                : '💡 Balanced Mode: Equal clinical cost weighting between sensitivity and specificity.'}
+                ? 'ðŸ’¡ High Specificity: Conservative biopsy recommendation mode reducing unnecessary invasive tissue sampling.'
+                : 'ðŸ’¡ Balanced Mode: Equal clinical cost weighting between sensitivity and specificity.'}
             </div>
           </div>
         </div>
 
         <div style={{ padding: '14px 22px 0' }}>
-          {error && <div className="error-banner">⚠️ {error}</div>}
+          {error && <div className="error-banner">âš ï¸ {error}</div>}
         </div>
 
         {/* Dropzone */}
@@ -260,7 +260,7 @@ function ScannerTab() {
               <img src={preview} alt="Preview" style={{ width: '100%', maxHeight: 250, objectFit: 'contain', borderRadius: 8 }} />
             ) : (
               <>
-                <div className="dropzone-icon">📂</div>
+                <div className="dropzone-icon">ðŸ“‚</div>
                 <div className="dropzone-text">Drop breast ultrasound scan here</div>
                 <div className="dropzone-subtext">or click to browse (PNG, JPEG monochromatic scan)</div>
               </>
@@ -269,15 +269,15 @@ function ScannerTab() {
 
           {file && (
             <div style={{ marginTop: 8, fontSize: '0.80rem', color: 'var(--text-secondary)' }}>
-              📄 <b>{file.name}</b> ({(file.size / 1024).toFixed(1)} KB)
+              ðŸ“„ <b>{file.name}</b> ({(file.size / 1024).toFixed(1)} KB)
             </div>
           )}
 
           <div style={{ display: 'flex', gap: 10, marginTop: 14 }}>
             <button className="btn btn-primary" onClick={handleAnalyze} disabled={!file || loading} style={{ flex: 1 }}>
               {loading
-                ? (selectedModel === 'iqm' ? '🌐 Submitting to IQM Garnet QPU...' : selectedModel === 'vqc' ? '⚛️ Simulating 4-Qubit VQC...' : '⚡ Processing ResNet-18...')
-                : `🔬 Run Diagnosis (${selectedModel === 'classical' ? 'Classical' : selectedModel === 'iqm' ? 'IQM Hardware' : 'Local Quantum'})`}
+                ? (selectedModel === 'iqm' ? 'ðŸŒ Submitting to IQM Garnet QPU...' : selectedModel === 'vqc' ? 'âš›ï¸ Simulating 4-Qubit VQC...' : 'âš¡ Processing ResNet-18...')
+                : `ðŸ”¬ Run Diagnosis (${selectedModel === 'classical' ? 'Classical' : selectedModel === 'iqm' ? 'IQM Hardware' : 'Local Quantum'})`}
             </button>
             {file && <button className="btn btn-secondary" onClick={handleClear} disabled={loading}>Clear</button>}
           </div>
@@ -287,7 +287,7 @@ function ScannerTab() {
       {/* Result & Explainability Card */}
       <div className="card">
         <div className="card-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <span>📊 Diagnostic & Explainability Studio</span>
+          <span>ðŸ“Š Diagnostic & Explainability Studio</span>
           {result && (
             <button
               onClick={handleExportReport}
@@ -302,7 +302,7 @@ function ScannerTab() {
                 cursor: 'pointer'
               }}
             >
-              📄 Export Report
+              ðŸ“„ Export Report
             </button>
           )}
         </div>
@@ -322,7 +322,7 @@ function ScannerTab() {
 
         {!result && !loading && (
           <div className="placeholder">
-            <div className="placeholder-icon">🔬</div>
+            <div className="placeholder-icon">ðŸ”¬</div>
             <div className="placeholder-text">Upload a breast ultrasound scan to generate diagnosis, Grad-CAM attention heatmap, and quantum telemetry.</div>
           </div>
         )}
@@ -342,7 +342,7 @@ function ScannerTab() {
                   <div style={{ fontSize: '1.5rem', fontWeight: 900, color: mainColor }}>{predicted_class}</div>
                 </div>
                 <div style={{ marginLeft: 'auto', textAlign: 'right' }}>
-                  <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', fontWeight: 600 }}>Confidence (τ = {result.threshold_used})</div>
+                  <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', fontWeight: 600 }}>Confidence (Ï„ = {result.threshold_used})</div>
                   <div style={{ fontSize: '1.8rem', fontWeight: 900, color: mainColor, fontFamily: 'JetBrains Mono, monospace' }}>{confidence_pct.toFixed(1)}%</div>
                 </div>
               </div>
@@ -366,10 +366,10 @@ function ScannerTab() {
 
               {/* Grad-CAM Explainability Visualizer */}
               {result.gradcam_overlay_base64 && (
-                <div style={{ background: '#070c18', border: '1px solid #1e3a5f', borderRadius: 12, padding: 14, marginBottom: 16 }}>
+                <div style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)', borderRadius: 12, padding: 14, marginBottom: 16 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10, flexWrap: 'wrap', gap: 8 }}>
-                    <div style={{ fontSize: '0.80rem', fontWeight: 700, color: '#f1f5f9', display: 'flex', alignItems: 'center', gap: 6 }}>
-                      👁️ Acoustic Attention Explainability (Grad-CAM Layer 4)
+                    <div style={{ fontSize: '0.80rem', fontWeight: 700, color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: 6 }}>
+                      ðŸ‘ï¸ Acoustic Attention Explainability (Grad-CAM Layer 4)
                     </div>
                     <div style={{ display: 'flex', gap: 4 }}>
                       <button
@@ -380,8 +380,8 @@ function ScannerTab() {
                           padding: '3px 7px',
                           borderRadius: 5,
                           background: camViewMode === 'overlay' ? '#2563eb' : '#0f1c30',
-                          color: '#f1f5f9',
-                          border: '1px solid #1e3a5f',
+                          color: 'var(--text-primary)',
+                          border: '1px solid var(--border)',
                           cursor: 'pointer'
                         }}
                       >
@@ -395,8 +395,8 @@ function ScannerTab() {
                           padding: '3px 7px',
                           borderRadius: 5,
                           background: camViewMode === 'heatmap' ? '#2563eb' : '#0f1c30',
-                          color: '#f1f5f9',
-                          border: '1px solid #1e3a5f',
+                          color: 'var(--text-primary)',
+                          border: '1px solid var(--border)',
                           cursor: 'pointer'
                         }}
                       >
@@ -410,8 +410,8 @@ function ScannerTab() {
                           padding: '3px 7px',
                           borderRadius: 5,
                           background: camViewMode === 'original' ? '#2563eb' : '#0f1c30',
-                          color: '#f1f5f9',
-                          border: '1px solid #1e3a5f',
+                          color: 'var(--text-primary)',
+                          border: '1px solid var(--border)',
                           cursor: 'pointer'
                         }}
                       >
@@ -420,7 +420,7 @@ function ScannerTab() {
                     </div>
                   </div>
 
-                  <div style={{ textAlign: 'center', background: '#020610', borderRadius: 8, padding: 8 }}>
+                  <div style={{ textAlign: 'center', background: 'var(--bg-secondary)', borderRadius: 8, padding: 8 }}>
                     <img
                       src={
                         camViewMode === 'overlay'
@@ -436,7 +436,7 @@ function ScannerTab() {
 
                   {result.gradcam_metadata && (
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 8, fontSize: '0.72rem', color: '#94a3b8' }}>
-                      <span>🎯 <b>Detected Feature:</b> {result.gradcam_metadata.acoustic_feature_detected}</span>
+                      <span>ðŸŽ¯ <b>Detected Feature:</b> {result.gradcam_metadata.acoustic_feature_detected}</span>
                       <span>Lesion Focus: <b>{result.gradcam_metadata.hotspot_area_pct}%</b> area</span>
                     </div>
                   )}
@@ -445,9 +445,9 @@ function ScannerTab() {
 
               {/* Quantum Parameter Saliency Chart */}
               {result.quantum_parameter_saliency && result.quantum_parameter_saliency.length > 0 && (
-                <div style={{ background: '#070c18', border: '1px solid rgba(139, 92, 246, 0.3)', borderRadius: 12, padding: 14, marginBottom: 16 }}>
+                <div style={{ background: 'var(--bg-secondary)', border: '1px solid rgba(139, 92, 246, 0.3)', borderRadius: 12, padding: 14, marginBottom: 16 }}>
                   <div style={{ fontSize: '0.80rem', fontWeight: 700, color: '#c084fc', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6 }}>
-                    ⚛️ Quantum Parameter Saliency (Sᵢ = |∂⟨Z⟩/∂θᵢ|)
+                    âš›ï¸ Quantum Parameter Saliency (Sáµ¢ = |âˆ‚âŸ¨ZâŸ©/âˆ‚Î¸áµ¢|)
                   </div>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: 6 }}>
                     {result.quantum_parameter_saliency.slice(0, 6).map((item, idx) => (
@@ -496,31 +496,31 @@ function ScannerTab() {
 
               {/* Real Hardware Telemetry with M3 QEM */}
               {result.hardware_telemetry && (
-                <div style={{ background: '#070c18', border: '1px solid #3b82f640', borderRadius: 10, padding: 12, marginBottom: 12 }}>
+                <div style={{ background: 'var(--bg-secondary)', border: '1px solid #3b82f640', borderRadius: 10, padding: 12, marginBottom: 12 }}>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
                     <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#60a5fa' }}>
-                      🌐 Real Hardware Telemetry: {result.hardware_telemetry.backend}
+                      ðŸŒ Real Hardware Telemetry: {result.hardware_telemetry.backend}
                     </span>
                     <span style={{ fontSize: '0.68rem', padding: '2px 6px', borderRadius: 4, background: 'rgba(16, 185, 129, 0.2)', color: '#34d399', border: '1px solid rgba(16, 185, 129, 0.4)' }}>
                       M3 QEM Active
                     </span>
                   </div>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(90px, 1fr))', gap: 6, fontSize: '0.72rem', color: 'var(--text-secondary)', marginBottom: 6 }}>
-                    <div>Job ID: <b style={{ color: '#f1f5f9' }}>{result.hardware_telemetry.job_id.slice(0, 8)}...</b></div>
-                    <div>Qubits: <b style={{ color: '#f1f5f9' }}>{result.hardware_telemetry.qubits_used} Transmons</b></div>
-                    <div>Shots: <b style={{ color: '#f1f5f9' }}>{result.hardware_telemetry.shots}</b></div>
+                    <div>Job ID: <b style={{ color: 'var(--text-primary)' }}>{result.hardware_telemetry.job_id.slice(0, 8)}...</b></div>
+                    <div>Qubits: <b style={{ color: 'var(--text-primary)' }}>{result.hardware_telemetry.qubits_used} Transmons</b></div>
+                    <div>Shots: <b style={{ color: 'var(--text-primary)' }}>{result.hardware_telemetry.shots}</b></div>
                     <div>QPU Latency: <b style={{ color: '#60a5fa' }}>{result.hardware_telemetry.physical_latency_ms} ms</b></div>
                   </div>
-                  <div style={{ fontSize: '0.70rem', color: '#94a3b8', fontStyle: 'italic', borderTop: '1px dashed #1e3a5f', paddingTop: 4 }}>
-                    📡 {result.hardware_telemetry.status_note}
+                  <div style={{ fontSize: '0.70rem', color: '#94a3b8', fontStyle: 'italic', borderTop: '1px dashed var(--border)', paddingTop: 4 }}>
+                    ðŸ“¡ {result.hardware_telemetry.status_note}
                   </div>
                 </div>
               )}
 
               <div style={{ fontSize: '0.76rem', color: 'var(--text-muted)', display: 'flex', gap: 14, flexWrap: 'wrap' }}>
-                <span>⚡ Latency: {latency_ms.toFixed(1)} ms</span>
-                <span>🔲 256×256 CLAHE</span>
-                <span>{result.is_real_hardware ? '🌐 IQM Superconducting QPU' : (result.is_quantum ? '⚛️ 4-Qubit Local VQC' : '🧠 ResNet-18 Deep Head')}</span>
+                <span>âš¡ Latency: {latency_ms.toFixed(1)} ms</span>
+                <span>ðŸ”² 256Ã—256 CLAHE</span>
+                <span>{result.is_real_hardware ? 'ðŸŒ IQM Superconducting QPU' : (result.is_quantum ? 'âš›ï¸ 4-Qubit Local VQC' : 'ðŸ§  ResNet-18 Deep Head')}</span>
               </div>
             </div>
           )
@@ -538,7 +538,7 @@ function ScannerTab() {
   )
 }
 
-// ─── Architecture Tab ────────────────────────────────────────────────────────
+// â”€â”€â”€ Architecture Tab â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function ArchitectureTab() {
   const [circuitType, setCircuitType] = useState('vqc')
 
@@ -551,8 +551,8 @@ cr = ClassicalRegister(4, name="c_meas")
 qc = QuantumCircuit(qr, cr)
 
 x = ParameterVector("x", 4)          # Latent ultrasound features
-theta_0 = ParameterVector("θ_0", 4)  # Layer 1 rotations
-phi_0 = ParameterVector("φ_0", 4)    # Layer 2 rotations
+theta_0 = ParameterVector("Î¸_0", 4)  # Layer 1 rotations
+phi_0 = ParameterVector("Ï†_0", 4)    # Layer 2 rotations
 
 # 1. Data Angle Embedding
 for i in range(4):
@@ -627,7 +627,7 @@ qc.draw(output="mpl")`
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 14, marginBottom: 16 }}>
           <div>
             <h2 style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--text-primary)', margin: '0 0 6px 0', letterSpacing: '-0.01em' }}>
-              ⚛️ Code-Accurate Quantum Circuit Architecture
+              âš›ï¸ Code-Accurate Quantum Circuit Architecture
             </h2>
             <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0, fontSize: '0.88rem' }}>
               The Breast Cancer Hybrid QNN maps ResNet-18 ultrasound representations into quantum Hilbert space with data re-uploading and real hardware execution.
@@ -642,7 +642,7 @@ qc.draw(output="mpl")`
               style={{
                 background: circuitType === 'vqc' ? '#2563eb' : '#0f1c30',
                 color: circuitType === 'vqc' ? '#ffffff' : '#94a3b8',
-                border: '1px solid #1e3a5f',
+                border: '1px solid var(--border)',
                 borderRadius: 8,
                 padding: '8px 14px',
                 fontSize: '0.78rem',
@@ -658,7 +658,7 @@ qc.draw(output="mpl")`
               style={{
                 background: circuitType === 'iqm' ? '#2563eb' : '#0f1c30',
                 color: circuitType === 'iqm' ? '#ffffff' : '#94a3b8',
-                border: '1px solid #1e3a5f',
+                border: '1px solid var(--border)',
                 borderRadius: 8,
                 padding: '8px 14px',
                 fontSize: '0.78rem',
@@ -706,11 +706,11 @@ qc.draw(output="mpl")`
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 16 }}>
           {[
-            { title: '1. Data Re-Uploading', desc: 'Features xᵢ are re-embedded before each variational layer, transforming the circuit into a universal quantum kernel for non-linear decision boundaries.' },
-            { title: '2. Dual Pauli Readout', desc: 'Measures both ⟨Zᵢ⟩ and ⟨Xᵢ⟩ expectation values per qubit, producing high-dimensional quantum readout features with 99.93% fewer parameters than classical heads.' },
+            { title: '1. Data Re-Uploading', desc: 'Features xáµ¢ are re-embedded before each variational layer, transforming the circuit into a universal quantum kernel for non-linear decision boundaries.' },
+            { title: '2. Dual Pauli Readout', desc: 'Measures both âŸ¨Záµ¢âŸ© and âŸ¨Xáµ¢âŸ© expectation values per qubit, producing high-dimensional quantum readout features with 99.93% fewer parameters than classical heads.' },
             { title: '3. Physical QPU Transpilation', desc: 'Transpiles into native PRX and CZ transmon gates with M3/TREX matrix inversion readout error mitigation to combat ambient thermal decoherence.' },
           ].map((f, i) => (
-            <div key={i} style={{ background: '#070c16', border: '1px solid #1e3a5f', padding: 18, borderRadius: 10 }}>
+            <div key={i} style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)', padding: 18, borderRadius: 10 }}>
               <div style={{ fontWeight: 700, color: 'var(--text-primary)', marginBottom: 6, fontSize: '0.88rem' }}>{f.title}</div>
               <div style={{ fontSize: '0.83rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>{f.desc}</div>
             </div>
@@ -720,11 +720,11 @@ qc.draw(output="mpl")`
 
       {/* Pipeline stages */}
       <div className="card" style={{ padding: 28 }}>
-        <h3 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: 20 }}>🔄 Full Inference Pipeline</h3>
+        <h3 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: 20 }}>ðŸ”„ Full Inference Pipeline</h3>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 0, alignItems: 'center' }}>
           {[
             { step: '1', label: 'Image Upload', sub: 'PNG/JPEG Input', color: '#2563eb' },
-            { step: '2', label: 'CLAHE Preprocess', sub: '256×256 Enhancement', color: '#7c3aed' },
+            { step: '2', label: 'CLAHE Preprocess', sub: '256Ã—256 Enhancement', color: '#7c3aed' },
             { step: '3', label: 'ResNet-18', sub: 'Feature Extraction', color: '#059669' },
             { step: '4', label: '6-Qubit VQC', sub: 'Quantum Inference', color: '#d97706' },
             { step: '5', label: 'Classification', sub: 'Normal / Benign / Malignant', color: '#dc2626' },
@@ -735,7 +735,7 @@ qc.draw(output="mpl")`
                 <div style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: 2 }}>{s.label}</div>
                 <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)' }}>{s.sub}</div>
               </div>
-              {i < arr.length - 1 && <div style={{ color: 'var(--text-muted)', fontSize: '1.2rem', padding: '0 4px' }}>→</div>}
+              {i < arr.length - 1 && <div style={{ color: 'var(--text-muted)', fontSize: '1.2rem', padding: '0 4px' }}>â†’</div>}
             </React.Fragment>
           ))}
         </div>
@@ -744,7 +744,7 @@ qc.draw(output="mpl")`
   )
 }
 
-// ─── Metrics Tab ────────────────────────────────────────────────────────────
+// â”€â”€â”€ Metrics Tab â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function MetricsTab() {
   const [metrics, setMetrics] = useState(null)
 
@@ -758,10 +758,10 @@ function MetricsTab() {
     <div>
       <div className="metrics-grid">
         {[
-          { icon: '🎯', val: '72.65%', lbl: 'Best Val Accuracy', color: '#10b981' },
-          { icon: '⚛️', val: '6 Qubits', lbl: 'Quantum Width', color: '#60a5fa' },
-          { icon: '🔬', val: '256×256', lbl: 'CLAHE Resolution', color: '#fbbf24' },
-          { icon: '⚡', val: '~146 ms', lbl: 'Avg Inference Latency', color: '#f472b6' },
+          { icon: 'ðŸŽ¯', val: '72.65%', lbl: 'Best Val Accuracy', color: '#10b981' },
+          { icon: 'âš›ï¸', val: '6 Qubits', lbl: 'Quantum Width', color: '#60a5fa' },
+          { icon: 'ðŸ”¬', val: '256Ã—256', lbl: 'CLAHE Resolution', color: '#fbbf24' },
+          { icon: 'âš¡', val: '~146 ms', lbl: 'Avg Inference Latency', color: '#f472b6' },
         ].map((s, i) => (
           <div key={i} className="stat-card">
             <div className="stat-icon">{s.icon}</div>
@@ -773,14 +773,14 @@ function MetricsTab() {
 
       {history.length > 0 ? (
         <div className="card" style={{ padding: 24 }}>
-          <div style={{ fontWeight: 700, color: 'var(--text-primary)', marginBottom: 16 }}>📈 Validation Accuracy Trajectory</div>
+          <div style={{ fontWeight: 700, color: 'var(--text-primary)', marginBottom: 16 }}>ðŸ“ˆ Validation Accuracy Trajectory</div>
           <ResponsiveContainer width="100%" height={260}>
             <LineChart data={history} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#1e3a5f" />
+              <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
               <XAxis dataKey="epoch" stroke="#4a6280" tick={{ fill: '#8facc8', fontSize: 12 }} />
               <YAxis stroke="#4a6280" tick={{ fill: '#8facc8', fontSize: 12 }} domain={[0, 100]} tickFormatter={v => `${v}%`} />
-              <Tooltip contentStyle={{ background: '#0f1829', border: '1px solid #1e3a5f', borderRadius: 10, color: '#f0f6ff', fontSize: '0.85em' }} formatter={v => `${v}%`} />
-              <Legend wrapperStyle={{ color: '#8facc8', fontSize: '0.85em', paddingTop: 10 }} />
+              <Tooltip contentStyle={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 10, color: 'var(--text-primary)', fontSize: '0.85em' }} formatter={v => `${v}%`} />
+              <Legend wrapperStyle={{ color: 'var(--text-secondary)', fontSize: '0.85em', paddingTop: 10 }} />
               <Line type="monotone" dataKey="val_acc" stroke="#2563eb" strokeWidth={2.5} dot={false} name="Val Accuracy" />
               <Line type="monotone" dataKey="train_acc" stroke="#10b981" strokeWidth={2} dot={false} name="Train Accuracy" strokeDasharray="5 4" />
             </LineChart>
@@ -795,24 +795,24 @@ function MetricsTab() {
   )
 }
 
-// ─── About Tab ────────────────────────────────────────────────────────────
+// â”€â”€â”€ About Tab â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function AboutTab() {
   return (
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: 24 }}>
       <div className="card" style={{ padding: 28 }}>
-        <h3 style={{ fontWeight: 700, color: 'var(--text-primary)', marginBottom: 12, fontSize: '1rem' }}>🧠 System Architecture & Preprocessing</h3>
+        <h3 style={{ fontWeight: 700, color: 'var(--text-primary)', marginBottom: 12, fontSize: '1rem' }}>ðŸ§  System Architecture & Preprocessing</h3>
         <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7, marginBottom: 14, fontSize: '0.88rem' }}>
           The Breast Cancer Diagnostic Suite combines Contrast Limited Adaptive Histogram Equalization (CLAHE)
           with a fine-tuned ResNet-18 feature extractor and PennyLane variational quantum circuit.
         </p>
         <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7, fontSize: '0.88rem' }}>
           <b style={{ color: 'var(--text-primary)' }}>CLAHE Contrast Enhancement:</b> Acoustic speckle noise is smoothed while
-          enhancing micro-calcifications and lesion boundary edges, producing a clean 256×256 input to the network.
+          enhancing micro-calcifications and lesion boundary edges, producing a clean 256Ã—256 input to the network.
         </p>
       </div>
 
       <div className="card" style={{ padding: 28 }}>
-        <h3 style={{ fontWeight: 700, color: 'var(--text-primary)', marginBottom: 16, fontSize: '1rem' }}>🏷️ Diagnostic Classes</h3>
+        <h3 style={{ fontWeight: 700, color: 'var(--text-primary)', marginBottom: 16, fontSize: '1rem' }}>ðŸ·ï¸ Diagnostic Classes</h3>
         {[
           { name: 'Normal (Class 0)', color: '#10b981', desc: 'Normal parenchymal architecture, no acoustic shadowing or focal mass.' },
           { name: 'Benign (Class 1)', color: '#f59e0b', desc: 'Circumscribed margin, oval fibroadenoma or simple fluid-filled cyst.' },
@@ -831,7 +831,7 @@ function AboutTab() {
   )
 }
 
-// ─── Page ────────────────────────────────────────────────────────────────────
+// â”€â”€â”€ Page â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const TABS = [
   { id: 'scanner',      label: 'Image Scanner',    icon: Scan },
   { id: 'architecture', label: 'Quantum Circuit',   icon: Cpu },
@@ -852,7 +852,7 @@ export function BreastCancerPage() {
         </div>
         <div className="page-header-text">
           <h1>Breast Cancer Scanner</h1>
-          <p>Hybrid Quantum Neural Network · 6-Qubit PennyLane VQC · ResNet-18 Backbone · CLAHE Preprocessing</p>
+          <p>Hybrid Quantum Neural Network Â· 6-Qubit PennyLane VQC Â· ResNet-18 Backbone Â· CLAHE Preprocessing</p>
         </div>
         <button
           className="btn btn-secondary"
@@ -888,3 +888,5 @@ export function BreastCancerPage() {
     </div>
   )
 }
+
+

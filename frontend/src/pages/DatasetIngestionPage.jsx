@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+﻿import React, { useState, useRef } from 'react'
 import axios from 'axios'
 import {
   Upload, Database, RefreshCw, CheckCircle2, AlertTriangle, FileSpreadsheet,
@@ -60,7 +60,7 @@ export function DatasetIngestionPage() {
     try {
       if (modality === 'heart') {
         setTrainProgress(25)
-        setTrainLogs(prev => [...prev, '[Quantum Prep] Computing Havlíček ZZ-feature maps across 4 qubits...'])
+        setTrainLogs(prev => [...prev, '[Quantum Prep] Computing HavlÃ­Äek ZZ-feature maps across 4 qubits...'])
         
         // Retrain backend QSVC
         const res = await axios.post(`${API}/train/heart`, { n_samples: 180 })
@@ -88,11 +88,11 @@ export function DatasetIngestionPage() {
       setTrainingState('completed')
       setTrainLogs(prev => [
         ...prev,
-        '✅ [Complete] Model weights saved to checkpoints/ and registered in live inference cache!'
+        'âœ… [Complete] Model weights saved to checkpoints/ and registered in live inference cache!'
       ])
     } catch (e) {
       setTrainingState('idle')
-      setTrainLogs(prev => [...prev, `❌ [Error] Training failed: ${e.message}`])
+      setTrainLogs(prev => [...prev, `âŒ [Error] Training failed: ${e.message}`])
     }
   }
 
@@ -113,7 +113,7 @@ export function DatasetIngestionPage() {
         {/* Card 1: Data Ingestion & Drag-and-Drop */}
         <div className="card" style={{ padding: 22 }}>
           <div style={{ fontSize: '0.90rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: 8 }}>
-            📥 Ingest Biomedical Dataset (.CSV / Scans)
+            ðŸ“¥ Ingest Biomedical Dataset (.CSV / Scans)
           </div>
           <p style={{ fontSize: '0.76rem', color: 'var(--text-secondary)', marginBottom: 16 }}>
             Upload tabular clinical electronic health records or patient cohorts. The ingestion engine automatically profiles missing values and verifies feature normalization.
@@ -134,17 +134,17 @@ export function DatasetIngestionPage() {
               style={{ display: 'none' }}
               onChange={e => handleFile(e.target.files[0])}
             />
-            <div className="dropzone-icon" style={{ fontSize: '2.2rem', marginBottom: 8 }}>📊</div>
+            <div className="dropzone-icon" style={{ fontSize: '2.2rem', marginBottom: 8 }}>ðŸ“Š</div>
             <div className="dropzone-text" style={{ fontSize: '0.92rem', fontWeight: 700 }}>
               {file ? file.name : 'Drop Clinical CSV Dataset Here'}
             </div>
-            <div className="dropzone-subtext" style={{ fontSize: '0.74rem', color: '#8facc8', marginTop: 4 }}>
+            <div className="dropzone-subtext" style={{ fontSize: '0.74rem', color: 'var(--text-secondary)', marginTop: 4 }}>
               Supports Cleveland CAD, Framingham Cohorts, and Tabular Diagnostic Datasets
             </div>
           </div>
 
           {profileError && (
-            <div className="error-banner" style={{ marginTop: 12 }}>⚠️ {profileError}</div>
+            <div className="error-banner" style={{ marginTop: 12 }}>âš ï¸ {profileError}</div>
           )}
 
           {loadingProfile && (
@@ -157,7 +157,7 @@ export function DatasetIngestionPage() {
         {/* Card 2: Retraining Configuration Controller */}
         <div className="card" style={{ padding: 22 }}>
           <div style={{ fontSize: '0.90rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: 8 }}>
-            ⚙️ Hybrid Model Retraining Workflow
+            âš™ï¸ Hybrid Model Retraining Workflow
           </div>
           <p style={{ fontSize: '0.76rem', color: 'var(--text-secondary)', marginBottom: 14 }}>
             Configure hyperparameters and trigger automated quantum-classical hybrid retraining to update diagnostic weights.
@@ -165,27 +165,27 @@ export function DatasetIngestionPage() {
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 12 }}>
             <div>
-              <label style={{ fontSize: '0.74rem', fontWeight: 700, color: '#8facc8', display: 'block', marginBottom: 4 }}>
+              <label style={{ fontSize: '0.74rem', fontWeight: 700, color: 'var(--text-secondary)', display: 'block', marginBottom: 4 }}>
                 Diagnostic Modality:
               </label>
               <select
                 value={modality}
                 onChange={e => setModality(e.target.value)}
-                style={{ width: '100%', padding: '8px 10px', background: '#091222', border: '1px solid #1e3a5f', borderRadius: 8, color: '#f1f5f9', fontSize: '0.80rem' }}
+                style={{ width: '100%', padding: '8px 10px', background: 'var(--bg-secondary)', border: '1px solid var(--border)', borderRadius: 8, color: 'var(--text-primary)', fontSize: '0.80rem' }}
               >
-                <option value="heart">Coronary CAD (Havlíček QSVC)</option>
+                <option value="heart">Coronary CAD (HavlÃ­Äek QSVC)</option>
                 <option value="breast">Breast Cancer (ResNet + VQC)</option>
               </select>
             </div>
 
             <div>
-              <label style={{ fontSize: '0.74rem', fontWeight: 700, color: '#8facc8', display: 'block', marginBottom: 4 }}>
+              <label style={{ fontSize: '0.74rem', fontWeight: 700, color: 'var(--text-secondary)', display: 'block', marginBottom: 4 }}>
                 Quantum Register Width:
               </label>
               <select
                 value={qubitCount}
                 onChange={e => setQubitCount(parseInt(e.target.value))}
-                style={{ width: '100%', padding: '8px 10px', background: '#091222', border: '1px solid #1e3a5f', borderRadius: 8, color: '#f1f5f9', fontSize: '0.80rem' }}
+                style={{ width: '100%', padding: '8px 10px', background: 'var(--bg-secondary)', border: '1px solid var(--border)', borderRadius: 8, color: 'var(--text-primary)', fontSize: '0.80rem' }}
               >
                 <option value={4}>4 Qubits (16-Dim Hilbert Space)</option>
                 <option value={6}>6 Qubits (64-Dim Hilbert Space)</option>
@@ -195,25 +195,25 @@ export function DatasetIngestionPage() {
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 16 }}>
             <div>
-              <label style={{ fontSize: '0.74rem', fontWeight: 700, color: '#8facc8', display: 'block', marginBottom: 4 }}>
+              <label style={{ fontSize: '0.74rem', fontWeight: 700, color: 'var(--text-secondary)', display: 'block', marginBottom: 4 }}>
                 Optimization Epochs:
               </label>
               <input
                 type="number"
                 value={epochs}
                 onChange={e => setEpochs(parseInt(e.target.value))}
-                style={{ width: '100%', padding: '8px 10px', background: '#091222', border: '1px solid #1e3a5f', borderRadius: 8, color: '#f1f5f9', fontSize: '0.80rem' }}
+                style={{ width: '100%', padding: '8px 10px', background: 'var(--bg-secondary)', border: '1px solid var(--border)', borderRadius: 8, color: 'var(--text-primary)', fontSize: '0.80rem' }}
               />
             </div>
 
             <div>
-              <label style={{ fontSize: '0.74rem', fontWeight: 700, color: '#8facc8', display: 'block', marginBottom: 4 }}>
+              <label style={{ fontSize: '0.74rem', fontWeight: 700, color: 'var(--text-secondary)', display: 'block', marginBottom: 4 }}>
                 Classical Learning Rate:
               </label>
               <select
                 value={learningRate}
                 onChange={e => setLearningRate(e.target.value)}
-                style={{ width: '100%', padding: '8px 10px', background: '#091222', border: '1px solid #1e3a5f', borderRadius: 8, color: '#f1f5f9', fontSize: '0.80rem' }}
+                style={{ width: '100%', padding: '8px 10px', background: 'var(--bg-secondary)', border: '1px solid var(--border)', borderRadius: 8, color: 'var(--text-primary)', fontSize: '0.80rem' }}
               >
                 <option value="0.0001">1e-4 (Fine-Tuning)</option>
                 <option value="0.001">1e-3 (Standard)</option>
@@ -241,8 +241,8 @@ export function DatasetIngestionPage() {
 
           {/* Progress & Log Console */}
           {trainLogs.length > 0 && (
-            <div style={{ marginTop: 14, background: '#070c18', border: '1px solid #1e3a5f', borderRadius: 8, padding: 10 }}>
-              <div style={{ height: 4, background: '#1e293b', borderRadius: 2, overflow: 'hidden', marginBottom: 8 }}>
+            <div style={{ marginTop: 14, background: 'var(--bg-secondary)', border: '1px solid var(--border)', borderRadius: 8, padding: 10 }}>
+              <div style={{ height: 4, background: 'var(--border)', borderRadius: 2, overflow: 'hidden', marginBottom: 8 }}>
                 <div style={{ width: `${trainProgress}%`, height: '100%', background: '#34d399', transition: 'width 0.3s ease' }} />
               </div>
               <div style={{ maxHeight: 100, overflowY: 'auto', fontFamily: 'JetBrains Mono, monospace', fontSize: '0.68rem', color: '#94a3b8', lineHeight: 1.6 }}>
@@ -266,7 +266,7 @@ export function DatasetIngestionPage() {
               Automated Data Profiling & Imputation Results: {profileResult.filename}
             </div>
             <span style={{ fontSize: '0.74rem', padding: '3px 9px', borderRadius: 20, background: 'rgba(16, 185, 129, 0.15)', color: '#34d399', border: '1px solid rgba(16, 185, 129, 0.3)' }}>
-              {profileResult.total_records} Records · {profileResult.total_features} Features
+              {profileResult.total_records} Records Â· {profileResult.total_features} Features
             </span>
           </div>
 
@@ -274,7 +274,7 @@ export function DatasetIngestionPage() {
           <div style={{ overflowX: 'auto', marginBottom: 18 }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.78rem', textAlign: 'left' }}>
               <thead>
-                <tr style={{ borderBottom: '1px solid #1e3a5f', color: '#8facc8' }}>
+                <tr style={{ borderBottom: '1px solid var(--border)', color: 'var(--text-secondary)' }}>
                   <th style={{ padding: '8px 10px' }}>Feature Name</th>
                   <th style={{ padding: '8px 10px' }}>Data Type</th>
                   <th style={{ padding: '8px 10px' }}>Missing Values</th>
@@ -290,7 +290,7 @@ export function DatasetIngestionPage() {
                   const stat = profileResult.feature_statistics[col] || {}
                   return (
                     <tr key={idx} style={{ borderBottom: '1px solid rgba(30, 58, 95, 0.5)', background: idx % 2 === 0 ? 'rgba(7, 12, 24, 0.5)' : 'transparent' }}>
-                      <td style={{ padding: '8px 10px', fontWeight: 700, color: '#f1f5f9' }}>{col}</td>
+                      <td style={{ padding: '8px 10px', fontWeight: 700, color: 'var(--text-primary)' }}>{col}</td>
                       <td style={{ padding: '8px 10px', color: '#94a3b8' }}>{miss.dtype || 'float'}</td>
                       <td style={{ padding: '8px 10px' }}>
                         {miss.null_count > 0 ? (
@@ -318,13 +318,13 @@ export function DatasetIngestionPage() {
           </div>
 
           {/* Sample Data Preview Table */}
-          <div style={{ fontSize: '0.80rem', fontWeight: 700, color: '#8facc8', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6 }}>
+          <div style={{ fontSize: '0.80rem', fontWeight: 700, color: 'var(--text-secondary)', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6 }}>
             <Table size={14} /> Normalized Sample Data Preview (First 8 Rows)
           </div>
-          <div style={{ overflowX: 'auto', background: '#070c18', padding: 10, borderRadius: 8, border: '1px solid #1e3a5f' }}>
+          <div style={{ overflowX: 'auto', background: 'var(--bg-secondary)', padding: 10, borderRadius: 8, border: '1px solid var(--border)' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.74rem', textAlign: 'left', fontFamily: 'JetBrains Mono, monospace' }}>
               <thead>
-                <tr style={{ borderBottom: '1px solid #1e3a5f', color: '#60a5fa' }}>
+                <tr style={{ borderBottom: '1px solid var(--border)', color: '#60a5fa' }}>
                   {profileResult.columns.map((col, i) => (
                     <th key={i} style={{ padding: '6px 8px' }}>{col}</th>
                   ))}
@@ -348,3 +348,4 @@ export function DatasetIngestionPage() {
     </div>
   )
 }
+

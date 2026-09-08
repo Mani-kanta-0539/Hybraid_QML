@@ -10,8 +10,6 @@ import {
   Activity,
   Brain,
   CheckCircle2,
-  Lock,
-  Layers,
   Sparkles,
   Headphones,
   Sliders,
@@ -63,13 +61,13 @@ export function HomePage() {
 
   return (
     <div className="home-page-container">
-      {/* ── HERO SQUIRCLE CONTAINER (Mediva & CarePlus Reference) ── */}
+      {/* ── HERO SQUIRCLE CONTAINER (CarePlus & Mediva Reference) ── */}
       <section className="hero-squircle-container animate-fade-in-up">
         {/* Pill Badge */}
         <div style={{ textAlign: 'center' }}>
           <div className="hero-pill-badge">
-            <Cpu size={14} />
-            <span>Quantum + Classical AI · Smart India Hackathon (SIH26139)</span>
+            <Activity size={14} color="var(--accent)" />
+            <span>HealthQure AI · Smart India Hackathon (SIH26139)</span>
           </div>
         </div>
 
@@ -81,12 +79,12 @@ export function HomePage() {
 
         {/* Subtitle */}
         <p className="hero-description" style={{ textAlign: 'center' }}>
-          Clinical-grade quantum-classical diagnostic platform. Leveraging 20-qubit transmon Hilbert spaces,
+          HealthQure is a clinical-grade quantum-classical diagnostic platform. Leveraging 20-qubit transmon Hilbert spaces,
           deep convolutional extractors, and Neyman-Pearson risk-asymmetric decision boundaries to diagnose
           oncology, cardiology, and dementia with verified precision.
         </p>
 
-        {/* 3 Trust Badges (Matching Mediva Architecture) */}
+        {/* 3 Trust Badges */}
         <div className="hero-trust-badges">
           <div className="trust-badge-item">
             <Shield size={16} className="badge-icon" />
@@ -103,7 +101,7 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* ── FLOATING OVER-THE-FOLD UTILITY BAR (CarePlus / Mediva Reference) ── */}
+      {/* ── FLOATING OVER-THE-FOLD UTILITY BAR (Non-Collapsing) ── */}
       <div className="floating-utility-wrapper animate-fade-in-up-delay">
         <div className="floating-utility-bar">
           {/* Segment 1: Disease Selector */}
@@ -167,9 +165,9 @@ export function HomePage() {
         </div>
       </div>
 
-      {/* ── SECTION: OUR CLINICAL DEPARTMENTS ── */}
+      {/* ── SECTION: OUR CLINICAL SPECIALIZATIONS ── */}
       <div className="section-header-block animate-fade-in-up-delay-2">
-        <h2 className="section-title">Our Clinical Diagnostic Specializations</h2>
+        <h2 className="section-title">Clinical Diagnostic Specializations</h2>
         <p className="section-subtitle">
           Specialized hybrid quantum architectures tailored for high-dimensional medical data modalities.
         </p>
@@ -189,7 +187,7 @@ export function HomePage() {
               onKeyDown={(e) => e.key === 'Enter' && navigate(mod.to)}
             >
               <div className="squircle-card-icon-box">
-                <Icon size={28} />
+                <Icon size={26} />
               </div>
               <div style={{ fontSize: '0.74rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.04em', color: 'var(--accent)', marginBottom: 6 }}>
                 {mod.subtitle}
@@ -215,10 +213,10 @@ export function HomePage() {
       {/* ── TEAL ENTERPRISE HEALTHCARE BANNER (Mediva Reference) ── */}
       <section className="healthcare-teal-banner">
         <div className="banner-lead-content">
-          <h3>Why Choose Quantum Healthcare AI?</h3>
+          <h3>Why Choose HealthQure Clinical AI?</h3>
           <p>
             Standard classical deep models struggle with complex non-linear clinical correlations.
-            Our platform projects patient physiological and radiomic data into 20-qubit Hilbert space
+            HealthQure projects patient physiological and radiomic data into 20-qubit Hilbert space
             where subtle multi-disease anomalies become linearly separable.
           </p>
         </div>
@@ -268,7 +266,7 @@ export function HomePage() {
             border: '1px solid var(--border)',
             boxShadow: 'var(--shadow-sm)'
           }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
               <div style={{
                 width: 36,
                 height: 36,
@@ -285,7 +283,7 @@ export function HomePage() {
                 <h4 style={{ fontSize: '0.96rem', fontWeight: 800, color: 'var(--text-primary)' }}>
                   Pulse-Level Hardware Transpilation
                 </h4>
-                <span style={{ fontSize: '0.76rem', color: 'var(--text-muted)' }}>
+                <span style={{ fontSize: '0.74rem', color: 'var(--text-muted)' }}>
                   IQM Garnet Native Gates: PRX(θ, φ) + CZ
                 </span>
               </div>
@@ -303,7 +301,7 @@ export function HomePage() {
             border: '1px solid var(--border)',
             boxShadow: 'var(--shadow-sm)'
           }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
               <div style={{
                 width: 36,
                 height: 36,
@@ -320,7 +318,7 @@ export function HomePage() {
                 <h4 style={{ fontSize: '0.96rem', fontWeight: 800, color: 'var(--text-primary)' }}>
                   Neyman-Pearson Risk Asymmetry
                 </h4>
-                <span style={{ fontSize: '0.76rem', color: 'var(--text-muted)' }}>
+                <span style={{ fontSize: '0.74rem', color: 'var(--text-muted)' }}>
                   Clinical Cost Model: Cost(FN) ≫ Cost(FP)
                 </span>
               </div>
@@ -333,14 +331,14 @@ export function HomePage() {
         </div>
 
         <div className="split-about-copy">
-          <div className="eyebrow-tag">ABOUT OUR CLINICAL ARCHITECTURE</div>
+          <div className="eyebrow-tag">ABOUT HEALTHQURE ARCHITECTURE</div>
           <h3>
             Committed to Precision. <br />
             Dedicated to <span className="highlight-word">Life.</span>
           </h3>
           <p>
             By combining ResNet-18 feature extraction with parameterized variational quantum circuits
-            and Havlíček quantum kernels, our multi-disease platform bridges the gap between theoretical
+            and Havlíček quantum kernels, HealthQure bridges the gap between theoretical
             quantum supremacy and everyday clinical hospital workflows.
           </p>
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
@@ -365,8 +363,8 @@ export function HomePage() {
       <div className="bottom-help-bar">
         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
           <div style={{
-            width: 46,
-            height: 46,
+            width: 44,
+            height: 44,
             borderRadius: 'var(--radius-md)',
             background: 'var(--accent-soft)',
             color: 'var(--accent)',

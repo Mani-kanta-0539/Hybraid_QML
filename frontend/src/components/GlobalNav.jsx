@@ -1,6 +1,6 @@
 ﻿import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Cpu, Scan, Heart, Home, BarChart3, Database, Brain, History, Sun, Moon } from 'lucide-react'
+import { Activity, Scan, Heart, Home, BarChart3, Database, Brain, History, Sun, Moon, ShieldCheck } from 'lucide-react'
 import { useTheme } from '../context/ThemeContext'
 import { DiagnosticHistoryDrawer } from './DiagnosticHistoryDrawer'
 
@@ -14,14 +14,30 @@ export function GlobalNav() {
     <>
       <nav className="global-nav">
         <div className="global-nav-inner">
-          {/* Brand */}
+          {/* Brand Logo & Name: HealthQure */}
           <Link to="/" className="nav-brand">
             <div className="nav-logo">
-              <Cpu size={22} color="white" />
+              <Activity size={22} color="white" strokeWidth={2.5} />
             </div>
             <div className="nav-brand-text">
-              <h1>Quantum Healthcare AI</h1>
-              <span>Hybrid Clinical Diagnostics</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                <h1 style={{ fontSize: '1.20rem', fontWeight: 800, letterSpacing: '-0.025em', color: 'var(--text-primary)' }}>
+                  Health<span style={{ color: 'var(--accent)' }}>Qure</span>
+                </h1>
+                <span style={{
+                  fontSize: '0.62rem',
+                  fontWeight: 800,
+                  textTransform: 'uppercase',
+                  padding: '2px 6px',
+                  borderRadius: 'var(--radius-pill)',
+                  background: 'var(--accent-soft)',
+                  color: 'var(--accent)',
+                  border: '1px solid var(--border)'
+                }}>
+                  QPU AI
+                </span>
+              </div>
+              <span>Clinical Diagnostic Suite</span>
             </div>
           </Link>
 
@@ -31,73 +47,61 @@ export function GlobalNav() {
               to="/"
               className={`nav-link ${path === '/' ? 'active' : ''}`}
             >
-              <div className="nav-icon blue">
-                <Home size={16} />
-              </div>
-              Home
+              <Home size={15} />
+              <span>Home</span>
             </Link>
 
             <Link
               to="/breast-cancer"
               className={`nav-link ${path.startsWith('/breast-cancer') ? 'active' : ''}`}
             >
-              <div className="nav-icon rose">
-                <Scan size={16} />
-              </div>
-              Breast Scanner
+              <Scan size={15} />
+              <span>Breast Scanner</span>
             </Link>
 
             <Link
               to="/heart-disease"
               className={`nav-link ${path.startsWith('/heart-disease') ? 'active' : ''}`}
             >
-              <div className="nav-icon emerald">
-                <Heart size={16} />
-              </div>
-              Heart QML
+              <Heart size={15} />
+              <span>Heart QML</span>
             </Link>
 
             <Link
               to="/alzheimers"
               className={`nav-link ${path.startsWith('/alzheimers') ? 'active' : ''}`}
             >
-              <div className="nav-icon amber">
-                <Brain size={16} />
-              </div>
-              Alzheimer's QML
+              <Brain size={15} />
+              <span>Alzheimer's QML</span>
             </Link>
 
             <Link
               to="/benchmarks"
               className={`nav-link ${path.startsWith('/benchmarks') ? 'active' : ''}`}
             >
-              <div className="nav-icon purple">
-                <BarChart3 size={16} />
-              </div>
-              Benchmarking
+              <BarChart3 size={15} />
+              <span>Benchmarking</span>
             </Link>
 
             <Link
               to="/ingestion"
               className={`nav-link ${path.startsWith('/ingestion') ? 'active' : ''}`}
             >
-              <div className="nav-icon cyan">
-                <Database size={16} />
-              </div>
-              Data Ingestion
+              <Database size={15} />
+              <span>Data Ingestion</span>
             </Link>
           </div>
 
-          {/* Right Action Cluster */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          {/* Right Action Controls */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0 }}>
             {/* Theme Toggle (Light / Dark) */}
             <button
               onClick={toggleTheme}
               className="theme-toggle-btn"
               title={theme === 'light' ? 'Switch to Dark Mode (Obsidian Cyan)' : 'Switch to Light Mode (Mediva Healthcare)'}
-              aria-label="Toggle visual theme"
+              aria-label="Toggle theme"
             >
-              {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
+              {theme === 'light' ? <Moon size={17} /> : <Sun size={17} />}
             </button>
 
             {/* Run History (SQLite) Pill Button */}
@@ -106,56 +110,57 @@ export function GlobalNav() {
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: 8,
-                padding: '0 18px',
-                height: 42,
-                background: 'var(--accent-soft)',
+                gap: 7,
+                padding: '0 16px',
+                height: 38,
+                background: 'var(--bg-secondary)',
                 border: '1px solid var(--border)',
                 borderRadius: 'var(--radius-pill)',
-                fontSize: '0.82rem',
+                fontSize: '0.80rem',
                 fontWeight: 700,
-                color: 'var(--accent)',
+                color: 'var(--text-primary)',
                 cursor: 'pointer',
                 transition: 'var(--transition)',
                 boxShadow: 'var(--shadow-sm)'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'var(--accent-soft-hover)'
-                e.currentTarget.style.transform = 'translateY(-1px)'
+                e.currentTarget.style.background = 'var(--accent-soft)'
+                e.currentTarget.style.color = 'var(--accent)'
+                e.currentTarget.style.borderColor = 'var(--accent)'
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'var(--accent-soft)'
-                e.currentTarget.style.transform = 'none'
+                e.currentTarget.style.background = 'var(--bg-secondary)'
+                e.currentTarget.style.color = 'var(--text-primary)'
+                e.currentTarget.style.borderColor = 'var(--border)'
               }}
             >
-              <History size={15} />
-              <span>Run History (SQLite)</span>
+              <History size={14} />
+              <span>Run History</span>
             </button>
 
-            {/* Live Telemetry Pill */}
+            {/* Live QPU Telemetry Pill */}
             <div style={{
               display: 'flex',
               alignItems: 'center',
-              gap: 8,
-              padding: '0 14px',
-              height: 42,
+              gap: 7,
+              padding: '0 12px',
+              height: 38,
               background: 'var(--normal-bg)',
               border: '1px solid var(--normal-border)',
               borderRadius: 'var(--radius-pill)',
-              fontSize: '0.78rem',
+              fontSize: '0.76rem',
               fontWeight: 700,
               color: 'var(--normal)',
-              flexShrink: 0
             }}>
               <span style={{
-                width: 8,
-                height: 8,
+                width: 7,
+                height: 7,
                 borderRadius: '50%',
                 background: 'var(--normal)',
-                boxShadow: '0 0 10px var(--normal)',
+                boxShadow: '0 0 8px var(--normal)',
                 display: 'block'
               }} />
-              IQM Online
+              <span>IQM Ready</span>
             </div>
           </div>
         </div>

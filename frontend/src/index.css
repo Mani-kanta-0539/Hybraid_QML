@@ -1,4 +1,4 @@
-﻿@import "tailwindcss";
+@import "tailwindcss";
 
 /* ═══════════════════════════════════════════════════════════════════════════════
    HEALTHQURE CLINICAL AI DESIGN SYSTEM ("UI-UX-PRO-MAX")
@@ -1079,7 +1079,15 @@ body {
 [data-theme="light"] div[style*="#0a0d18"],
 [data-theme="light"] div[style*="#111827"],
 [data-theme="light"] div[style*="#0f1829"],
-[data-theme="light"] div[style*="#0f1c30"] {
+[data-theme="light"] div[style*="#0f1c30"],
+[data-theme="light"] div[style*="#0a1220"],
+[data-theme="light"] div[style*="#040812"],
+[data-theme="light"] div[style*="#0f172a"],
+[data-theme="light"] div[style*="#1e293b"],
+[data-theme="light"] pre[style*="#090d16"],
+[data-theme="light"] pre[style*="#040812"],
+[data-theme="light"] pre[style*="#0f172a"],
+[data-theme="light"] pre[style*="#0f1c30"] {
   background-color: var(--bg-secondary) !important;
   border-color: var(--border) !important;
   color: var(--text-primary) !important;
@@ -1088,13 +1096,29 @@ body {
 [data-theme="light"] span[style*="#f1f5f9"],
 [data-theme="light"] span[style*="#eef4ff"],
 [data-theme="light"] span[style*="#f0f6ff"],
+[data-theme="light"] span[style*="#cbd5e1"],
+[data-theme="light"] span[style*="#e2e8f0"],
+[data-theme="light"] b[style*="#f1f5f9"],
+[data-theme="light"] b[style*="#e2e8f0"],
 [data-theme="light"] h1[style*="#f1f5f9"],
 [data-theme="light"] h2[style*="#f1f5f9"],
 [data-theme="light"] h3[style*="#f1f5f9"],
 [data-theme="light"] h4[style*="#f1f5f9"],
 [data-theme="light"] div[style*="#eef4ff"],
-[data-theme="light"] div[style*="#f1f5f9"] {
+[data-theme="light"] div[style*="#f1f5f9"],
+[data-theme="light"] div[style*="#cbd5e1"],
+[data-theme="light"] div[style*="#e2e8f0"],
+[data-theme="light"] td[style*="#cbd5e1"],
+[data-theme="light"] td[style*="#f1f5f9"],
+[data-theme="light"] td[style*="#e2e8f0"] {
   color: var(--text-primary) !important;
+}
+
+[data-theme="light"] tr[style*="rgba(255, 255, 255"],
+[data-theme="light"] tr[style*="rgba(255,255,255"],
+[data-theme="light"] div[style*="rgba(255, 255, 255, 0.1)"],
+[data-theme="light"] div[style*="rgba(255,255,255,0.1)"] {
+  border-color: var(--border) !important;
 }
 
 [data-theme="light"] select,

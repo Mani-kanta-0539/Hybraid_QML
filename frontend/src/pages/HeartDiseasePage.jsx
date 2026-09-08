@@ -146,8 +146,8 @@ function HeartPatientForm({ input, onChange, onSubmit, loading, modelType = 'qsv
     <form onSubmit={onSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
       <DCard style={{ padding: 20 }}>
         {/* Model Architecture Selector */}
-        <div style={{ marginBottom: 16, background: '#0a1220', border: `1px solid ${T.border}`, borderRadius: 12, padding: 14 }}>
-          <label style={{ fontSize: '0.78rem', fontWeight: 800, color: '#93c5fd', display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
+        <div style={{ marginBottom: 16, background: T.card2, border: `1px solid ${T.border}`, borderRadius: 12, padding: 14 }}>
+          <label style={{ fontSize: '0.78rem', fontWeight: 800, color: T.accent, display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
             <Cpu size={15} color="#60a5fa" /> Quantum Model Architecture & Hardware Engine:
           </label>
           <select
@@ -514,7 +514,7 @@ function HeartResultCard({ result, patientInput }) {
 
       {/* Real Hardware Telemetry with M3 QEM */}
       {result.hardware_telemetry && (
-        <div style={{ background: '#070c18', border: '1px solid #3b82f640', borderRadius: 10, padding: 12 }}>
+        <div style={{ background: T.card2, border: '1px solid var(--border)', borderRadius: 10, padding: 12 }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
             <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#60a5fa', display: 'flex', alignItems: 'center', gap: 6 }}>
               <Cpu size={14} /> Real Hardware Telemetry: {result.hardware_telemetry.backend}
@@ -524,12 +524,12 @@ function HeartResultCard({ result, patientInput }) {
             </span>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(90px, 1fr))', gap: 6, fontSize: '0.72rem', color: T.textSec, marginBottom: 6 }}>
-            <div>Job ID: <b style={{ color: '#f1f5f9' }}>{(result.hardware_telemetry.job_id || '').slice(0, 8)}...</b></div>
-            <div>Qubits: <b style={{ color: '#f1f5f9' }}>{result.hardware_telemetry.qubits_used} Transmons</b></div>
-            <div>Shots: <b style={{ color: '#f1f5f9' }}>{result.hardware_telemetry.shots}</b></div>
+            <div>Job ID: <b style={{ color: T.text }}>{(result.hardware_telemetry.job_id || '').slice(0, 8)}...</b></div>
+            <div>Qubits: <b style={{ color: T.text }}>{result.hardware_telemetry.qubits_used} Transmons</b></div>
+            <div>Shots: <b style={{ color: T.text }}>{result.hardware_telemetry.shots}</b></div>
             <div>QPU Latency: <b style={{ color: '#60a5fa' }}>{result.hardware_telemetry.physical_latency_ms} ms</b></div>
           </div>
-          <div style={{ fontSize: '0.70rem', color: '#94a3b8', fontStyle: 'italic', borderTop: '1px dashed #1e3a5f', paddingTop: 4 }}>
+          <div style={{ fontSize: '0.70rem', color: T.textMuted, fontStyle: 'italic', borderTop: '1px dashed var(--border)', paddingTop: 4 }}>
             📡 {result.hardware_telemetry.status_note}
           </div>
         </div>

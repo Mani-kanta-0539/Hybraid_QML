@@ -368,10 +368,10 @@ return (
                   <Cpu size={13} /> Hardware Telemetry (Espoo, Finland)
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(110px, 1fr))', gap: 6, fontSize: '0.70rem', color: '#94a3b8' }}>
-                  <div>Backend: <b style={{ color: '#f1f5f9' }}>{qTel.backend || selectedRun.hardware_backend}</b></div>
-                  <div>Job ID: <b style={{ color: '#f1f5f9' }}>{(qTel.job_id || '').slice(0, 10)}...</b></div>
-                  <div>Qubits: <b style={{ color: '#f1f5f9' }}>{qTel.qubits_used || 4} Transmons</b></div>
-                  <div>Shots: <b style={{ color: '#f1f5f9' }}>{qTel.shots || 1024}</b></div>
+                  <div>Backend: <b style={{ color: 'var(--text-primary)' }}>{qTel.backend || selectedRun.hardware_backend}</b></div>
+                  <div>Job ID: <b style={{ color: 'var(--text-primary)' }}>{(qTel.job_id || '').slice(0, 10)}...</b></div>
+                  <div>Qubits: <b style={{ color: 'var(--text-primary)' }}>{qTel.qubits_used || 4} Transmons</b></div>
+                  <div>Shots: <b style={{ color: 'var(--text-primary)' }}>{qTel.shots || 1024}</b></div>
                   <div>QPU Time: <b style={{ color: '#60a5fa' }}>{qTel.physical_latency_ms || selectedRun.latency_ms?.toFixed(0)} ms</b></div>
                 </div>
               </div>
@@ -381,13 +381,13 @@ return (
           <details style={{ fontSize: '0.70rem', color: '#7da8cc' }}>
             <summary style={{ cursor: 'pointer', fontWeight: 600, color: '#93c5fd' }}>Inspect SQLite Stored JSON Payload</summary>
             <pre style={{
-              background: '#040812',
+              background: 'var(--bg-secondary)',
               padding: 10,
               borderRadius: 6,
-              border: '1px solid #1a3356',
+              border: '1px solid var(--border)',
               overflowX: 'auto',
               maxHeight: 180,
-              color: '#38bdf8',
+              color: 'var(--accent)',
               fontFamily: 'JetBrains Mono, monospace',
               marginTop: 6
             }}>

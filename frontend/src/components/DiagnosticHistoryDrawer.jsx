@@ -392,7 +392,7 @@ export function DiagnosticHistoryDrawer({ isOpen, onClose }) {
 
                       <div style={{ minWidth: 0 }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-                          <span style={{ fontWeight: 700, fontSize: 13, color: '#f1f5f9' }}>
+                          <span style={{ fontWeight: 700, fontSize: 13, color: 'var(--text-primary)' }}>
                             {item.patient_id}
                           </span>
                           <span style={{
@@ -600,17 +600,17 @@ export function DiagnosticHistoryDrawer({ isOpen, onClose }) {
               {/* Quantum Telemetry */}
               {activeItem.quantum_telemetry && (
                 <div>
-                  <div style={{ fontSize: 12, fontWeight: 600, color: '#cbd5e1', marginBottom: 6 }}>
+                  <div style={{ fontSize: 12, fontWeight: 600, color: 'var(--text-secondary)', marginBottom: 6 }}>
                     Quantum Circuit & Hardware Telemetry
                   </div>
                   <pre style={{
-                    background: '#090d16',
+                    background: 'var(--bg-secondary)',
                     padding: 10,
                     borderRadius: 8,
                     fontSize: 11,
                     color: '#a78bfa',
                     overflowX: 'auto',
-                    border: '1px solid rgba(255, 255, 255, 0.06)',
+                    border: '1px solid var(--border)',
                     maxHeight: 180,
                   }}>
                     {JSON.stringify(activeItem.quantum_telemetry, null, 2)}
@@ -621,17 +621,17 @@ export function DiagnosticHistoryDrawer({ isOpen, onClose }) {
               {/* Input Parameters */}
               {activeItem.input_summary && (
                 <div>
-                  <div style={{ fontSize: 12, fontWeight: 600, color: '#cbd5e1', marginBottom: 6 }}>
+                  <div style={{ fontSize: 12, fontWeight: 600, color: 'var(--text-secondary)', marginBottom: 6 }}>
                     Input Parameters
                   </div>
                   <pre style={{
-                    background: '#090d16',
+                    background: 'var(--bg-secondary)',
                     padding: 10,
                     borderRadius: 8,
                     fontSize: 11,
                     color: '#94a3b8',
                     overflowX: 'auto',
-                    border: '1px solid rgba(255, 255, 255, 0.06)',
+                    border: '1px solid var(--border)',
                   }}>
                     {JSON.stringify(activeItem.input_summary, null, 2)}
                   </pre>

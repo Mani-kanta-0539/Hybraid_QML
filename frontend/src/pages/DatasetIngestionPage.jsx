@@ -1,4 +1,4 @@
-﻿import React, { useState, useRef } from 'react'
+import React, { useState, useRef } from 'react'
 import axios from 'axios'
 import {
   Upload, Database, RefreshCw, CheckCircle2, AlertTriangle, FileSpreadsheet,
@@ -60,7 +60,7 @@ export function DatasetIngestionPage() {
     try {
       if (modality === 'heart') {
         setTrainProgress(25)
-        setTrainLogs(prev => [...prev, '[Quantum Prep] Computing HavlÃ­Äek ZZ-feature maps across 4 qubits...'])
+        setTrainLogs(prev => [...prev, '[Quantum Prep] Computing Havlíček ZZ-feature maps across 4 qubits...'])
         
         // Retrain backend QSVC
         const res = await axios.post(`${API}/train/heart`, { n_samples: 180 })
@@ -88,11 +88,11 @@ export function DatasetIngestionPage() {
       setTrainingState('completed')
       setTrainLogs(prev => [
         ...prev,
-        'âœ… [Complete] Model weights saved to checkpoints/ and registered in live inference cache!'
+        '✓ [Complete] Model weights saved to checkpoints/ and registered in live inference cache!'
       ])
     } catch (e) {
       setTrainingState('idle')
-      setTrainLogs(prev => [...prev, `âŒ [Error] Training failed: ${e.message}`])
+      setTrainLogs(prev => [...prev, `✕ [Error] Training failed: ${e.message}`])
     }
   }
 
@@ -113,7 +113,7 @@ export function DatasetIngestionPage() {
         {/* Card 1: Data Ingestion & Drag-and-Drop */}
         <div className="card" style={{ padding: 22 }}>
           <div style={{ fontSize: '0.90rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: 8 }}>
-            ðŸ“¥ Ingest Biomedical Dataset (.CSV / Scans)
+            Ingest Biomedical Dataset (.CSV / Scans)
           </div>
           <p style={{ fontSize: '0.76rem', color: 'var(--text-secondary)', marginBottom: 16 }}>
             Upload tabular clinical electronic health records or patient cohorts. The ingestion engine automatically profiles missing values and verifies feature normalization.
@@ -134,7 +134,7 @@ export function DatasetIngestionPage() {
               style={{ display: 'none' }}
               onChange={e => handleFile(e.target.files[0])}
             />
-            <div className="dropzone-icon" style={{ fontSize: '2.2rem', marginBottom: 8 }}>ðŸ“Š</div>
+            <div className="dropzone-icon" style={{ marginBottom: 8 }}><Database size={36} color="var(--accent)" /></div>
             <div className="dropzone-text" style={{ fontSize: '0.92rem', fontWeight: 700 }}>
               {file ? file.name : 'Drop Clinical CSV Dataset Here'}
             </div>
@@ -144,7 +144,7 @@ export function DatasetIngestionPage() {
           </div>
 
           {profileError && (
-            <div className="error-banner" style={{ marginTop: 12 }}>âš ï¸ {profileError}</div>
+            <div className="error-banner" style={{ marginTop: 12 }}>{profileError}</div>
           )}
 
           {loadingProfile && (
@@ -157,7 +157,7 @@ export function DatasetIngestionPage() {
         {/* Card 2: Retraining Configuration Controller */}
         <div className="card" style={{ padding: 22 }}>
           <div style={{ fontSize: '0.90rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: 8 }}>
-            âš™ï¸ Hybrid Model Retraining Workflow
+            Hybrid Model Retraining Workflow
           </div>
           <p style={{ fontSize: '0.76rem', color: 'var(--text-secondary)', marginBottom: 14 }}>
             Configure hyperparameters and trigger automated quantum-classical hybrid retraining to update diagnostic weights.
@@ -173,7 +173,7 @@ export function DatasetIngestionPage() {
                 onChange={e => setModality(e.target.value)}
                 style={{ width: '100%', padding: '8px 10px', background: 'var(--bg-secondary)', border: '1px solid var(--border)', borderRadius: 8, color: 'var(--text-primary)', fontSize: '0.80rem' }}
               >
-                <option value="heart">Coronary CAD (HavlÃ­Äek QSVC)</option>
+                <option value="heart">Coronary CAD (Havlíček QSVC)</option>
                 <option value="breast">Breast Cancer (ResNet + VQC)</option>
               </select>
             </div>
@@ -266,7 +266,7 @@ export function DatasetIngestionPage() {
               Automated Data Profiling & Imputation Results: {profileResult.filename}
             </div>
             <span style={{ fontSize: '0.74rem', padding: '3px 9px', borderRadius: 20, background: 'rgba(16, 185, 129, 0.15)', color: '#34d399', border: '1px solid rgba(16, 185, 129, 0.3)' }}>
-              {profileResult.total_records} Records Â· {profileResult.total_features} Features
+              {profileResult.total_records} Records · {profileResult.total_features} Features
             </span>
           </div>
 
@@ -334,7 +334,7 @@ export function DatasetIngestionPage() {
                 {profileResult.preview_rows.map((row, rIdx) => (
                   <tr key={rIdx} style={{ borderBottom: '1px solid rgba(30, 58, 95, 0.3)' }}>
                     {profileResult.columns.map((col, cIdx) => (
-                      <td key={cIdx} style={{ padding: '6px 8px', color: '#cbd5e1' }}>
+                      <td key={cIdx} style={{ padding: '6px 8px', color: 'var(--text-primary)' }}>
                         {String(row[col])}
                       </td>
                     ))}

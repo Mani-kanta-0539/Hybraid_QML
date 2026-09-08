@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import {
   BarChart3, Cpu, ShieldCheck, Zap, Layers, Sparkles,
@@ -88,7 +88,7 @@ export function ResearchBenchmarkingPage() {
         <div className="card" style={{ padding: 22, background: 'linear-gradient(135deg, rgba(13, 22, 38, 0.95), rgba(20, 30, 55, 0.95))' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
             <span style={{ fontSize: '0.82rem', fontWeight: 800, textTransform: 'uppercase', color: '#c084fc', letterSpacing: '0.05em' }}>
-              âš›ï¸ Parameter Footprint Efficiency
+              Parameter Footprint Efficiency
             </span>
             <span style={{ fontSize: '0.75rem', fontWeight: 800, padding: '2px 8px', borderRadius: 20, background: 'rgba(16, 185, 129, 0.2)', color: '#34d399', border: '1px solid rgba(16, 185, 129, 0.4)' }}>
               -99.93% Parameters
@@ -118,7 +118,7 @@ export function ResearchBenchmarkingPage() {
         <div className="card" style={{ padding: 22, background: 'linear-gradient(135deg, rgba(13, 22, 38, 0.95), rgba(15, 35, 45, 0.95))' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
             <span style={{ fontSize: '0.82rem', fontWeight: 800, textTransform: 'uppercase', color: '#34d399', letterSpacing: '0.05em' }}>
-              ðŸ“ˆ Low-Data Generalization (15% Sample)
+              Low-Data Generalization (15% Sample)
             </span>
             <span style={{ fontSize: '0.75rem', fontWeight: 800, padding: '2px 8px', borderRadius: 20, background: 'rgba(59, 130, 246, 0.2)', color: '#60a5fa', border: '1px solid rgba(59, 130, 246, 0.4)' }}>
               +8.3% Quantum Gain
@@ -149,7 +149,7 @@ export function ResearchBenchmarkingPage() {
       <div className="card" style={{ padding: 22, marginBottom: 24 }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
           <div style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--text-primary)' }}>
-            ðŸ“Š Unified Multi-Model Diagnostic Benchmark (Imaging & Tabular CAD)
+            Unified Multi-Model Diagnostic Benchmark (Imaging & Tabular CAD)
           </div>
           <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>Evaluated across 5 Model Architectures</span>
         </div>
@@ -172,12 +172,12 @@ export function ResearchBenchmarkingPage() {
             <tbody>
               {models.map((m, idx) => (
                 <tr key={idx} style={{ borderBottom: '1px solid rgba(30, 58, 95, 0.5)', background: idx % 2 === 0 ? 'rgba(7, 12, 24, 0.5)' : 'transparent' }}>
-                  <td style={{ padding: '12px', fontWeight: 700, color: '#f1f5f9' }}>
-                    {m.id === 'classical_resnet' && 'ðŸ† '}
-                    {m.id === 'hybrid_vqc' && 'âš›ï¸ '}
-                    {m.id === 'iqm_garnet_qpu' && 'ðŸŒ '}
-                    {m.id === 'classical_svm' && 'ðŸ§  '}
-                    {m.id === 'quantum_qsvc' && 'ðŸ«€ '}
+                  <td style={{ padding: '12px', fontWeight: 700, color: 'var(--text-primary)' }}>
+                    {m.id === 'classical_resnet' && ''}
+                    {m.id === 'hybrid_vqc' && ''}
+                    {m.id === 'iqm_garnet_qpu' && ''}
+                    {m.id === 'classical_svm' && 'Classical SVM: '}
+                    {m.id === 'quantum_qsvc' && 'Havlíček QSVC: '}
                     {m.name}
                   </td>
                   <td style={{ padding: '12px', color: '#94a3b8' }}>{m.modality}</td>
@@ -196,7 +196,7 @@ export function ResearchBenchmarkingPage() {
                   <td style={{ padding: '12px', fontFamily: 'JetBrains Mono, monospace', fontWeight: 700, color: m.trainable_parameters < 50 ? '#34d399' : '#f87171' }}>
                     {m.trainable_parameters.toLocaleString()}
                   </td>
-                  <td style={{ padding: '12px', fontFamily: 'JetBrains Mono, monospace', fontWeight: 700, color: '#f1f5f9' }}>
+                  <td style={{ padding: '12px', fontFamily: 'JetBrains Mono, monospace', fontWeight: 700, color: 'var(--text-primary)' }}>
                     {m.accuracy_pct.toFixed(1)}%
                   </td>
                   <td style={{ padding: '12px', fontFamily: 'JetBrains Mono, monospace', fontWeight: 700, color: '#34d399' }}>
@@ -224,10 +224,10 @@ export function ResearchBenchmarkingPage() {
         <div className="card" style={{ padding: 22 }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
             <div style={{ fontSize: '0.90rem', fontWeight: 800, color: 'var(--text-primary)' }}>
-              ðŸ“ˆ Interactive ROC-AUC Diagnostic Curves
+              Interactive ROC-AUC Diagnostic Curves
             </div>
             <span style={{ fontSize: '0.74rem', color: '#60a5fa', fontFamily: 'JetBrains Mono, monospace' }}>
-              Operating Point: Ï„ = {operatingTau.toFixed(2)}
+              Operating Point: τ = {operatingTau.toFixed(2)}
             </span>
           </div>
 
@@ -245,7 +245,7 @@ export function ResearchBenchmarkingPage() {
                 <Legend wrapperStyle={{ fontSize: '0.75rem', paddingTop: 6 }} />
                 <Line data={rocCurves.classical_resnet || []} type="monotone" dataKey="tpr" stroke="#10b981" strokeWidth={2.5} dot={false} name="Classical ResNet-18 (AUC 0.94)" />
                 <Line data={rocCurves.hybrid_vqc || []} type="monotone" dataKey="tpr" stroke="#8b5cf6" strokeWidth={2.5} dot={false} name="PennyLane 4-Qubit VQC (AUC 0.89)" />
-                <Line data={rocCurves.quantum_qsvc || []} type="monotone" dataKey="tpr" stroke="#38bdf8" strokeWidth={2.5} dot={false} name="HavlÃ­Äek QSVC (AUC 0.88)" />
+                <Line data={rocCurves.quantum_qsvc || []} type="monotone" dataKey="tpr" stroke="#38bdf8" strokeWidth={2.5} dot={false} name="Havlíček QSVC (AUC 0.88)" />
                 <ReferenceDot x={getOperatingPoint('classical_resnet').fpr} y={getOperatingPoint('classical_resnet').tpr} r={6} fill="#ef4444" stroke="#ffffff" />
               </LineChart>
             </ResponsiveContainer>
@@ -254,9 +254,9 @@ export function ResearchBenchmarkingPage() {
           {/* Operating Point Threshold Slider */}
           <div style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)', borderRadius: 10, padding: 12 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.76rem', fontWeight: 700, marginBottom: 4 }}>
-              <span style={{ color: 'var(--text-secondary)' }}>Diagnostic Decision Threshold (Ï„):</span>
+              <span style={{ color: 'var(--text-secondary)' }}>Diagnostic Decision Threshold (τ):</span>
               <span style={{ color: operatingTau <= 0.4 ? '#34d399' : '#fbbf24', fontFamily: 'JetBrains Mono, monospace' }}>
-                Ï„ = {operatingTau.toFixed(2)} ({operatingTau <= 0.4 ? 'Screening Mode >95% Recall' : 'Balanced Mode'})
+                τ = {operatingTau.toFixed(2)} ({operatingTau <= 0.4 ? 'Screening Mode >95% Recall' : 'Balanced Mode'})
               </span>
             </div>
             <input
@@ -274,7 +274,7 @@ export function ResearchBenchmarkingPage() {
         {/* Confusion Matrices Card */}
         <div className="card" style={{ padding: 22 }}>
           <div style={{ fontSize: '0.90rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: 12 }}>
-            ðŸŽ¯ Confusion Matrices: Classical vs. Quantum VQC
+            Confusion Matrices: Classical vs. Quantum VQC
           </div>
           <p style={{ fontSize: '0.76rem', color: 'var(--text-secondary)', marginBottom: 16 }}>
             Per-class test set evaluation across Normal (Class 0), Benign (Class 1), and Malignant (Class 2).
@@ -346,16 +346,16 @@ export function ResearchBenchmarkingPage() {
         </div>
       </div>
 
-      {/* HavlÃ­Äek Quantum Kernel Matrix Heatmap */}
+      {/* Havlíček Quantum Kernel Matrix Heatmap */}
       {kernelData && (
         <div className="card" style={{ padding: 22, marginBottom: 24 }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14, flexWrap: 'wrap', gap: 10 }}>
             <div>
               <div style={{ fontSize: '0.90rem', fontWeight: 800, color: 'var(--text-primary)' }}>
-                âš›ï¸ HavlÃ­Äek Quantum Kernel Matrix vs. Classical Linear Kernel Heatmap
+                Havlíček Quantum Kernel Matrix vs. Classical Linear Kernel Heatmap
               </div>
               <div style={{ fontSize: '0.74rem', color: 'var(--text-secondary)', marginTop: 2 }}>
-                Pairwise patient state fidelity: K(xáµ¢, xâ±¼) = |âŸ¨Î¦(xáµ¢)|Î¦(xâ±¼)âŸ©|Â² for CAD and Normal patient clusters
+                Pairwise patient state fidelity: K(x_i, x_j) = |⟨Φ(x_i)|Φ(x_j)⟩|² for CAD and Normal patient clusters
               </div>
             </div>
             <div style={{ display: 'flex', gap: 6 }}>
@@ -366,14 +366,14 @@ export function ResearchBenchmarkingPage() {
                   fontSize: '0.72rem',
                   padding: '4px 10px',
                   borderRadius: 6,
-                  background: activeMatrix === 'quantum' ? '#2563eb' : '#0f1c30',
-                  color: '#f1f5f9',
+                  background: activeMatrix === 'quantum' ? 'var(--accent)' : 'var(--bg-secondary)',
+                  color: activeMatrix === 'quantum' ? '#ffffff' : 'var(--text-secondary)',
                   border: '1px solid var(--border)',
                   cursor: 'pointer',
                   fontWeight: 600
                 }}
               >
-                Quantum ZZ-Kernel (2.41Ã— Margin)
+                Quantum ZZ-Kernel (2.41× Margin)
               </button>
               <button
                 type="button"
@@ -382,8 +382,8 @@ export function ResearchBenchmarkingPage() {
                   fontSize: '0.72rem',
                   padding: '4px 10px',
                   borderRadius: 6,
-                  background: activeMatrix === 'classical' ? '#2563eb' : '#0f1c30',
-                  color: '#f1f5f9',
+                  background: activeMatrix === 'classical' ? 'var(--accent)' : 'var(--bg-secondary)',
+                  color: activeMatrix === 'quantum' ? '#ffffff' : 'var(--text-secondary)',
                   border: '1px solid var(--border)',
                   cursor: 'pointer',
                   fontWeight: 600
@@ -436,7 +436,7 @@ export function ResearchBenchmarkingPage() {
           </div>
 
           <div style={{ marginTop: 10, fontSize: '0.74rem', color: '#94a3b8' }}>
-            ðŸ’¡ <b>Separation Advantage:</b> {kernelData.note}
+            <b>Separation Advantage:</b> {kernelData.note}
           </div>
         </div>
       )}
@@ -448,7 +448,7 @@ export function ResearchBenchmarkingPage() {
             <Sparkles size={18} />
           </div>
           <div>
-            <h2 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#f1f5f9', margin: 0 }}>
+            <h2 style={{ fontSize: '1.05rem', fontWeight: 800, color: activeMatrix === 'quantum' ? '#ffffff' : 'var(--text-secondary)', margin: 0 }}>
               Future Sights & Next-Generation Architectural Roadmap
             </h2>
             <div style={{ fontSize: '0.74rem', color: '#94a3b8' }}>Scalable research extensions to extend the platform beyond SIH26139</div>
@@ -460,10 +460,10 @@ export function ResearchBenchmarkingPage() {
           <div style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)', borderRadius: 10, padding: 16 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
               <div style={{ width: 26, height: 26, borderRadius: 6, background: 'rgba(59, 130, 246, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#60a5fa', fontSize: '0.75rem', fontWeight: 800 }}>1</div>
-              <div style={{ fontWeight: 700, color: '#f1f5f9', fontSize: '0.84rem' }}>Multi-Modal Cross-Attention Fusion</div>
+              <div style={{ fontWeight: 700, color: activeMatrix === 'quantum' ? '#ffffff' : 'var(--text-secondary)', fontSize: '0.84rem' }}>Multi-Modal Cross-Attention Fusion</div>
             </div>
             <p style={{ fontSize: '0.76rem', color: '#94a3b8', lineHeight: 1.55 }}>
-              Embeds 4 acoustic visual features into Qubits 0â€“1 and 4 WDBC biopsy cellular features into Qubits 2â€“3. Cross-modal CZ/CNOT entangling gates learn non-linear correlations between macroscopic lesion borders and microscopic nuclear concavity.
+              Embeds 4 acoustic visual features into Qubits 0–1 and 4 WDBC biopsy cellular features into Qubits 2–3. Cross-modal CZ/CNOT entangling gates learn non-linear correlations between macroscopic lesion borders and microscopic nuclear concavity.
             </p>
           </div>
 
@@ -471,7 +471,7 @@ export function ResearchBenchmarkingPage() {
           <div style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)', borderRadius: 10, padding: 16 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
               <div style={{ width: 26, height: 26, borderRadius: 6, background: 'rgba(16, 185, 129, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#34d399', fontSize: '0.75rem', fontWeight: 800 }}>2</div>
-              <div style={{ fontWeight: 700, color: '#f1f5f9', fontSize: '0.84rem' }}>Genomic High-Dimensional Scaling</div>
+              <div style={{ fontWeight: 700, color: activeMatrix === 'quantum' ? '#ffffff' : 'var(--text-secondary)', fontSize: '0.84rem' }}>Genomic High-Dimensional Scaling</div>
             </div>
             <p style={{ fontSize: '0.76rem', color: '#94a3b8', lineHeight: 1.55 }}>
               Directly addresses the problem statement's genomics scope by ingesting METABRIC/TCGA-BRCA RNA-Seq expression profiles. PCA selects top biomarkers (BRCA1, BRCA2, ESR1, ERBB2) mapped into 16-dimensional quantum state space.
@@ -482,10 +482,10 @@ export function ResearchBenchmarkingPage() {
           <div style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)', borderRadius: 10, padding: 16 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
               <div style={{ width: 26, height: 26, borderRadius: 6, background: 'rgba(139, 92, 246, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#c084fc', fontSize: '0.75rem', fontWeight: 800 }}>3</div>
-              <div style={{ fontWeight: 700, color: '#f1f5f9', fontSize: '0.84rem' }}>Federated Quantum Learning (FQML)</div>
+              <div style={{ fontWeight: 700, color: activeMatrix === 'quantum' ? '#ffffff' : 'var(--text-secondary)', fontSize: '0.84rem' }}>Federated Quantum Learning (FQML)</div>
             </div>
             <p style={{ fontSize: '0.76rem', color: '#94a3b8', lineHeight: 1.55 }}>
-              Enables multiple hospital centers to train local hybrid models on private patient records without transferring raw scans. Only parameterized quantum rotation angles (Î¸) are federated to a central QPU server, adhering to strict HIPAA/GDPR standards.
+              Enables multiple hospital centers to train local hybrid models on private patient records without transferring raw scans. Only parameterized quantum rotation angles (θ) are federated to a central QPU server, adhering to strict HIPAA/GDPR standards.
             </p>
           </div>
         </div>

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { API_BASE } from '../config/api'
 
-const API = 'http://127.0.0.1:8000'
+const API = API_BASE
 const RISK_COLORS = { LOW: '#10b981', MODERATE: '#f59e0b', HIGH: '#ef4444' }
 
 // ─── Sub-Page 1: Patient Form & Results ─────────────────────────────────────

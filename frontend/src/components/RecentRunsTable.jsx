@@ -12,8 +12,7 @@ import {
   Layers,
   Zap
 } from 'lucide-react'
-
-const API_BASE = 'http://127.0.0.1:8000'
+import { API_BASE } from '../config/api'
 
 export function RecentRunsTable({ disease, title = 'Recent Diagnostic Runs (SQLite)', limit = 5, refreshTrigger = 0 }) {
   const [runs, setRuns] = useState([])
@@ -30,7 +29,7 @@ export function RecentRunsTable({ disease, title = 'Recent Diagnostic Runs (SQLi
       const res = await fetch(url)
       if (res.ok) {
         const data = await res.json()
-        setRuns(data)
+        setRuns(Array.isArray(data) ? data : (data.runs || []))
       }
     } catch (e) {
       console.error('Failed to fetch recent runs:', e)

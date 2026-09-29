@@ -18,8 +18,7 @@ import {
   ChevronRight,
   Database
 } from 'lucide-react'
-
-const API_BASE = 'http://127.0.0.1:8000'
+import { API_BASE } from '../config/api'
 
 export function DiagnosticHistoryDrawer({ isOpen, onClose }) {
   const [history, setHistory] = useState([])
@@ -45,7 +44,7 @@ export function DiagnosticHistoryDrawer({ isOpen, onClose }) {
       const res = await fetch(url)
       if (res.ok) {
         const data = await res.json()
-        setHistory(data)
+        setHistory(Array.isArray(data) ? data : (data.runs || []))
       }
     } catch (e) {
       console.error('Failed to fetch history:', e)

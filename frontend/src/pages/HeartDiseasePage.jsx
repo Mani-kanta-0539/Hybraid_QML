@@ -14,8 +14,9 @@ import {
 } from 'recharts'
 import { QiskitCircuitViewer } from '../components/QiskitCircuitViewer'
 import { RecentRunsTable } from '../components/RecentRunsTable'
+import { API_BASE } from '../config/api'
 
-const API = 'http://127.0.0.1:8000'
+const API = API_BASE
 
 /* ── Dynamic Design System Tokens ────────────────────────────── */
 const T = {

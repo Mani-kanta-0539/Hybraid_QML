@@ -21,8 +21,7 @@ import {
 } from 'lucide-react'
 import { QiskitCircuitViewer } from '../components/QiskitCircuitViewer'
 import { RecentRunsTable } from '../components/RecentRunsTable'
-
-const API_BASE = 'http://127.0.0.1:8000'
+import { API_BASE } from '../config/api'
 
 export function AlzheimersPage() {
   const [activeTab, setActiveTab] = useState('mri')

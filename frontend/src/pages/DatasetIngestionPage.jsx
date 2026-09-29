@@ -4,8 +4,9 @@ import {
   Upload, Database, RefreshCw, CheckCircle2, AlertTriangle, FileSpreadsheet,
   Layers, Play, CheckCircle, Sparkles, Sliders, Table, ArrowRight
 } from 'lucide-react'
+import { API_BASE } from '../config/api'
 
-const API = 'http://127.0.0.1:8000'
+const API = API_BASE
 
 export function DatasetIngestionPage() {
   const [file, setFile] = useState(null)

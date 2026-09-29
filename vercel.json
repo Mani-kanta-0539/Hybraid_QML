@@ -1,93 +1,13 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "services": {
-    "app": {
-      "root": ".",
-      "framework": "fastapi",
-      "entrypoint": "api/main.py"
-    },
-    "frontend": {
-      "root": "frontend",
-      "framework": "vite",
-      "bindings": [
-        {
-          "type": "service",
-          "service": "app",
-          "format": "url",
-          "env": "APP_URL"
-        }
-      ]
-    }
-  },
+  "buildCommand": "cd frontend && npm install && npm run build",
+  "outputDirectory": "frontend/dist",
+  "cleanUrls": true,
+  "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": {
-        "service": "app",
-        "path": "/$1"
-      }
-    },
-    {
-      "source": "/predict",
-      "destination": { "service": "app" }
-    },
-    {
-      "source": "/predict/(.*)",
-      "destination": { "service": "app" }
-    },
-    {
-      "source": "/metrics",
-      "destination": { "service": "app" }
-    },
-    {
-      "source": "/metrics/(.*)",
-      "destination": { "service": "app" }
-    },
-    {
-      "source": "/health",
-      "destination": { "service": "app" }
-    },
-    {
-      "source": "/models",
-      "destination": { "service": "app" }
-    },
-    {
-      "source": "/history",
-      "destination": { "service": "app" }
-    },
-    {
-      "source": "/history/(.*)",
-      "destination": { "service": "app" }
-    },
-    {
-      "source": "/dataset/(.*)",
-      "destination": { "service": "app" }
-    },
-    {
-      "source": "/hardware/(.*)",
-      "destination": { "service": "app" }
-    },
-    {
-      "source": "/benchmark/(.*)",
-      "destination": { "service": "app" }
-    },
-    {
-      "source": "/explain/(.*)",
-      "destination": { "service": "app" }
-    },
-    {
-      "source": "/data/(.*)",
-      "destination": { "service": "app" }
-    },
-    {
-      "source": "/train/(.*)",
-      "destination": { "service": "app" }
-    },
-    {
       "source": "/(.*)",
-      "destination": {
-        "service": "frontend"
-      }
+      "destination": "/index.html"
     }
   ],
   "headers": [
